@@ -10,3 +10,411 @@ Traceback (most recent call last):
              ~~^~~
 ZeroDivisionError: division by zero
 2025-09-27 19:43:06,244 - AdeonaBot - INFO - === Logger Test Completed === (test.py:33)
+2025-09-27 20:29:33,210 - AdeonaBot - INFO - Calling function: scrape_page with params: {'url': 'https://adeonatech.net/'} (logger.py:83)
+2025-09-27 20:29:34,488 - AdeonaBot - ERROR - Error in scrape_page for /: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1283, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs, sock=sock)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1148, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1181, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 578, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 560, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ssl.py", line 916, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/core/web_scraper.py", line 160, in scrape_page
+    async with self.session.get(url) as response:
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 1488, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 770, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 725, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1285, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')]
+2025-09-27 20:29:34,499 - AdeonaBot - INFO - Calling function: scrape_all_pages with params: {'pages_count': 6} (logger.py:83)
+2025-09-27 20:29:34,499 - AdeonaBot - INFO - Calling function: scrape_page with params: {'url': 'https://adeonatech.net'} (logger.py:83)
+2025-09-27 20:29:35,498 - AdeonaBot - ERROR - Error in scrape_page for : Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1283, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs, sock=sock)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1148, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1181, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 578, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 560, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ssl.py", line 916, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/core/web_scraper.py", line 160, in scrape_page
+    async with self.session.get(url) as response:
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 1488, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 770, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 725, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1285, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')]
+2025-09-27 20:29:36,504 - AdeonaBot - INFO - Calling function: scrape_page with params: {'url': 'https://adeonatech.net/about'} (logger.py:83)
+2025-09-27 20:29:37,479 - AdeonaBot - ERROR - Error in scrape_page for /about: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1283, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs, sock=sock)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1148, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1181, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 578, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 560, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ssl.py", line 916, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/core/web_scraper.py", line 160, in scrape_page
+    async with self.session.get(url) as response:
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 1488, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 770, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 725, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1285, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')]
+2025-09-27 20:29:38,483 - AdeonaBot - INFO - Calling function: scrape_page with params: {'url': 'https://adeonatech.net/services'} (logger.py:83)
+2025-09-27 20:29:39,487 - AdeonaBot - ERROR - Error in scrape_page for /services: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1283, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs, sock=sock)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1148, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1181, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 578, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 560, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ssl.py", line 916, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/core/web_scraper.py", line 160, in scrape_page
+    async with self.session.get(url) as response:
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 1488, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 770, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 725, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1285, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')]
+2025-09-27 20:29:40,493 - AdeonaBot - INFO - Calling function: scrape_page with params: {'url': 'https://adeonatech.net/projects'} (logger.py:83)
+2025-09-27 20:29:41,485 - AdeonaBot - ERROR - Error in scrape_page for /projects: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1283, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs, sock=sock)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1148, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1181, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 578, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 560, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ssl.py", line 916, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/core/web_scraper.py", line 160, in scrape_page
+    async with self.session.get(url) as response:
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 1488, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 770, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 725, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1285, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')]
+2025-09-27 20:29:42,489 - AdeonaBot - INFO - Calling function: scrape_page with params: {'url': 'https://adeonatech.net/contact'} (logger.py:83)
+2025-09-27 20:29:43,649 - AdeonaBot - ERROR - Error in scrape_page for /contact: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1283, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs, sock=sock)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1148, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1181, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 578, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 560, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ssl.py", line 916, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/core/web_scraper.py", line 160, in scrape_page
+    async with self.session.get(url) as response:
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 1488, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 770, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 725, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1285, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')]
+2025-09-27 20:29:44,653 - AdeonaBot - INFO - Calling function: scrape_page with params: {'url': 'https://adeonatech.net/privacy-policy'} (logger.py:83)
+2025-09-27 20:29:45,685 - AdeonaBot - ERROR - Error in scrape_page for /privacy-policy: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1283, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs, sock=sock)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1148, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1181, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 578, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 560, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ssl.py", line 916, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/core/web_scraper.py", line 160, in scrape_page
+    async with self.session.get(url) as response:
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 1488, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 770, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 725, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1285, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')]
+2025-09-27 20:29:46,690 - AdeonaBot - INFO - Successfully scraped 0 pages (web_scraper.py:189)
+2025-09-27 20:33:06,270 - AdeonaBot - INFO - Calling function: scrape_page with params: {'url': 'https://adeonatech.net/'} (logger.py:83)
+2025-09-27 20:33:08,107 - AdeonaBot - WARNING - SSL Certificate error for https://adeonatech.net/ on attempt 1: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (web_scraper.py:206)
+2025-09-27 20:33:10,256 - AdeonaBot - WARNING - SSL Certificate error for https://adeonatech.net/ on attempt 2: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (web_scraper.py:206)
+2025-09-27 20:33:13,571 - AdeonaBot - WARNING - SSL Certificate error for https://adeonatech.net/ on attempt 3: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (web_scraper.py:206)
+2025-09-27 20:33:13,571 - AdeonaBot - ERROR - SSL verification failed for https://adeonatech.net/ after 3 attempts (web_scraper.py:208)
+2025-09-27 20:33:13,572 - AdeonaBot - INFO - Calling function: scrape_all_pages with params: {'pages_count': 6} (logger.py:83)
+2025-09-27 20:33:13,572 - AdeonaBot - INFO - Calling function: scrape_page with params: {'url': 'https://adeonatech.net/'} (logger.py:83)
+2025-09-27 20:33:14,630 - AdeonaBot - WARNING - SSL Certificate error for https://adeonatech.net/ on attempt 1: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (web_scraper.py:206)
+2025-09-27 20:33:16,647 - AdeonaBot - WARNING - SSL Certificate error for https://adeonatech.net/ on attempt 2: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (web_scraper.py:206)
+2025-09-27 20:33:19,657 - AdeonaBot - WARNING - SSL Certificate error for https://adeonatech.net/ on attempt 3: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (web_scraper.py:206)
+2025-09-27 20:33:19,658 - AdeonaBot - ERROR - SSL verification failed for https://adeonatech.net/ after 3 attempts (web_scraper.py:208)
+2025-09-27 20:33:20,660 - AdeonaBot - INFO - Calling function: scrape_page with params: {'url': 'https://adeonatech.net/about'} (logger.py:83)
+2025-09-27 20:33:21,838 - AdeonaBot - WARNING - SSL Certificate error for https://adeonatech.net/about on attempt 1: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (web_scraper.py:206)
+2025-09-27 20:33:24,127 - AdeonaBot - WARNING - SSL Certificate error for https://adeonatech.net/about on attempt 2: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (web_scraper.py:206)
+2025-09-27 20:33:27,123 - AdeonaBot - WARNING - SSL Certificate error for https://adeonatech.net/about on attempt 3: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (web_scraper.py:206)
+2025-09-27 20:33:27,123 - AdeonaBot - ERROR - SSL verification failed for https://adeonatech.net/about after 3 attempts (web_scraper.py:208)
+2025-09-27 20:33:28,125 - AdeonaBot - INFO - Calling function: scrape_page with params: {'url': 'https://adeonatech.net/services'} (logger.py:83)
+2025-09-27 20:33:29,133 - AdeonaBot - WARNING - SSL Certificate error for https://adeonatech.net/services on attempt 1: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (web_scraper.py:206)
+2025-09-27 20:33:31,155 - AdeonaBot - WARNING - SSL Certificate error for https://adeonatech.net/services on attempt 2: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (web_scraper.py:206)
+2025-09-27 20:33:34,095 - AdeonaBot - WARNING - SSL Certificate error for https://adeonatech.net/services on attempt 3: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (web_scraper.py:206)
+2025-09-27 20:33:34,095 - AdeonaBot - ERROR - SSL verification failed for https://adeonatech.net/services after 3 attempts (web_scraper.py:208)
+2025-09-27 20:33:35,097 - AdeonaBot - INFO - Calling function: scrape_page with params: {'url': 'https://adeonatech.net/projects'} (logger.py:83)
+2025-09-27 20:33:36,115 - AdeonaBot - WARNING - SSL Certificate error for https://adeonatech.net/projects on attempt 1: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (web_scraper.py:206)
+2025-09-27 20:33:38,116 - AdeonaBot - WARNING - SSL Certificate error for https://adeonatech.net/projects on attempt 2: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (web_scraper.py:206)
+2025-09-27 20:33:41,448 - AdeonaBot - WARNING - SSL Certificate error for https://adeonatech.net/projects on attempt 3: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (web_scraper.py:206)
+2025-09-27 20:33:41,449 - AdeonaBot - ERROR - SSL verification failed for https://adeonatech.net/projects after 3 attempts (web_scraper.py:208)
+2025-09-27 20:33:42,450 - AdeonaBot - INFO - Calling function: scrape_page with params: {'url': 'https://adeonatech.net/contact'} (logger.py:83)
+2025-09-27 20:33:43,463 - AdeonaBot - WARNING - SSL Certificate error for https://adeonatech.net/contact on attempt 1: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (web_scraper.py:206)
+2025-09-27 20:33:45,700 - AdeonaBot - WARNING - SSL Certificate error for https://adeonatech.net/contact on attempt 2: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (web_scraper.py:206)
+2025-09-27 20:33:48,697 - AdeonaBot - WARNING - SSL Certificate error for https://adeonatech.net/contact on attempt 3: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (web_scraper.py:206)
+2025-09-27 20:33:48,698 - AdeonaBot - ERROR - SSL verification failed for https://adeonatech.net/contact after 3 attempts (web_scraper.py:208)
+2025-09-27 20:33:49,699 - AdeonaBot - INFO - Calling function: scrape_page with params: {'url': 'https://adeonatech.net/privacy-policy'} (logger.py:83)
+2025-09-27 20:33:50,832 - AdeonaBot - WARNING - SSL Certificate error for https://adeonatech.net/privacy-policy on attempt 1: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (web_scraper.py:206)
+2025-09-27 20:33:52,929 - AdeonaBot - WARNING - SSL Certificate error for https://adeonatech.net/privacy-policy on attempt 2: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (web_scraper.py:206)
+2025-09-27 20:33:55,923 - AdeonaBot - WARNING - SSL Certificate error for https://adeonatech.net/privacy-policy on attempt 3: Cannot connect to host adeonatech.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (web_scraper.py:206)
+2025-09-27 20:33:55,923 - AdeonaBot - ERROR - SSL verification failed for https://adeonatech.net/privacy-policy after 3 attempts (web_scraper.py:208)
+2025-09-27 20:33:56,925 - AdeonaBot - INFO - Successfully scraped 0 pages (web_scraper.py:243)
+2025-09-27 20:37:59,592 - AdeonaBot - INFO - Calling function: scrape_page with params: {'url': 'https://adeonatech.net/'} (logger.py:83)
+2025-09-27 20:38:00,128 - AdeonaBot - INFO - Successfully scraped https://adeonatech.net/ with aiohttp - 368 characters (web_scraper.py:238)
+2025-09-27 20:38:00,129 - AdeonaBot - INFO - Calling function: scrape_all_pages with params: {'pages_count': 6} (logger.py:83)
+2025-09-27 20:38:00,129 - AdeonaBot - INFO - Calling function: scrape_page with params: {'url': 'https://adeonatech.net/'} (logger.py:83)
+2025-09-27 20:38:00,484 - AdeonaBot - INFO - Successfully scraped https://adeonatech.net/ with aiohttp - 368 characters (web_scraper.py:238)
+2025-09-27 20:38:01,484 - AdeonaBot - INFO - Calling function: scrape_page with params: {'url': 'https://adeonatech.net/about'} (logger.py:83)
+2025-09-27 20:38:02,779 - AdeonaBot - INFO - Successfully scraped https://adeonatech.net/about with aiohttp - 368 characters (web_scraper.py:238)
+2025-09-27 20:38:03,780 - AdeonaBot - INFO - Calling function: scrape_page with params: {'url': 'https://adeonatech.net/services'} (logger.py:83)
+2025-09-27 20:38:05,266 - AdeonaBot - INFO - Successfully scraped https://adeonatech.net/services with aiohttp - 368 characters (web_scraper.py:238)
+2025-09-27 20:38:06,267 - AdeonaBot - INFO - Calling function: scrape_page with params: {'url': 'https://adeonatech.net/projects'} (logger.py:83)
+2025-09-27 20:38:07,595 - AdeonaBot - INFO - Successfully scraped https://adeonatech.net/projects with aiohttp - 368 characters (web_scraper.py:238)
+2025-09-27 20:38:08,596 - AdeonaBot - INFO - Calling function: scrape_page with params: {'url': 'https://adeonatech.net/contact'} (logger.py:83)
+2025-09-27 20:38:10,036 - AdeonaBot - INFO - Successfully scraped https://adeonatech.net/contact with aiohttp - 368 characters (web_scraper.py:238)
+2025-09-27 20:38:11,038 - AdeonaBot - INFO - Calling function: scrape_page with params: {'url': 'https://adeonatech.net/privacy-policy'} (logger.py:83)
+2025-09-27 20:38:12,322 - AdeonaBot - INFO - Successfully scraped https://adeonatech.net/privacy-policy with aiohttp - 368 characters (web_scraper.py:238)
+2025-09-27 20:38:13,324 - AdeonaBot - INFO - Successfully scraped 6 pages (web_scraper.py:296)
+2025-09-27 20:38:13,325 - AdeonaBot - INFO - Calling function: scrape_page with params: {'url': 'https://adeonatech.net/'} (logger.py:83)
+2025-09-27 20:38:13,812 - AdeonaBot - INFO - Successfully scraped https://adeonatech.net/ with aiohttp - 368 characters (web_scraper.py:238)
+2025-09-27 20:49:42,843 - AdeonaBot - INFO - Calling function: create_customer_record with params: {'user_id': ''} (logger.py:83)
+2025-09-27 20:49:45,842 - AdeonaBot - INFO - Customer record created with ID: receNyE1PNxRLdmrh (airtable_service.py:59)
+2025-09-27 20:49:45,843 - AdeonaBot - INFO - Calling function: find_customer_by_user_id with params: {'user_id': 'TEST_B371EEC2'} (logger.py:83)
+2025-09-27 20:49:47,185 - AdeonaBot - INFO - No customer found with User ID: TEST_B371EEC2 (airtable_service.py:81)
+2025-09-27 20:49:47,185 - AdeonaBot - INFO - Calling function: update_customer_status with params: {'user_id': 'TEST_B371EEC2', 'status': 'cancelled'} (logger.py:83)
+2025-09-27 20:49:48,515 - AdeonaBot - WARNING - No record found to update with User ID: TEST_B371EEC2 (airtable_service.py:139)
+2025-09-27 20:49:48,516 - AdeonaBot - INFO - Calling function: check_cancellation_eligibility with params: {'user_id': 'TEST_B371EEC2'} (logger.py:83)
+2025-09-27 20:49:48,516 - AdeonaBot - INFO - Calling function: find_customer_by_user_id with params: {'user_id': 'TEST_B371EEC2'} (logger.py:83)
+2025-09-27 20:49:49,904 - AdeonaBot - INFO - No customer found with User ID: TEST_B371EEC2 (airtable_service.py:81)
+2025-09-27 20:49:49,905 - AdeonaBot - INFO - Calling function: get_all_active_customers (logger.py:83)
+2025-09-27 20:49:51,191 - AdeonaBot - INFO - Retrieved 1 active customers (airtable_service.py:179)
+2025-09-27 20:49:51,191 - AdeonaBot - INFO - Calling function: get_customer_stats (logger.py:83)
+2025-09-27 20:49:53,888 - AdeonaBot - INFO - Customer stats: {'total_customers': 1, 'active_customers': 1, 'cancelled_customers': 0, 'today_customers': 0} (airtable_service.py:346)
+2025-09-27 20:49:53,888 - AdeonaBot - INFO - Calling function: delete_customer_record with params: {'user_id': 'TEST_B371EEC2'} (logger.py:83)
+2025-09-27 20:49:55,345 - AdeonaBot - WARNING - No record found to delete with User ID: TEST_B371EEC2 (airtable_service.py:108)

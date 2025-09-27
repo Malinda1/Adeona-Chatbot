@@ -1,7 +1,9 @@
-# Web scraping service
+# Web scraping service with multiple fallback methods
 import requests
 import asyncio
 import aiohttp
+import ssl
+import urllib3
 from bs4 import BeautifulSoup
 from typing import List, Dict, Optional
 from urllib.parse import urljoin, urlparse
@@ -9,20 +11,47 @@ from backend.app.config.settings import settings
 from backend.app.utils.logger import logger, log_error, log_function_call
 from backend.app.models.chat_models import WebsiteContent
 
+# Disable urllib3 SSL warnings when verification is disabled
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 class WebScraper:
     """Web scraper for extracting content from Adeona Technologies website"""
     
-    def __init__(self):
+    def __init__(self, verify_ssl: bool = False, use_requests_fallback: bool = True):
         self.base_url = settings.WEBSITE_URL
         self.pages = settings.WEBSITE_PAGES
         self.session = None
+        self.verify_ssl = verify_ssl
+        self.use_requests_fallback = use_requests_fallback
     
     async def __aenter__(self):
         """Async context manager entry"""
+        # Create SSL context
+        if self.verify_ssl:
+            ssl_context = ssl.create_default_context()
+        else:
+            ssl_context = False  # This disables SSL verification entirely
+        
+        # Create connector with SSL context
+        connector = aiohttp.TCPConnector(
+            ssl=ssl_context,
+            limit=10,
+            ttl_dns_cache=300,
+            use_dns_cache=True,
+            force_close=True,  # Ensure connections are closed properly
+            enable_cleanup_closed=True
+        )
+        
         self.session = aiohttp.ClientSession(
-            timeout=aiohttp.ClientTimeout(total=30),
+            connector=connector,
+            timeout=aiohttp.ClientTimeout(total=30, connect=10),
             headers={
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                'Accept-Language': 'en-US,en;q=0.5',
+                'Accept-Encoding': 'gzip, deflate',
+                'Connection': 'keep-alive',
+                'Upgrade-Insecure-Requests': '1',
             }
         )
         return self
@@ -151,25 +180,103 @@ class WebScraper:
         else:
             return 'other'
     
-    async def scrape_page(self, page_path: str) -> Optional[WebsiteContent]:
-        """Scrape a single page"""
+    def scrape_with_requests(self, url: str) -> Optional[str]:
+        """Fallback method using requests library"""
         try:
-            url = f"{self.base_url}{page_path}"
-            log_function_call("scrape_page", {"url": url})
+            logger.info(f"Trying requests fallback for {url}")
             
-            async with self.session.get(url) as response:
-                if response.status == 200:
-                    html = await response.text()
-                    content = self.extract_page_content(html, url)
-                    logger.info(f"Successfully scraped {url} - {len(content.content)} characters")
-                    return content
-                else:
-                    logger.warning(f"Failed to scrape {url} - Status: {response.status}")
-                    return None
-                    
+            session = requests.Session()
+            
+            # Disable SSL verification
+            session.verify = False
+            
+            # Set headers
+            session.headers.update({
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                'Accept-Language': 'en-US,en;q=0.5',
+                'Accept-Encoding': 'gzip, deflate',
+                'Connection': 'keep-alive',
+            })
+            
+            # Add retry adapter
+            from requests.adapters import HTTPAdapter
+            from urllib3.util.retry import Retry
+            
+            retry_strategy = Retry(
+                total=3,
+                backoff_factor=1,
+                status_forcelist=[429, 500, 502, 503, 504],
+            )
+            
+            adapter = HTTPAdapter(max_retries=retry_strategy)
+            session.mount("http://", adapter)
+            session.mount("https://", adapter)
+            
+            response = session.get(url, timeout=30)
+            response.raise_for_status()
+            
+            logger.info(f"Successfully scraped {url} with requests fallback")
+            return response.text
+            
         except Exception as e:
-            log_error(e, f"scrape_page for {page_path}")
+            logger.error(f"Requests fallback failed for {url}: {e}")
             return None
+    
+    async def scrape_page(self, page_path: str, max_retries: int = 2) -> Optional[WebsiteContent]:
+        """Scrape a single page with retry logic and fallback"""
+        url = f"{self.base_url.rstrip('/')}{page_path}" if page_path.startswith('/') else f"{self.base_url.rstrip('/')}/{page_path}"
+        log_function_call("scrape_page", {"url": url})
+        
+        # Try with aiohttp first
+        for attempt in range(max_retries):
+            try:
+                async with self.session.get(url) as response:
+                    if response.status == 200:
+                        html = await response.text()
+                        content = self.extract_page_content(html, url)
+                        logger.info(f"Successfully scraped {url} with aiohttp - {len(content.content)} characters")
+                        return content
+                    else:
+                        logger.warning(f"Failed to scrape {url} - Status: {response.status}")
+                        if response.status == 403:
+                            # Try with different user agent on 403
+                            headers = {'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'}
+                            async with self.session.get(url, headers=headers) as retry_response:
+                                if retry_response.status == 200:
+                                    html = await retry_response.text()
+                                    content = self.extract_page_content(html, url)
+                                    logger.info(f"Successfully scraped {url} with bot user agent")
+                                    return content
+                        break  # Don't retry on non-SSL errors
+                        
+            except (aiohttp.ClientConnectorCertificateError, aiohttp.ClientConnectorSSLError) as e:
+                logger.warning(f"SSL error for {url} on attempt {attempt + 1}: {e}")
+                if attempt == max_retries - 1:
+                    break  # Try fallback method
+                await asyncio.sleep(1)
+                
+            except aiohttp.ClientError as e:
+                logger.warning(f"Client error for {url} on attempt {attempt + 1}: {e}")
+                if attempt == max_retries - 1:
+                    break  # Try fallback method
+                await asyncio.sleep(1)
+                
+            except Exception as e:
+                logger.error(f"Unexpected error for {url} on attempt {attempt + 1}: {e}")
+                if attempt == max_retries - 1:
+                    break  # Try fallback method
+                await asyncio.sleep(1)
+        
+        # Try requests fallback if aiohttp failed and fallback is enabled
+        if self.use_requests_fallback:
+            html = self.scrape_with_requests(url)
+            if html:
+                content = self.extract_page_content(html, url)
+                return content
+        
+        logger.error(f"All methods failed for {url}")
+        return None
     
     async def scrape_all_pages(self) -> List[WebsiteContent]:
         """Scrape all configured pages"""
@@ -249,5 +356,5 @@ class WebScraper:
             log_error(e, "chunk_content")
             return []
 
-# Create global instance
-web_scraper = WebScraper()
+# Create global instance with SSL verification disabled and requests fallback enabled
+web_scraper = WebScraper(verify_ssl=False, use_requests_fallback=True)
