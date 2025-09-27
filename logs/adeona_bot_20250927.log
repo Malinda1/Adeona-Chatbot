@@ -1,0 +1,12 @@
+2025-09-27 19:43:06,242 - AdeonaBot - INFO - === Starting Logger Test === (test.py:22)
+2025-09-27 19:43:06,242 - AdeonaBot - WARNING - WARNING: This is a warning message (logger.py:96)
+2025-09-27 19:43:06,242 - AdeonaBot - INFO - Calling function: divide with params: {'a': 10, 'b': 2} (logger.py:83)
+2025-09-27 19:43:06,242 - AdeonaBot - INFO - SUCCESS: Division successful: 10 / 2 = 5.0 (logger.py:92)
+2025-09-27 19:43:06,242 - AdeonaBot - INFO - Calling function: divide with params: {'a': 10, 'b': 0} (logger.py:83)
+2025-09-27 19:43:06,242 - AdeonaBot - ERROR - Error in divide: division by zero (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/test.py", line 14, in divide
+    result = a / b
+             ~~^~~
+ZeroDivisionError: division by zero
+2025-09-27 19:43:06,244 - AdeonaBot - INFO - === Logger Test Completed === (test.py:33)
