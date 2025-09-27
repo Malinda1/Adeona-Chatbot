@@ -1,0 +1,1384 @@
+2025-09-28 00:27:46,988 - AdeonaBot - INFO - Starting Adeona Chatbot application... (main.py:26)
+2025-09-28 00:27:46,989 - AdeonaBot - INFO - Calling function: initialize_services (logger.py:83)
+2025-09-28 00:27:46,989 - AdeonaBot - INFO - Calling function: initialize_vectordb (logger.py:83)
+2025-09-28 00:27:50,630 - AdeonaBot - INFO - VectorDB initialized successfully (vectordb_service.py:49)
+2025-09-28 00:27:50,631 - AdeonaBot - INFO - Calling function: index_website_content (logger.py:83)
+2025-09-28 00:27:50,631 - AdeonaBot - INFO - Starting website content indexing with SerpAPI (forcing complete reindex)... (vectordb_service.py:262)
+2025-09-28 00:27:50,631 - AdeonaBot - INFO - Calling function: force_reindex_website_content (logger.py:83)
+2025-09-28 00:27:50,631 - AdeonaBot - INFO - Starting FORCED website content reindexing with SerpAPI... (vectordb_service.py:194)
+2025-09-28 00:27:50,631 - AdeonaBot - INFO - Calling function: delete_all_vectors (logger.py:83)
+2025-09-28 00:27:52,473 - AdeonaBot - INFO - All vectors deleted from index (vectordb_service.py:276)
+2025-09-28 00:27:54,474 - AdeonaBot - INFO - Deleted all existing vectors (vectordb_service.py:198)
+2025-09-28 00:27:57,475 - AdeonaBot - INFO - Extracting content using SerpAPI... (vectordb_service.py:204)
+2025-09-28 00:27:57,475 - AdeonaBot - INFO - Calling function: scrape_all_company_pages (logger.py:83)
+2025-09-28 00:27:57,475 - AdeonaBot - INFO - Starting comprehensive website content extraction using SerpAPI (serpapi_service.py:434)
+2025-09-28 00:27:57,475 - AdeonaBot - INFO - Processing: https://adeonatech.net/home (serpapi_service.py:439)
+2025-09-28 00:27:57,475 - AdeonaBot - INFO - Calling function: extract_page_content_via_serpapi with params: {'url': 'https://adeonatech.net/home'} (logger.py:83)
+2025-09-28 00:27:57,845 - AdeonaBot - ERROR - Error in extract_page_content_via_serpapi for https://adeonatech.net/home: Cannot connect to host serpapi.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1283, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs, sock=sock)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1148, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1181, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 578, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 560, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ssl.py", line 916, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/serpapi_service.py", line 56, in extract_page_content_via_serpapi
+    async with session.get(self.base_url, params=params) as response:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 1488, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 770, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 725, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1285, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host serpapi.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')]
+2025-09-28 00:27:57,850 - AdeonaBot - WARNING - Limited content extracted from https://adeonatech.net/home, trying direct method (serpapi_service.py:448)
+2025-09-28 00:27:59,713 - AdeonaBot - INFO - Extracted 496 characters from https://adeonatech.net/home - Type: home (serpapi_service.py:180)
+2025-09-28 00:27:59,713 - AdeonaBot - INFO - Fallback extraction successful for https://adeonatech.net/home (serpapi_service.py:454)
+2025-09-28 00:28:01,714 - AdeonaBot - INFO - Processing: https://adeonatech.net/about (serpapi_service.py:439)
+2025-09-28 00:28:01,714 - AdeonaBot - INFO - Calling function: extract_page_content_via_serpapi with params: {'url': 'https://adeonatech.net/about'} (logger.py:83)
+2025-09-28 00:28:01,905 - AdeonaBot - ERROR - Error in extract_page_content_via_serpapi for https://adeonatech.net/about: Cannot connect to host serpapi.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1283, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs, sock=sock)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1148, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1181, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 578, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 560, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ssl.py", line 916, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/serpapi_service.py", line 56, in extract_page_content_via_serpapi
+    async with session.get(self.base_url, params=params) as response:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 1488, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 770, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 725, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1285, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host serpapi.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')]
+2025-09-28 00:28:01,907 - AdeonaBot - WARNING - Limited content extracted from https://adeonatech.net/about, trying direct method (serpapi_service.py:448)
+2025-09-28 00:28:03,003 - AdeonaBot - INFO - Extracted 496 characters from https://adeonatech.net/about - Type: about (serpapi_service.py:180)
+2025-09-28 00:28:03,003 - AdeonaBot - INFO - Fallback extraction successful for https://adeonatech.net/about (serpapi_service.py:454)
+2025-09-28 00:28:05,004 - AdeonaBot - INFO - Processing: https://adeonatech.net/service (serpapi_service.py:439)
+2025-09-28 00:28:05,005 - AdeonaBot - INFO - Calling function: extract_page_content_via_serpapi with params: {'url': 'https://adeonatech.net/service'} (logger.py:83)
+2025-09-28 00:28:05,184 - AdeonaBot - ERROR - Error in extract_page_content_via_serpapi for https://adeonatech.net/service: Cannot connect to host serpapi.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1283, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs, sock=sock)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1148, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1181, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 578, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 560, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ssl.py", line 916, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/serpapi_service.py", line 56, in extract_page_content_via_serpapi
+    async with session.get(self.base_url, params=params) as response:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 1488, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 770, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 725, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1285, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host serpapi.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')]
+2025-09-28 00:28:05,185 - AdeonaBot - WARNING - Limited content extracted from https://adeonatech.net/service, trying direct method (serpapi_service.py:448)
+2025-09-28 00:28:06,271 - AdeonaBot - INFO - Extracted 496 characters from https://adeonatech.net/service - Type: services (serpapi_service.py:180)
+2025-09-28 00:28:06,271 - AdeonaBot - INFO - Fallback extraction successful for https://adeonatech.net/service (serpapi_service.py:454)
+2025-09-28 00:28:08,272 - AdeonaBot - INFO - Processing: https://adeonatech.net/project (serpapi_service.py:439)
+2025-09-28 00:28:08,273 - AdeonaBot - INFO - Calling function: extract_page_content_via_serpapi with params: {'url': 'https://adeonatech.net/project'} (logger.py:83)
+2025-09-28 00:28:08,503 - AdeonaBot - ERROR - Error in extract_page_content_via_serpapi for https://adeonatech.net/project: Cannot connect to host serpapi.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1283, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs, sock=sock)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1148, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1181, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 578, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 560, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ssl.py", line 916, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/serpapi_service.py", line 56, in extract_page_content_via_serpapi
+    async with session.get(self.base_url, params=params) as response:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 1488, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 770, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 725, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1285, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host serpapi.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')]
+2025-09-28 00:28:08,504 - AdeonaBot - WARNING - Limited content extracted from https://adeonatech.net/project, trying direct method (serpapi_service.py:448)
+2025-09-28 00:28:09,613 - AdeonaBot - INFO - Extracted 496 characters from https://adeonatech.net/project - Type: projects (serpapi_service.py:180)
+2025-09-28 00:28:09,614 - AdeonaBot - INFO - Fallback extraction successful for https://adeonatech.net/project (serpapi_service.py:454)
+2025-09-28 00:28:11,615 - AdeonaBot - INFO - Processing: https://adeonatech.net/contact (serpapi_service.py:439)
+2025-09-28 00:28:11,616 - AdeonaBot - INFO - Calling function: extract_page_content_via_serpapi with params: {'url': 'https://adeonatech.net/contact'} (logger.py:83)
+2025-09-28 00:28:11,800 - AdeonaBot - ERROR - Error in extract_page_content_via_serpapi for https://adeonatech.net/contact: Cannot connect to host serpapi.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1283, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs, sock=sock)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1148, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1181, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 578, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 560, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ssl.py", line 916, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/serpapi_service.py", line 56, in extract_page_content_via_serpapi
+    async with session.get(self.base_url, params=params) as response:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 1488, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 770, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 725, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1285, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host serpapi.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')]
+2025-09-28 00:28:11,800 - AdeonaBot - WARNING - Limited content extracted from https://adeonatech.net/contact, trying direct method (serpapi_service.py:448)
+2025-09-28 00:28:12,967 - AdeonaBot - INFO - Extracted 496 characters from https://adeonatech.net/contact - Type: contact (serpapi_service.py:180)
+2025-09-28 00:28:12,968 - AdeonaBot - INFO - Fallback extraction successful for https://adeonatech.net/contact (serpapi_service.py:454)
+2025-09-28 00:28:14,969 - AdeonaBot - INFO - Processing: https://adeonatech.net/privacy-policy (serpapi_service.py:439)
+2025-09-28 00:28:14,970 - AdeonaBot - INFO - Calling function: extract_page_content_via_serpapi with params: {'url': 'https://adeonatech.net/privacy-policy'} (logger.py:83)
+2025-09-28 00:28:15,183 - AdeonaBot - ERROR - Error in extract_page_content_via_serpapi for https://adeonatech.net/privacy-policy: Cannot connect to host serpapi.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')] (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1283, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs, sock=sock)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1148, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1181, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 578, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/sslproto.py", line 560, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ssl.py", line 916, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/serpapi_service.py", line 56, in extract_page_content_via_serpapi
+    async with session.get(self.base_url, params=params) as response:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 1488, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 770, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/client.py", line 725, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/aiohttp/connector.py", line 1285, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host serpapi.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')]
+2025-09-28 00:28:15,183 - AdeonaBot - WARNING - Limited content extracted from https://adeonatech.net/privacy-policy, trying direct method (serpapi_service.py:448)
+2025-09-28 00:28:16,338 - AdeonaBot - INFO - Extracted 496 characters from https://adeonatech.net/privacy-policy - Type: privacy (serpapi_service.py:180)
+2025-09-28 00:28:16,339 - AdeonaBot - INFO - Fallback extraction successful for https://adeonatech.net/privacy-policy (serpapi_service.py:454)
+2025-09-28 00:28:18,340 - AdeonaBot - INFO - Successfully processed 6 out of 6 pages (serpapi_service.py:461)
+2025-09-28 00:28:18,340 - AdeonaBot - INFO - SerpAPI extracted content from 6 pages (vectordb_service.py:211)
+2025-09-28 00:28:18,340 - AdeonaBot - INFO - Page: home | URL: https://adeonatech.net/home | Content length: 496 chars (vectordb_service.py:215)
+2025-09-28 00:28:18,340 - AdeonaBot - INFO - Page: about | URL: https://adeonatech.net/about | Content length: 496 chars (vectordb_service.py:215)
+2025-09-28 00:28:18,340 - AdeonaBot - INFO - Page: services | URL: https://adeonatech.net/service | Content length: 496 chars (vectordb_service.py:215)
+2025-09-28 00:28:18,340 - AdeonaBot - INFO - Page: projects | URL: https://adeonatech.net/project | Content length: 496 chars (vectordb_service.py:215)
+2025-09-28 00:28:18,340 - AdeonaBot - INFO - Page: contact | URL: https://adeonatech.net/contact | Content length: 496 chars (vectordb_service.py:215)
+2025-09-28 00:28:18,340 - AdeonaBot - INFO - Page: privacy | URL: https://adeonatech.net/privacy-policy | Content length: 496 chars (vectordb_service.py:215)
+2025-09-28 00:28:18,340 - AdeonaBot - INFO - Generated 1 chunks for home page (vectordb_service.py:225)
+2025-09-28 00:28:18,340 - AdeonaBot - INFO - Generated 1 chunks for about page (vectordb_service.py:225)
+2025-09-28 00:28:18,340 - AdeonaBot - INFO - Generated 1 chunks for services page (vectordb_service.py:225)
+2025-09-28 00:28:18,340 - AdeonaBot - INFO - Generated 1 chunks for projects page (vectordb_service.py:225)
+2025-09-28 00:28:18,340 - AdeonaBot - INFO - Generated 1 chunks for contact page (vectordb_service.py:225)
+2025-09-28 00:28:18,340 - AdeonaBot - INFO - Generated 1 chunks for privacy page (vectordb_service.py:225)
+2025-09-28 00:28:18,341 - AdeonaBot - INFO - Generated total of 6 content chunks (vectordb_service.py:233)
+2025-09-28 00:28:18,341 - AdeonaBot - INFO - Calling function: upsert_content with params: {'chunks_count': 6} (logger.py:83)
+2025-09-28 00:28:18,341 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 496} (logger.py:83)
+2025-09-28 00:28:19,807 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:28:19,807 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 496} (logger.py:83)
+2025-09-28 00:28:20,355 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:28:20,355 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 496} (logger.py:83)
+2025-09-28 00:28:20,910 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:28:20,910 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 496} (logger.py:83)
+2025-09-28 00:28:21,429 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:28:21,430 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 496} (logger.py:83)
+2025-09-28 00:28:21,995 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:28:21,995 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 496} (logger.py:83)
+2025-09-28 00:28:22,568 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:28:23,750 - AdeonaBot - INFO - Upserted batch 1/1 - 6 vectors (vectordb_service.py:118)
+2025-09-28 00:28:24,751 - AdeonaBot - INFO - Successfully upserted 6/6 vectors (vectordb_service.py:124)
+2025-09-28 00:28:25,094 - AdeonaBot - INFO - FORCED website content reindexing completed successfully - 0 vectors indexed (vectordb_service.py:242)
+2025-09-28 00:28:25,095 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 14, 'top_k': 3} (logger.py:83)
+2025-09-28 00:28:25,095 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 14} (logger.py:83)
+2025-09-28 00:28:25,635 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:28:26,062 - AdeonaBot - INFO - Found 0 similar results (vectordb_service.py:159)
+2025-09-28 00:28:26,063 - AdeonaBot - INFO - Test search returned 0 results (vectordb_service.py:246)
+2025-09-28 00:28:26,063 - AdeonaBot - INFO - Calling function: initialize_googlesheets (logger.py:83)
+2025-09-28 00:28:26,063 - AdeonaBot - INFO - Google Sheets service initialized with cached data (googlesheet_service.py:48)
+2025-09-28 00:28:26,064 - AdeonaBot - INFO - All services initialized successfully (chatbot.py:605)
+2025-09-28 00:28:26,064 - AdeonaBot - INFO - Application startup completed successfully (main.py:34)
+2025-09-28 00:31:12,986 - AdeonaBot - INFO - Application shutdown completed (main.py:41)
+2025-09-28 00:31:14,505 - AdeonaBot - INFO - Starting Adeona Chatbot application... (main.py:26)
+2025-09-28 00:31:14,505 - AdeonaBot - INFO - Calling function: initialize_services (logger.py:83)
+2025-09-28 00:31:14,505 - AdeonaBot - INFO - Calling function: initialize_vectordb (logger.py:83)
+2025-09-28 00:31:17,072 - AdeonaBot - INFO - VectorDB initialized successfully (vectordb_service.py:49)
+2025-09-28 00:31:17,072 - AdeonaBot - INFO - Calling function: index_website_content (logger.py:83)
+2025-09-28 00:31:17,072 - AdeonaBot - INFO - Starting website content indexing with SerpAPI (forcing complete reindex)... (vectordb_service.py:262)
+2025-09-28 00:31:17,072 - AdeonaBot - INFO - Calling function: force_reindex_website_content (logger.py:83)
+2025-09-28 00:31:17,072 - AdeonaBot - INFO - Starting FORCED website content reindexing with SerpAPI... (vectordb_service.py:194)
+2025-09-28 00:31:17,072 - AdeonaBot - INFO - Calling function: delete_all_vectors (logger.py:83)
+2025-09-28 00:31:18,507 - AdeonaBot - INFO - All vectors deleted from index (vectordb_service.py:276)
+2025-09-28 00:31:20,508 - AdeonaBot - INFO - Deleted all existing vectors (vectordb_service.py:198)
+2025-09-28 00:31:23,510 - AdeonaBot - INFO - Extracting content using SerpAPI... (vectordb_service.py:204)
+2025-09-28 00:31:23,510 - AdeonaBot - INFO - Calling function: scrape_all_company_pages (logger.py:83)
+2025-09-28 00:31:23,510 - AdeonaBot - INFO - Starting comprehensive website content extraction (serpapi_service.py:388)
+2025-09-28 00:31:23,510 - AdeonaBot - INFO - Processing: https://adeonatech.net/home (serpapi_service.py:393)
+2025-09-28 00:31:24,769 - AdeonaBot - INFO - Extracted 496 characters from https://adeonatech.net/home - Type: home (serpapi_service.py:162)
+2025-09-28 00:31:24,769 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/home: 496 characters (serpapi_service.py:400)
+2025-09-28 00:31:25,771 - AdeonaBot - INFO - Processing: https://adeonatech.net/about (serpapi_service.py:393)
+2025-09-28 00:31:26,887 - AdeonaBot - INFO - Extracted 496 characters from https://adeonatech.net/about - Type: about (serpapi_service.py:162)
+2025-09-28 00:31:26,888 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/about: 496 characters (serpapi_service.py:400)
+2025-09-28 00:31:27,889 - AdeonaBot - INFO - Processing: https://adeonatech.net/service (serpapi_service.py:393)
+2025-09-28 00:31:29,017 - AdeonaBot - INFO - Extracted 496 characters from https://adeonatech.net/service - Type: services (serpapi_service.py:162)
+2025-09-28 00:31:29,017 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/service: 496 characters (serpapi_service.py:400)
+2025-09-28 00:31:30,018 - AdeonaBot - INFO - Processing: https://adeonatech.net/project (serpapi_service.py:393)
+2025-09-28 00:31:31,213 - AdeonaBot - INFO - Extracted 496 characters from https://adeonatech.net/project - Type: projects (serpapi_service.py:162)
+2025-09-28 00:31:31,214 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/project: 496 characters (serpapi_service.py:400)
+2025-09-28 00:31:32,215 - AdeonaBot - INFO - Processing: https://adeonatech.net/contact (serpapi_service.py:393)
+2025-09-28 00:31:33,289 - AdeonaBot - INFO - Extracted 496 characters from https://adeonatech.net/contact - Type: contact (serpapi_service.py:162)
+2025-09-28 00:31:33,290 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/contact: 496 characters (serpapi_service.py:400)
+2025-09-28 00:31:34,291 - AdeonaBot - INFO - Processing: https://adeonatech.net/privacy-policy (serpapi_service.py:393)
+2025-09-28 00:31:35,523 - AdeonaBot - INFO - Extracted 496 characters from https://adeonatech.net/privacy-policy - Type: privacy (serpapi_service.py:162)
+2025-09-28 00:31:35,524 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/privacy-policy: 496 characters (serpapi_service.py:400)
+2025-09-28 00:31:36,525 - AdeonaBot - INFO - Successfully processed 6 out of 6 pages (serpapi_service.py:407)
+2025-09-28 00:31:36,525 - AdeonaBot - INFO - SerpAPI extracted content from 6 pages (vectordb_service.py:211)
+2025-09-28 00:31:36,525 - AdeonaBot - INFO - Page: home | URL: https://adeonatech.net/home | Content length: 496 chars (vectordb_service.py:215)
+2025-09-28 00:31:36,525 - AdeonaBot - INFO - Page: about | URL: https://adeonatech.net/about | Content length: 496 chars (vectordb_service.py:215)
+2025-09-28 00:31:36,525 - AdeonaBot - INFO - Page: services | URL: https://adeonatech.net/service | Content length: 496 chars (vectordb_service.py:215)
+2025-09-28 00:31:36,525 - AdeonaBot - INFO - Page: projects | URL: https://adeonatech.net/project | Content length: 496 chars (vectordb_service.py:215)
+2025-09-28 00:31:36,525 - AdeonaBot - INFO - Page: contact | URL: https://adeonatech.net/contact | Content length: 496 chars (vectordb_service.py:215)
+2025-09-28 00:31:36,525 - AdeonaBot - INFO - Page: privacy | URL: https://adeonatech.net/privacy-policy | Content length: 496 chars (vectordb_service.py:215)
+2025-09-28 00:31:36,525 - AdeonaBot - INFO - Generated 1 chunks for home page (vectordb_service.py:225)
+2025-09-28 00:31:36,525 - AdeonaBot - INFO - Generated 1 chunks for about page (vectordb_service.py:225)
+2025-09-28 00:31:36,525 - AdeonaBot - INFO - Generated 1 chunks for services page (vectordb_service.py:225)
+2025-09-28 00:31:36,525 - AdeonaBot - INFO - Generated 1 chunks for projects page (vectordb_service.py:225)
+2025-09-28 00:31:36,525 - AdeonaBot - INFO - Generated 1 chunks for contact page (vectordb_service.py:225)
+2025-09-28 00:31:36,525 - AdeonaBot - INFO - Generated 1 chunks for privacy page (vectordb_service.py:225)
+2025-09-28 00:31:36,525 - AdeonaBot - INFO - Generated total of 6 content chunks (vectordb_service.py:233)
+2025-09-28 00:31:36,525 - AdeonaBot - INFO - Calling function: upsert_content with params: {'chunks_count': 6} (logger.py:83)
+2025-09-28 00:31:36,525 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 496} (logger.py:83)
+2025-09-28 00:31:37,839 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:31:37,839 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 496} (logger.py:83)
+2025-09-28 00:31:38,361 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:31:38,361 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 496} (logger.py:83)
+2025-09-28 00:31:38,911 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:31:38,911 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 496} (logger.py:83)
+2025-09-28 00:31:39,506 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:31:39,506 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 496} (logger.py:83)
+2025-09-28 00:31:40,056 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:31:40,056 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 496} (logger.py:83)
+2025-09-28 00:31:40,606 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:31:41,798 - AdeonaBot - INFO - Upserted batch 1/1 - 6 vectors (vectordb_service.py:118)
+2025-09-28 00:31:42,800 - AdeonaBot - INFO - Successfully upserted 6/6 vectors (vectordb_service.py:124)
+2025-09-28 00:31:43,123 - AdeonaBot - INFO - FORCED website content reindexing completed successfully - 0 vectors indexed (vectordb_service.py:242)
+2025-09-28 00:31:43,124 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 14, 'top_k': 3} (logger.py:83)
+2025-09-28 00:31:43,124 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 14} (logger.py:83)
+2025-09-28 00:31:43,737 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:31:44,046 - AdeonaBot - INFO - Found 0 similar results (vectordb_service.py:159)
+2025-09-28 00:31:44,046 - AdeonaBot - INFO - Test search returned 0 results (vectordb_service.py:246)
+2025-09-28 00:31:44,046 - AdeonaBot - INFO - Calling function: initialize_googlesheets (logger.py:83)
+2025-09-28 00:31:44,046 - AdeonaBot - INFO - Google Sheets service initialized with cached data (googlesheet_service.py:48)
+2025-09-28 00:31:44,046 - AdeonaBot - INFO - All services initialized successfully (chatbot.py:605)
+2025-09-28 00:31:44,046 - AdeonaBot - INFO - Application startup completed successfully (main.py:34)
+2025-09-28 00:32:12,173 - AdeonaBot - INFO - Serving frontend from: frontend/index.html (main.py:87)
+2025-09-28 00:32:17,923 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 2} (logger.py:83)
+2025-09-28 00:32:17,924 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 2, 'session_id': 'session_1758999732242_yrx9phvfv'} (logger.py:83)
+2025-09-28 00:32:17,924 - AdeonaBot - INFO - Session session_1758999732242_yrx9phvfv: awaiting_cancellation_id = False (chatbot.py:48)
+2025-09-28 00:32:17,924 - AdeonaBot - INFO - User data exists: False (chatbot.py:49)
+2025-09-28 00:32:17,924 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 2} (logger.py:83)
+2025-09-28 00:32:17,924 - AdeonaBot - INFO - Detected intent: GREETING (chatbot.py:80)
+2025-09-28 00:32:17,924 - AdeonaBot - INFO - Calling function: _handle_greeting (logger.py:83)
+2025-09-28 00:32:17,924 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 250, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 00:32:19,046 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 00:32:19,049 - AdeonaBot - INFO - Chat response generated for session: session_1758999732242_yrx9phvfv (routes.py:119)
+2025-09-28 00:32:22,129 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 38} (logger.py:83)
+2025-09-28 00:32:22,129 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 38, 'session_id': 'session_1758999732242_yrx9phvfv'} (logger.py:83)
+2025-09-28 00:32:22,129 - AdeonaBot - INFO - Session session_1758999732242_yrx9phvfv: awaiting_cancellation_id = False (chatbot.py:48)
+2025-09-28 00:32:22,129 - AdeonaBot - INFO - User data exists: False (chatbot.py:49)
+2025-09-28 00:32:22,129 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 38} (logger.py:83)
+2025-09-28 00:32:22,129 - AdeonaBot - INFO - Detected intent: COMPANY_INFO (chatbot.py:80)
+2025-09-28 00:32:22,129 - AdeonaBot - INFO - Calling function: _handle_company_info (logger.py:83)
+2025-09-28 00:32:22,129 - AdeonaBot - INFO - Calling function: _handle_privacy_policy_query (logger.py:83)
+2025-09-28 00:32:22,129 - AdeonaBot - INFO - Calling function: search_privacy_policy (logger.py:83)
+2025-09-28 00:32:22,129 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 38, 'top_k': 5} (logger.py:83)
+2025-09-28 00:32:22,129 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 38} (logger.py:83)
+2025-09-28 00:32:23,304 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:32:23,647 - AdeonaBot - INFO - Found 0 similar results (vectordb_service.py:159)
+2025-09-28 00:32:23,647 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 53, 'top_k': 5} (logger.py:83)
+2025-09-28 00:32:23,647 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 53} (logger.py:83)
+2025-09-28 00:32:24,172 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:32:24,494 - AdeonaBot - INFO - Found 0 similar results (vectordb_service.py:159)
+2025-09-28 00:32:24,494 - AdeonaBot - INFO - Found 0 privacy policy results (vectordb_service.py:345)
+2025-09-28 00:32:24,494 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 1294, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 00:32:25,620 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 00:32:25,621 - AdeonaBot - INFO - Chat response generated for session: session_1758999732242_yrx9phvfv (routes.py:119)
+2025-09-28 00:33:28,946 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 46} (logger.py:83)
+2025-09-28 00:33:28,947 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 46, 'session_id': 'session_1758999732242_yrx9phvfv'} (logger.py:83)
+2025-09-28 00:33:28,947 - AdeonaBot - INFO - Session session_1758999732242_yrx9phvfv: awaiting_cancellation_id = False (chatbot.py:48)
+2025-09-28 00:33:28,947 - AdeonaBot - INFO - User data exists: False (chatbot.py:49)
+2025-09-28 00:33:28,947 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 46} (logger.py:83)
+2025-09-28 00:33:28,947 - AdeonaBot - INFO - Detected intent: COMPANY_INFO (chatbot.py:80)
+2025-09-28 00:33:28,947 - AdeonaBot - INFO - Calling function: _handle_company_info (logger.py:83)
+2025-09-28 00:33:28,947 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 46, 'top_k': 8} (logger.py:83)
+2025-09-28 00:33:28,947 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 46} (logger.py:83)
+2025-09-28 00:33:30,298 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:33:31,786 - AdeonaBot - INFO - Found 6 similar results (vectordb_service.py:159)
+2025-09-28 00:33:31,786 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 66, 'top_k': 5} (logger.py:83)
+2025-09-28 00:33:31,786 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 66} (logger.py:83)
+2025-09-28 00:33:32,321 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:33:32,652 - AdeonaBot - INFO - Found 5 similar results (vectordb_service.py:159)
+2025-09-28 00:33:32,652 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 4, 'top_k': 3} (logger.py:83)
+2025-09-28 00:33:32,652 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 4} (logger.py:83)
+2025-09-28 00:33:33,183 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:33:33,579 - AdeonaBot - INFO - Found 0 similar results (vectordb_service.py:159)
+2025-09-28 00:33:33,579 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 4, 'top_k': 3} (logger.py:83)
+2025-09-28 00:33:33,579 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 4} (logger.py:83)
+2025-09-28 00:33:34,119 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:33:34,473 - AdeonaBot - INFO - Found 0 similar results (vectordb_service.py:159)
+2025-09-28 00:33:34,474 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 9, 'top_k': 3} (logger.py:83)
+2025-09-28 00:33:34,474 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 9} (logger.py:83)
+2025-09-28 00:33:34,996 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:33:35,343 - AdeonaBot - INFO - Found 0 similar results (vectordb_service.py:159)
+2025-09-28 00:33:35,343 - AdeonaBot - INFO - Calling function: generate_response with params: {'prompt_length': 3085} (logger.py:83)
+2025-09-28 00:33:42,211 - AdeonaBot - INFO - Generated response with 1614 characters (gemini_service.py:40)
+2025-09-28 00:33:42,212 - AdeonaBot - INFO - Generated company info response with 1 sources and 510 context chars (chatbot.py:253)
+2025-09-28 00:33:42,212 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 1614, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 00:33:43,349 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 00:33:43,350 - AdeonaBot - INFO - Chat response generated for session: session_1758999732242_yrx9phvfv (routes.py:119)
+2025-09-28 00:34:48,295 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 31} (logger.py:83)
+2025-09-28 00:34:48,297 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 31, 'session_id': 'session_1758999732242_yrx9phvfv'} (logger.py:83)
+2025-09-28 00:34:48,297 - AdeonaBot - INFO - Session session_1758999732242_yrx9phvfv: awaiting_cancellation_id = False (chatbot.py:48)
+2025-09-28 00:34:48,297 - AdeonaBot - INFO - User data exists: False (chatbot.py:49)
+2025-09-28 00:34:48,297 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 31} (logger.py:83)
+2025-09-28 00:34:48,297 - AdeonaBot - INFO - SERVICE_BOOKING intent detected with keyword: i want to book (gemini_service.py:189)
+2025-09-28 00:34:48,297 - AdeonaBot - INFO - Detected intent: SERVICE_BOOKING (chatbot.py:80)
+2025-09-28 00:34:48,297 - AdeonaBot - INFO - Calling function: _handle_service_booking (logger.py:83)
+2025-09-28 00:34:48,297 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 90, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 00:34:49,562 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 00:34:49,564 - AdeonaBot - INFO - Chat response generated for session: session_1758999732242_yrx9phvfv (routes.py:119)
+2025-09-28 00:52:46,376 - AdeonaBot - INFO - Application shutdown completed (main.py:41)
+2025-09-28 00:52:48,056 - AdeonaBot - INFO - Starting Adeona Chatbot application... (main.py:26)
+2025-09-28 00:52:48,056 - AdeonaBot - INFO - Calling function: initialize_services (logger.py:83)
+2025-09-28 00:52:48,056 - AdeonaBot - INFO - Calling function: initialize_vectordb (logger.py:83)
+2025-09-28 00:52:51,300 - AdeonaBot - INFO - VectorDB initialized successfully (vectordb_service.py:49)
+2025-09-28 00:52:51,301 - AdeonaBot - INFO - Calling function: index_website_content (logger.py:83)
+2025-09-28 00:52:51,301 - AdeonaBot - INFO - Starting website content indexing with SerpAPI (forcing complete reindex)... (vectordb_service.py:262)
+2025-09-28 00:52:51,301 - AdeonaBot - INFO - Calling function: force_reindex_website_content (logger.py:83)
+2025-09-28 00:52:51,301 - AdeonaBot - INFO - Starting FORCED website content reindexing with SerpAPI... (vectordb_service.py:194)
+2025-09-28 00:52:51,302 - AdeonaBot - INFO - Calling function: delete_all_vectors (logger.py:83)
+2025-09-28 00:52:52,899 - AdeonaBot - INFO - All vectors deleted from index (vectordb_service.py:276)
+2025-09-28 00:52:54,900 - AdeonaBot - INFO - Deleted all existing vectors (vectordb_service.py:198)
+2025-09-28 00:52:57,902 - AdeonaBot - INFO - Extracting content using SerpAPI... (vectordb_service.py:204)
+2025-09-28 00:52:57,903 - AdeonaBot - INFO - Calling function: scrape_all_company_pages (logger.py:83)
+2025-09-28 00:52:57,903 - AdeonaBot - INFO - Starting comprehensive website content extraction (serpapi_service.py:388)
+2025-09-28 00:52:57,903 - AdeonaBot - INFO - Processing: https://adeonatech.net/home (serpapi_service.py:393)
+2025-09-28 00:52:59,338 - AdeonaBot - INFO - Extracted 496 characters from https://adeonatech.net/home - Type: home (serpapi_service.py:162)
+2025-09-28 00:52:59,339 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/home: 496 characters (serpapi_service.py:400)
+2025-09-28 00:53:00,340 - AdeonaBot - INFO - Processing: https://adeonatech.net/about (serpapi_service.py:393)
+2025-09-28 00:53:01,430 - AdeonaBot - INFO - Extracted 496 characters from https://adeonatech.net/about - Type: about (serpapi_service.py:162)
+2025-09-28 00:53:01,431 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/about: 496 characters (serpapi_service.py:400)
+2025-09-28 00:53:02,432 - AdeonaBot - INFO - Processing: https://adeonatech.net/service (serpapi_service.py:393)
+2025-09-28 00:53:03,575 - AdeonaBot - INFO - Extracted 496 characters from https://adeonatech.net/service - Type: services (serpapi_service.py:162)
+2025-09-28 00:53:03,576 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/service: 496 characters (serpapi_service.py:400)
+2025-09-28 00:53:04,579 - AdeonaBot - INFO - Processing: https://adeonatech.net/project (serpapi_service.py:393)
+2025-09-28 00:53:05,858 - AdeonaBot - INFO - Extracted 496 characters from https://adeonatech.net/project - Type: projects (serpapi_service.py:162)
+2025-09-28 00:53:05,859 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/project: 496 characters (serpapi_service.py:400)
+2025-09-28 00:53:06,861 - AdeonaBot - INFO - Processing: https://adeonatech.net/contact (serpapi_service.py:393)
+2025-09-28 00:53:08,011 - AdeonaBot - INFO - Extracted 496 characters from https://adeonatech.net/contact - Type: contact (serpapi_service.py:162)
+2025-09-28 00:53:08,012 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/contact: 496 characters (serpapi_service.py:400)
+2025-09-28 00:53:09,013 - AdeonaBot - INFO - Processing: https://adeonatech.net/privacy-policy (serpapi_service.py:393)
+2025-09-28 00:53:10,215 - AdeonaBot - INFO - Extracted 496 characters from https://adeonatech.net/privacy-policy - Type: privacy (serpapi_service.py:162)
+2025-09-28 00:53:10,221 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/privacy-policy: 496 characters (serpapi_service.py:400)
+2025-09-28 00:53:11,222 - AdeonaBot - INFO - Successfully processed 6 out of 6 pages (serpapi_service.py:407)
+2025-09-28 00:53:11,223 - AdeonaBot - INFO - SerpAPI extracted content from 6 pages (vectordb_service.py:211)
+2025-09-28 00:53:11,223 - AdeonaBot - INFO - Page: home | URL: https://adeonatech.net/home | Content length: 496 chars (vectordb_service.py:215)
+2025-09-28 00:53:11,223 - AdeonaBot - INFO - Page: about | URL: https://adeonatech.net/about | Content length: 496 chars (vectordb_service.py:215)
+2025-09-28 00:53:11,223 - AdeonaBot - INFO - Page: services | URL: https://adeonatech.net/service | Content length: 496 chars (vectordb_service.py:215)
+2025-09-28 00:53:11,223 - AdeonaBot - INFO - Page: projects | URL: https://adeonatech.net/project | Content length: 496 chars (vectordb_service.py:215)
+2025-09-28 00:53:11,224 - AdeonaBot - INFO - Page: contact | URL: https://adeonatech.net/contact | Content length: 496 chars (vectordb_service.py:215)
+2025-09-28 00:53:11,224 - AdeonaBot - INFO - Page: privacy | URL: https://adeonatech.net/privacy-policy | Content length: 496 chars (vectordb_service.py:215)
+2025-09-28 00:53:11,224 - AdeonaBot - INFO - Generated 1 chunks for home page (vectordb_service.py:225)
+2025-09-28 00:53:11,224 - AdeonaBot - INFO - Generated 1 chunks for about page (vectordb_service.py:225)
+2025-09-28 00:53:11,224 - AdeonaBot - INFO - Generated 1 chunks for services page (vectordb_service.py:225)
+2025-09-28 00:53:11,224 - AdeonaBot - INFO - Generated 1 chunks for projects page (vectordb_service.py:225)
+2025-09-28 00:53:11,224 - AdeonaBot - INFO - Generated 1 chunks for contact page (vectordb_service.py:225)
+2025-09-28 00:53:11,224 - AdeonaBot - INFO - Generated 1 chunks for privacy page (vectordb_service.py:225)
+2025-09-28 00:53:11,225 - AdeonaBot - INFO - Generated total of 6 content chunks (vectordb_service.py:233)
+2025-09-28 00:53:11,225 - AdeonaBot - INFO - Calling function: upsert_content with params: {'chunks_count': 6} (logger.py:83)
+2025-09-28 00:53:11,225 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 496} (logger.py:83)
+2025-09-28 00:53:12,789 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:53:12,789 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 496} (logger.py:83)
+2025-09-28 00:53:13,340 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:53:13,340 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 496} (logger.py:83)
+2025-09-28 00:53:13,881 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:53:13,881 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 496} (logger.py:83)
+2025-09-28 00:53:14,441 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:53:14,441 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 496} (logger.py:83)
+2025-09-28 00:53:14,996 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:53:14,996 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 496} (logger.py:83)
+2025-09-28 00:53:15,526 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:53:16,696 - AdeonaBot - INFO - Upserted batch 1/1 - 6 vectors (vectordb_service.py:118)
+2025-09-28 00:53:17,698 - AdeonaBot - INFO - Successfully upserted 6/6 vectors (vectordb_service.py:124)
+2025-09-28 00:53:18,127 - AdeonaBot - INFO - FORCED website content reindexing completed successfully - 0 vectors indexed (vectordb_service.py:242)
+2025-09-28 00:53:18,127 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 14, 'top_k': 3} (logger.py:83)
+2025-09-28 00:53:18,127 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 14} (logger.py:83)
+2025-09-28 00:53:18,646 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:53:18,997 - AdeonaBot - INFO - Found 0 similar results (vectordb_service.py:159)
+2025-09-28 00:53:18,997 - AdeonaBot - INFO - Test search returned 0 results (vectordb_service.py:246)
+2025-09-28 00:53:18,997 - AdeonaBot - INFO - Calling function: initialize_googlesheets (logger.py:83)
+2025-09-28 00:53:18,997 - AdeonaBot - INFO - Google Sheets service initialized with cached data (googlesheet_service.py:48)
+2025-09-28 00:53:18,997 - AdeonaBot - INFO - All services initialized successfully (chatbot.py:605)
+2025-09-28 00:53:18,997 - AdeonaBot - INFO - Application startup completed successfully (main.py:34)
+2025-09-28 00:53:18,998 - AdeonaBot - INFO - Application shutdown completed (main.py:41)
+2025-09-28 00:54:48,884 - AdeonaBot - INFO - Starting Adeona Chatbot application... (main.py:26)
+2025-09-28 00:54:48,884 - AdeonaBot - INFO - Calling function: initialize_services (logger.py:83)
+2025-09-28 00:54:48,884 - AdeonaBot - INFO - Calling function: initialize_vectordb (logger.py:83)
+2025-09-28 00:54:52,061 - AdeonaBot - INFO - VectorDB initialized successfully (vectordb_service.py:49)
+2025-09-28 00:54:52,061 - AdeonaBot - INFO - Starting fresh content indexing with SerpAPI... (chatbot.py:641)
+2025-09-28 00:54:52,061 - AdeonaBot - INFO - Calling function: force_reindex_website_content (logger.py:83)
+2025-09-28 00:54:52,061 - AdeonaBot - INFO - Starting FORCED website content reindexing with SerpAPI ONLY... (vectordb_service.py:250)
+2025-09-28 00:54:52,061 - AdeonaBot - INFO - Calling function: delete_all_vectors (logger.py:83)
+2025-09-28 00:54:53,412 - AdeonaBot - INFO - All vectors deleted from index (vectordb_service.py:350)
+2025-09-28 00:54:56,413 - AdeonaBot - INFO - Deleted all existing vectors - fresh start (vectordb_service.py:254)
+2025-09-28 00:55:01,415 - AdeonaBot - INFO - Extracting content using SerpAPI ONLY... (vectordb_service.py:260)
+2025-09-28 00:55:01,415 - AdeonaBot - INFO - Calling function: scrape_all_company_pages (logger.py:83)
+2025-09-28 00:55:01,415 - AdeonaBot - INFO - Starting comprehensive website content extraction using SerpAPI only (serpapi_service.py:272)
+2025-09-28 00:55:01,415 - AdeonaBot - INFO - Extracting content from: https://adeonatech.net/home (serpapi_service.py:277)
+2025-09-28 00:55:01,415 - AdeonaBot - INFO - Calling function: extract_page_content_via_serpapi with params: {'url': 'https://adeonatech.net/home'} (logger.py:83)
+2025-09-28 00:55:01,415 - AdeonaBot - INFO - Searching with query: site:adeonatech.net/home (serpapi_service.py:79)
+2025-09-28 00:55:04,836 - AdeonaBot - INFO - Searching with query: site:adeonatech.net "home" (serpapi_service.py:79)
+2025-09-28 00:55:14,947 - AdeonaBot - INFO - Searching with query: site:adeonatech.net intitle:"home" (serpapi_service.py:79)
+2025-09-28 00:55:19,042 - AdeonaBot - WARNING - No substantial content found for https://adeonatech.net/home, creating basic entry (serpapi_service.py:160)
+2025-09-28 00:55:19,043 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/home: 417 characters - Type: home (serpapi_service.py:283)
+2025-09-28 00:55:21,044 - AdeonaBot - INFO - Extracting content from: https://adeonatech.net/about (serpapi_service.py:277)
+2025-09-28 00:55:21,044 - AdeonaBot - INFO - Calling function: extract_page_content_via_serpapi with params: {'url': 'https://adeonatech.net/about'} (logger.py:83)
+2025-09-28 00:55:21,045 - AdeonaBot - INFO - Searching with query: site:adeonatech.net/about (serpapi_service.py:79)
+2025-09-28 00:55:22,956 - AdeonaBot - INFO - Found content for https://adeonatech.net/about: 163 chars from query: site:adeonatech.net/about (serpapi_service.py:140)
+2025-09-28 00:55:22,957 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/about: 227 characters - Type: about (serpapi_service.py:283)
+2025-09-28 00:55:24,958 - AdeonaBot - INFO - Extracting content from: https://adeonatech.net/service (serpapi_service.py:277)
+2025-09-28 00:55:24,958 - AdeonaBot - INFO - Calling function: extract_page_content_via_serpapi with params: {'url': 'https://adeonatech.net/service'} (logger.py:83)
+2025-09-28 00:55:24,959 - AdeonaBot - INFO - Searching with query: site:adeonatech.net/service (serpapi_service.py:79)
+2025-09-28 00:55:29,713 - AdeonaBot - INFO - Found content for https://adeonatech.net/service: 163 chars from query: site:adeonatech.net/service (serpapi_service.py:140)
+2025-09-28 00:55:29,713 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/service: 233 characters - Type: services (serpapi_service.py:283)
+2025-09-28 00:55:31,714 - AdeonaBot - INFO - Extracting content from: https://adeonatech.net/project (serpapi_service.py:277)
+2025-09-28 00:55:31,715 - AdeonaBot - INFO - Calling function: extract_page_content_via_serpapi with params: {'url': 'https://adeonatech.net/project'} (logger.py:83)
+2025-09-28 00:55:31,715 - AdeonaBot - INFO - Searching with query: site:adeonatech.net/project (serpapi_service.py:79)
+2025-09-28 00:55:34,630 - AdeonaBot - INFO - Found content for https://adeonatech.net/project: 134 chars from query: site:adeonatech.net/project (serpapi_service.py:140)
+2025-09-28 00:55:35,631 - AdeonaBot - INFO - Searching with query: site:adeonatech.net "project" (serpapi_service.py:79)
+2025-09-28 00:55:39,762 - AdeonaBot - INFO - Found content for https://adeonatech.net/project: 145 chars from query: site:adeonatech.net "project" (serpapi_service.py:140)
+2025-09-28 00:55:39,773 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/project: 204 characters - Type: projects (serpapi_service.py:283)
+2025-09-28 00:55:41,775 - AdeonaBot - INFO - Extracting content from: https://adeonatech.net/contact (serpapi_service.py:277)
+2025-09-28 00:55:41,776 - AdeonaBot - INFO - Calling function: extract_page_content_via_serpapi with params: {'url': 'https://adeonatech.net/contact'} (logger.py:83)
+2025-09-28 00:55:41,776 - AdeonaBot - INFO - Searching with query: site:adeonatech.net/contact (serpapi_service.py:79)
+2025-09-28 00:55:47,404 - AdeonaBot - INFO - Found content for https://adeonatech.net/contact: 155 chars from query: site:adeonatech.net/contact (serpapi_service.py:140)
+2025-09-28 00:55:47,406 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/contact: 213 characters - Type: contact (serpapi_service.py:283)
+2025-09-28 00:55:49,407 - AdeonaBot - INFO - Extracting content from: https://adeonatech.net/privacy-policy (serpapi_service.py:277)
+2025-09-28 00:55:49,407 - AdeonaBot - INFO - Calling function: extract_page_content_via_serpapi with params: {'url': 'https://adeonatech.net/privacy-policy'} (logger.py:83)
+2025-09-28 00:55:49,408 - AdeonaBot - INFO - Searching with query: site:adeonatech.net/privacy-policy (serpapi_service.py:79)
+2025-09-28 00:55:51,913 - AdeonaBot - INFO - Found content for https://adeonatech.net/privacy-policy: 158 chars from query: site:adeonatech.net/privacy-policy (serpapi_service.py:140)
+2025-09-28 00:55:51,914 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/privacy-policy: 234 characters - Type: privacy (serpapi_service.py:283)
+2025-09-28 00:55:53,915 - AdeonaBot - INFO - Successfully processed 6 out of 6 pages (serpapi_service.py:290)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - Total content extracted: 1528 characters (serpapi_service.py:294)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - SerpAPI extracted content from 6 pages (vectordb_service.py:267)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - Page: home | URL: https://adeonatech.net/home | Content: 417 chars (vectordb_service.py:274)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - Preview: Adeona Technologies is a leading IT solutions company based in Sri Lanka, specializing in custom software development and innovative digital solutions. We provide comprehensive IT services including T... (vectordb_service.py:278)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - Page: about | URL: https://adeonatech.net/about | Content: 227 chars (vectordb_service.py:274)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - Preview: About Adeona Technologies - Company Information and Background  Adeona Technologies is a digital transformation consultancy and software development service company which was inaugurated in the year 2... (vectordb_service.py:278)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - Page: services | URL: https://adeonatech.net/service | Content: 233 chars (vectordb_service.py:274)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - Preview: Adeona Technologies Services - IT Solutions and Software Development  Unveil the power of simplicity in web design with Connector, Adeona Technologies' innovative website builder tool. Designed for ea... (vectordb_service.py:278)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - Page: projects | URL: https://adeonatech.net/project | Content: 204 chars (vectordb_service.py:274)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - Preview: Adeona Technologies Projects - Portfolio and Case Studies  Our Project. Our Recently Completed Projects. eSMS. Dialog Axiata PLC · In-App Advertising Platform. ADA Cambodia · eRL 2.0 Integration. NITF... (vectordb_service.py:278)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - Page: contact | URL: https://adeonatech.net/contact | Content: 213 chars (vectordb_service.py:274)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - Preview: Contact Adeona Technologies - Get in Touch with Our Team  We're here to help you navigate the path to exceptional software solutions. At Adeona Technologies, your vision and needs are at the heart of ... (vectordb_service.py:278)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - Page: privacy | URL: https://adeonatech.net/privacy-policy | Content: 234 chars (vectordb_service.py:274)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - Preview: Adeona Technologies Privacy Policy - Data Protection and Privacy Practices  This Privacy Policy outlines how we collect, use, and safeguard information obtained through our company website https://ade... (vectordb_service.py:278)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - Total content extracted: 1528 characters (vectordb_service.py:283)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - Generated 1 chunks for home page (vectordb_service.py:294)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - Generated 1 chunks for about page (vectordb_service.py:294)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - Generated 1 chunks for services page (vectordb_service.py:294)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - Generated 1 chunks for projects page (vectordb_service.py:294)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - Generated 1 chunks for contact page (vectordb_service.py:294)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - Generated 1 chunks for privacy page (vectordb_service.py:294)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - Generated total of 6 content chunks (vectordb_service.py:302)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - Calling function: upsert_content with params: {'chunks_count': 6} (logger.py:83)
+2025-09-28 00:55:53,916 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 417} (logger.py:83)
+2025-09-28 00:55:55,100 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:55:55,100 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 227} (logger.py:83)
+2025-09-28 00:55:55,650 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:55:55,650 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 233} (logger.py:83)
+2025-09-28 00:55:56,164 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:55:56,165 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 204} (logger.py:83)
+2025-09-28 00:55:56,698 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:55:56,698 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 213} (logger.py:83)
+2025-09-28 00:55:57,272 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:55:57,273 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 234} (logger.py:83)
+2025-09-28 00:55:57,799 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:55:57,799 - AdeonaBot - INFO - Successfully prepared 6 vectors from 6 successful embeddings (vectordb_service.py:115)
+2025-09-28 00:55:59,791 - AdeonaBot - INFO - Upserted batch 1/1 - 6 vectors (vectordb_service.py:126)
+2025-09-28 00:56:00,792 - AdeonaBot - INFO - Successfully upserted 6/6 vectors to Pinecone (vectordb_service.py:132)
+2025-09-28 00:56:04,126 - AdeonaBot - INFO - FORCED website content reindexing completed successfully - 0 vectors indexed (vectordb_service.py:312)
+2025-09-28 00:56:04,126 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 14, 'top_k': 3} (logger.py:83)
+2025-09-28 00:56:04,126 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 14} (logger.py:83)
+2025-09-28 00:56:05,356 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:56:05,672 - AdeonaBot - INFO - Found 0 similar results for query: 'privacy policy...' (vectordb_service.py:169)
+2025-09-28 00:56:05,672 - AdeonaBot - INFO - Test search for 'privacy policy' returned 0 results (vectordb_service.py:316)
+2025-09-28 00:56:05,672 - AdeonaBot - INFO - Calling function: initialize_googlesheets (logger.py:83)
+2025-09-28 00:56:05,672 - AdeonaBot - INFO - Google Sheets service initialized with cached data (googlesheet_service.py:48)
+2025-09-28 00:56:05,672 - AdeonaBot - INFO - All services initialized successfully (chatbot.py:647)
+2025-09-28 00:56:05,673 - AdeonaBot - INFO - Application startup completed successfully (main.py:34)
+2025-09-28 00:56:36,447 - AdeonaBot - INFO - Serving frontend from: frontend/index.html (main.py:87)
+2025-09-28 00:56:40,942 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 2} (logger.py:83)
+2025-09-28 00:56:40,943 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 2, 'session_id': 'session_1759001196512_0nw4ogz9g'} (logger.py:83)
+2025-09-28 00:56:40,943 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 2} (logger.py:83)
+2025-09-28 00:56:40,943 - AdeonaBot - INFO - Detected intent: GREETING (chatbot.py:74)
+2025-09-28 00:56:40,943 - AdeonaBot - INFO - Calling function: _handle_greeting (logger.py:83)
+2025-09-28 00:56:40,943 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 250, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 00:56:51,139 - AdeonaBot - INFO - Audio saved to static/audio/response_20250928_005640.wav (gemini_service.py:91)
+2025-09-28 00:56:51,140 - AdeonaBot - INFO - Speech generated and saved to static/audio/response_20250928_005640.wav (gemini_service.py:132)
+2025-09-28 00:56:51,143 - AdeonaBot - INFO - Chat response generated for session: session_1759001196512_0nw4ogz9g (routes.py:119)
+2025-09-28 00:56:56,979 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 46} (logger.py:83)
+2025-09-28 00:56:56,980 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 46, 'session_id': 'session_1759001196512_0nw4ogz9g'} (logger.py:83)
+2025-09-28 00:56:56,980 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 46} (logger.py:83)
+2025-09-28 00:56:56,980 - AdeonaBot - INFO - Detected intent: COMPANY_INFO (chatbot.py:74)
+2025-09-28 00:56:56,980 - AdeonaBot - INFO - Calling function: _handle_company_info with params: {'query': 'what is the date of beginning Adeona company ?'} (logger.py:83)
+2025-09-28 00:56:56,980 - AdeonaBot - INFO - Searching vector database for: 'what is the date of beginning Adeona company ?' (chatbot.py:145)
+2025-09-28 00:56:56,980 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 46, 'top_k': 10} (logger.py:83)
+2025-09-28 00:56:56,980 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 46} (logger.py:83)
+2025-09-28 00:56:58,169 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:56:58,517 - AdeonaBot - INFO - Found 6 similar results for query: 'what is the date of beginning Adeona company ?...' (vectordb_service.py:169)
+2025-09-28 00:56:58,517 - AdeonaBot - INFO - Best match: home page, score: 0.674 (vectordb_service.py:174)
+2025-09-28 00:56:58,518 - AdeonaBot - INFO - Limited high-confidence results, trying enhanced searches... (chatbot.py:152)
+2025-09-28 00:56:58,518 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 66, 'top_k': 5} (logger.py:83)
+2025-09-28 00:56:58,518 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 66} (logger.py:83)
+2025-09-28 00:56:59,042 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:56:59,367 - AdeonaBot - INFO - Found 5 similar results for query: 'Adeona Technologies what is the date of beginning ...' (vectordb_service.py:169)
+2025-09-28 00:56:59,367 - AdeonaBot - INFO - Best match: home page, score: 0.717 (vectordb_service.py:174)
+2025-09-28 00:56:59,367 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 13, 'top_k': 3} (logger.py:83)
+2025-09-28 00:56:59,368 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 13} (logger.py:83)
+2025-09-28 00:56:59,885 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:57:00,226 - AdeonaBot - INFO - Found 0 similar results for query: 'what services...' (vectordb_service.py:169)
+2025-09-28 00:57:00,226 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 13, 'top_k': 3} (logger.py:83)
+2025-09-28 00:57:00,226 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 13} (logger.py:83)
+2025-09-28 00:57:00,744 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:57:01,079 - AdeonaBot - INFO - Found 0 similar results for query: 'date services...' (vectordb_service.py:169)
+2025-09-28 00:57:01,079 - AdeonaBot - INFO - Found 6 relevant results for company info query (chatbot.py:172)
+2025-09-28 00:57:01,079 - AdeonaBot - INFO - Calling function: generate_response with params: {'prompt_length': 4293} (logger.py:83)
+2025-09-28 00:57:04,802 - AdeonaBot - INFO - Generated response with 976 characters (gemini_service.py:40)
+2025-09-28 00:57:04,803 - AdeonaBot - INFO - Generated company info response with 6 sources (chatbot.py:253)
+2025-09-28 00:57:04,804 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 976, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 00:57:05,881 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 00:57:05,888 - AdeonaBot - INFO - Chat response generated for session: session_1759001196512_0nw4ogz9g (routes.py:119)
+2025-09-28 00:58:24,432 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 48} (logger.py:83)
+2025-09-28 00:58:24,432 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 48, 'session_id': 'session_1759001196512_0nw4ogz9g'} (logger.py:83)
+2025-09-28 00:58:24,432 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 48} (logger.py:83)
+2025-09-28 00:58:24,432 - AdeonaBot - INFO - Detected intent: COMPANY_INFO (chatbot.py:74)
+2025-09-28 00:58:24,432 - AdeonaBot - INFO - Calling function: _handle_company_info with params: {'query': 'what are the company policy this Adeona company?'} (logger.py:83)
+2025-09-28 00:58:24,432 - AdeonaBot - INFO - Searching vector database for: 'what are the company policy this Adeona company?' (chatbot.py:145)
+2025-09-28 00:58:24,432 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 48, 'top_k': 10} (logger.py:83)
+2025-09-28 00:58:24,433 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 48} (logger.py:83)
+2025-09-28 00:58:25,640 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:58:27,008 - AdeonaBot - INFO - Found 6 similar results for query: 'what are the company policy this Adeona company?...' (vectordb_service.py:169)
+2025-09-28 00:58:27,009 - AdeonaBot - INFO - Best match: home page, score: 0.670 (vectordb_service.py:174)
+2025-09-28 00:58:27,009 - AdeonaBot - INFO - Limited high-confidence results, trying enhanced searches... (chatbot.py:152)
+2025-09-28 00:58:27,009 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 68, 'top_k': 5} (logger.py:83)
+2025-09-28 00:58:27,009 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 68} (logger.py:83)
+2025-09-28 00:58:27,519 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:58:27,874 - AdeonaBot - INFO - Found 5 similar results for query: 'Adeona Technologies what are the company policy th...' (vectordb_service.py:169)
+2025-09-28 00:58:27,874 - AdeonaBot - INFO - Best match: home page, score: 0.699 (vectordb_service.py:174)
+2025-09-28 00:58:27,874 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 13, 'top_k': 3} (logger.py:83)
+2025-09-28 00:58:27,874 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 13} (logger.py:83)
+2025-09-28 00:58:28,394 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:58:28,714 - AdeonaBot - INFO - Found 0 similar results for query: 'what services...' (vectordb_service.py:169)
+2025-09-28 00:58:28,715 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 16, 'top_k': 3} (logger.py:83)
+2025-09-28 00:58:28,715 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 16} (logger.py:83)
+2025-09-28 00:58:29,215 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:58:29,549 - AdeonaBot - INFO - Found 0 similar results for query: 'company services...' (vectordb_service.py:169)
+2025-09-28 00:58:29,549 - AdeonaBot - INFO - Found 6 relevant results for company info query (chatbot.py:172)
+2025-09-28 00:58:29,549 - AdeonaBot - INFO - Calling function: generate_response with params: {'prompt_length': 4295} (logger.py:83)
+2025-09-28 00:58:41,863 - AdeonaBot - INFO - Generated response with 1801 characters (gemini_service.py:40)
+2025-09-28 00:58:41,864 - AdeonaBot - INFO - Generated company info response with 6 sources (chatbot.py:253)
+2025-09-28 00:58:41,864 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 1801, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 00:58:42,949 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 00:58:42,950 - AdeonaBot - INFO - Chat response generated for session: session_1759001196512_0nw4ogz9g (routes.py:119)
+2025-09-28 00:59:43,153 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 41} (logger.py:83)
+2025-09-28 00:59:43,153 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 41, 'session_id': 'session_1759001196512_0nw4ogz9g'} (logger.py:83)
+2025-09-28 00:59:43,153 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 41} (logger.py:83)
+2025-09-28 00:59:43,153 - AdeonaBot - INFO - Detected intent: COMPANY_INFO (chatbot.py:74)
+2025-09-28 00:59:43,153 - AdeonaBot - INFO - Calling function: _handle_company_info with params: {'query': 'What are the have services this company ?'} (logger.py:83)
+2025-09-28 00:59:43,153 - AdeonaBot - INFO - Searching vector database for: 'What are the have services this company ?' (chatbot.py:145)
+2025-09-28 00:59:43,153 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 41, 'top_k': 10} (logger.py:83)
+2025-09-28 00:59:43,153 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 41} (logger.py:83)
+2025-09-28 00:59:44,486 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:59:46,337 - AdeonaBot - INFO - Found 0 similar results for query: 'What are the have services this company ?...' (vectordb_service.py:169)
+2025-09-28 00:59:46,337 - AdeonaBot - INFO - Limited high-confidence results, trying enhanced searches... (chatbot.py:152)
+2025-09-28 00:59:46,337 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 61, 'top_k': 5} (logger.py:83)
+2025-09-28 00:59:46,337 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 61} (logger.py:83)
+2025-09-28 00:59:46,857 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:59:47,224 - AdeonaBot - INFO - Found 5 similar results for query: 'Adeona Technologies What are the have services thi...' (vectordb_service.py:169)
+2025-09-28 00:59:47,224 - AdeonaBot - INFO - Best match: about page, score: 0.832 (vectordb_service.py:174)
+2025-09-28 00:59:47,224 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 13, 'top_k': 3} (logger.py:83)
+2025-09-28 00:59:47,224 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 13} (logger.py:83)
+2025-09-28 00:59:47,765 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:59:48,178 - AdeonaBot - INFO - Found 0 similar results for query: 'What services...' (vectordb_service.py:169)
+2025-09-28 00:59:48,178 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 13, 'top_k': 3} (logger.py:83)
+2025-09-28 00:59:48,179 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 13} (logger.py:83)
+2025-09-28 00:59:48,707 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 00:59:49,096 - AdeonaBot - INFO - Found 0 similar results for query: 'have services...' (vectordb_service.py:169)
+2025-09-28 00:59:49,097 - AdeonaBot - INFO - Found 5 relevant results for company info query (chatbot.py:172)
+2025-09-28 00:59:49,097 - AdeonaBot - INFO - Calling function: generate_response with params: {'prompt_length': 4047} (logger.py:83)
+2025-09-28 00:59:55,446 - AdeonaBot - INFO - Generated response with 2542 characters (gemini_service.py:40)
+2025-09-28 00:59:55,446 - AdeonaBot - INFO - Generated company info response with 5 sources (chatbot.py:253)
+2025-09-28 00:59:55,446 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 2542, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 00:59:56,587 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 00:59:56,591 - AdeonaBot - INFO - Chat response generated for session: session_1759001196512_0nw4ogz9g (routes.py:119)
+2025-09-28 01:06:09,438 - AdeonaBot - INFO - Application shutdown completed (main.py:41)
+2025-09-28 01:06:11,197 - AdeonaBot - INFO - Starting Adeona Chatbot application... (main.py:26)
+2025-09-28 01:06:11,197 - AdeonaBot - INFO - Calling function: initialize_vectordb (logger.py:83)
+2025-09-28 01:06:14,169 - AdeonaBot - INFO - VectorDB initialized successfully (vectordb_service.py:49)
+2025-09-28 01:06:14,169 - AdeonaBot - INFO - Starting fresh content indexing with SerpAPI... (chatbot.py:538)
+2025-09-28 01:06:14,169 - AdeonaBot - INFO - Calling function: force_reindex_website_content (logger.py:83)
+2025-09-28 01:06:14,169 - AdeonaBot - INFO - Starting FORCED website content reindexing with SerpAPI ONLY... (vectordb_service.py:250)
+2025-09-28 01:06:14,169 - AdeonaBot - INFO - Calling function: delete_all_vectors (logger.py:83)
+2025-09-28 01:06:16,175 - AdeonaBot - INFO - All vectors deleted from index (vectordb_service.py:350)
+2025-09-28 01:06:19,176 - AdeonaBot - INFO - Deleted all existing vectors - fresh start (vectordb_service.py:254)
+2025-09-28 01:06:24,178 - AdeonaBot - INFO - Extracting content using SerpAPI ONLY... (vectordb_service.py:260)
+2025-09-28 01:06:24,179 - AdeonaBot - INFO - Calling function: scrape_all_company_pages (logger.py:83)
+2025-09-28 01:06:24,179 - AdeonaBot - INFO - Starting comprehensive website content extraction using SerpAPI only (serpapi_service.py:272)
+2025-09-28 01:06:24,179 - AdeonaBot - INFO - Extracting content from: https://adeonatech.net/home (serpapi_service.py:277)
+2025-09-28 01:06:24,179 - AdeonaBot - INFO - Calling function: extract_page_content_via_serpapi with params: {'url': 'https://adeonatech.net/home'} (logger.py:83)
+2025-09-28 01:06:24,181 - AdeonaBot - INFO - Searching with query: site:adeonatech.net/home (serpapi_service.py:79)
+2025-09-28 01:06:25,930 - AdeonaBot - INFO - Searching with query: site:adeonatech.net "home" (serpapi_service.py:79)
+2025-09-28 01:06:26,994 - AdeonaBot - INFO - Searching with query: site:adeonatech.net intitle:"home" (serpapi_service.py:79)
+2025-09-28 01:06:28,070 - AdeonaBot - WARNING - No substantial content found for https://adeonatech.net/home, creating basic entry (serpapi_service.py:160)
+2025-09-28 01:06:28,070 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/home: 417 characters - Type: home (serpapi_service.py:283)
+2025-09-28 01:06:30,071 - AdeonaBot - INFO - Extracting content from: https://adeonatech.net/about (serpapi_service.py:277)
+2025-09-28 01:06:30,072 - AdeonaBot - INFO - Calling function: extract_page_content_via_serpapi with params: {'url': 'https://adeonatech.net/about'} (logger.py:83)
+2025-09-28 01:06:30,074 - AdeonaBot - INFO - Searching with query: site:adeonatech.net/about (serpapi_service.py:79)
+2025-09-28 01:06:30,280 - AdeonaBot - INFO - Found content for https://adeonatech.net/about: 163 chars from query: site:adeonatech.net/about (serpapi_service.py:140)
+2025-09-28 01:06:30,280 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/about: 227 characters - Type: about (serpapi_service.py:283)
+2025-09-28 01:06:32,281 - AdeonaBot - INFO - Extracting content from: https://adeonatech.net/service (serpapi_service.py:277)
+2025-09-28 01:06:32,282 - AdeonaBot - INFO - Calling function: extract_page_content_via_serpapi with params: {'url': 'https://adeonatech.net/service'} (logger.py:83)
+2025-09-28 01:06:32,282 - AdeonaBot - INFO - Searching with query: site:adeonatech.net/service (serpapi_service.py:79)
+2025-09-28 01:06:32,469 - AdeonaBot - INFO - Found content for https://adeonatech.net/service: 163 chars from query: site:adeonatech.net/service (serpapi_service.py:140)
+2025-09-28 01:06:32,470 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/service: 233 characters - Type: services (serpapi_service.py:283)
+2025-09-28 01:06:34,471 - AdeonaBot - INFO - Extracting content from: https://adeonatech.net/project (serpapi_service.py:277)
+2025-09-28 01:06:34,471 - AdeonaBot - INFO - Calling function: extract_page_content_via_serpapi with params: {'url': 'https://adeonatech.net/project'} (logger.py:83)
+2025-09-28 01:06:34,471 - AdeonaBot - INFO - Searching with query: site:adeonatech.net/project (serpapi_service.py:79)
+2025-09-28 01:06:34,629 - AdeonaBot - INFO - Found content for https://adeonatech.net/project: 134 chars from query: site:adeonatech.net/project (serpapi_service.py:140)
+2025-09-28 01:06:35,631 - AdeonaBot - INFO - Searching with query: site:adeonatech.net "project" (serpapi_service.py:79)
+2025-09-28 01:06:35,718 - AdeonaBot - INFO - Found content for https://adeonatech.net/project: 145 chars from query: site:adeonatech.net "project" (serpapi_service.py:140)
+2025-09-28 01:06:35,718 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/project: 204 characters - Type: projects (serpapi_service.py:283)
+2025-09-28 01:06:37,719 - AdeonaBot - INFO - Extracting content from: https://adeonatech.net/contact (serpapi_service.py:277)
+2025-09-28 01:06:37,719 - AdeonaBot - INFO - Calling function: extract_page_content_via_serpapi with params: {'url': 'https://adeonatech.net/contact'} (logger.py:83)
+2025-09-28 01:06:37,720 - AdeonaBot - INFO - Searching with query: site:adeonatech.net/contact (serpapi_service.py:79)
+2025-09-28 01:06:37,934 - AdeonaBot - INFO - Found content for https://adeonatech.net/contact: 155 chars from query: site:adeonatech.net/contact (serpapi_service.py:140)
+2025-09-28 01:06:37,934 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/contact: 213 characters - Type: contact (serpapi_service.py:283)
+2025-09-28 01:06:39,935 - AdeonaBot - INFO - Extracting content from: https://adeonatech.net/privacy-policy (serpapi_service.py:277)
+2025-09-28 01:06:39,936 - AdeonaBot - INFO - Calling function: extract_page_content_via_serpapi with params: {'url': 'https://adeonatech.net/privacy-policy'} (logger.py:83)
+2025-09-28 01:06:39,936 - AdeonaBot - INFO - Searching with query: site:adeonatech.net/privacy-policy (serpapi_service.py:79)
+2025-09-28 01:06:40,293 - AdeonaBot - INFO - Found content for https://adeonatech.net/privacy-policy: 158 chars from query: site:adeonatech.net/privacy-policy (serpapi_service.py:140)
+2025-09-28 01:06:40,294 - AdeonaBot - INFO - Successfully extracted content from https://adeonatech.net/privacy-policy: 234 characters - Type: privacy (serpapi_service.py:283)
+2025-09-28 01:06:42,295 - AdeonaBot - INFO - Successfully processed 6 out of 6 pages (serpapi_service.py:290)
+2025-09-28 01:06:42,295 - AdeonaBot - INFO - Total content extracted: 1528 characters (serpapi_service.py:294)
+2025-09-28 01:06:42,296 - AdeonaBot - INFO - SerpAPI extracted content from 6 pages (vectordb_service.py:267)
+2025-09-28 01:06:42,296 - AdeonaBot - INFO - Page: home | URL: https://adeonatech.net/home | Content: 417 chars (vectordb_service.py:274)
+2025-09-28 01:06:42,296 - AdeonaBot - INFO - Preview: Adeona Technologies is a leading IT solutions company based in Sri Lanka, specializing in custom software development and innovative digital solutions. We provide comprehensive IT services including T... (vectordb_service.py:278)
+2025-09-28 01:06:42,296 - AdeonaBot - INFO - Page: about | URL: https://adeonatech.net/about | Content: 227 chars (vectordb_service.py:274)
+2025-09-28 01:06:42,296 - AdeonaBot - INFO - Preview: About Adeona Technologies - Company Information and Background  Adeona Technologies is a digital transformation consultancy and software development service company which was inaugurated in the year 2... (vectordb_service.py:278)
+2025-09-28 01:06:42,296 - AdeonaBot - INFO - Page: services | URL: https://adeonatech.net/service | Content: 233 chars (vectordb_service.py:274)
+2025-09-28 01:06:42,297 - AdeonaBot - INFO - Preview: Adeona Technologies Services - IT Solutions and Software Development  Unveil the power of simplicity in web design with Connector, Adeona Technologies' innovative website builder tool. Designed for ea... (vectordb_service.py:278)
+2025-09-28 01:06:42,297 - AdeonaBot - INFO - Page: projects | URL: https://adeonatech.net/project | Content: 204 chars (vectordb_service.py:274)
+2025-09-28 01:06:42,297 - AdeonaBot - INFO - Preview: Adeona Technologies Projects - Portfolio and Case Studies  Our Project. Our Recently Completed Projects. eSMS. Dialog Axiata PLC · In-App Advertising Platform. ADA Cambodia · eRL 2.0 Integration. NITF... (vectordb_service.py:278)
+2025-09-28 01:06:42,297 - AdeonaBot - INFO - Page: contact | URL: https://adeonatech.net/contact | Content: 213 chars (vectordb_service.py:274)
+2025-09-28 01:06:42,297 - AdeonaBot - INFO - Preview: Contact Adeona Technologies - Get in Touch with Our Team  We're here to help you navigate the path to exceptional software solutions. At Adeona Technologies, your vision and needs are at the heart of ... (vectordb_service.py:278)
+2025-09-28 01:06:42,297 - AdeonaBot - INFO - Page: privacy | URL: https://adeonatech.net/privacy-policy | Content: 234 chars (vectordb_service.py:274)
+2025-09-28 01:06:42,297 - AdeonaBot - INFO - Preview: Adeona Technologies Privacy Policy - Data Protection and Privacy Practices  This Privacy Policy outlines how we collect, use, and safeguard information obtained through our company website https://ade... (vectordb_service.py:278)
+2025-09-28 01:06:42,297 - AdeonaBot - INFO - Total content extracted: 1528 characters (vectordb_service.py:283)
+2025-09-28 01:06:42,298 - AdeonaBot - INFO - Generated 1 chunks for home page (vectordb_service.py:294)
+2025-09-28 01:06:42,298 - AdeonaBot - INFO - Generated 1 chunks for about page (vectordb_service.py:294)
+2025-09-28 01:06:42,298 - AdeonaBot - INFO - Generated 1 chunks for services page (vectordb_service.py:294)
+2025-09-28 01:06:42,298 - AdeonaBot - INFO - Generated 1 chunks for projects page (vectordb_service.py:294)
+2025-09-28 01:06:42,298 - AdeonaBot - INFO - Generated 1 chunks for contact page (vectordb_service.py:294)
+2025-09-28 01:06:42,298 - AdeonaBot - INFO - Generated 1 chunks for privacy page (vectordb_service.py:294)
+2025-09-28 01:06:42,298 - AdeonaBot - INFO - Generated total of 6 content chunks (vectordb_service.py:302)
+2025-09-28 01:06:42,299 - AdeonaBot - INFO - Calling function: upsert_content with params: {'chunks_count': 6} (logger.py:83)
+2025-09-28 01:06:42,299 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 417} (logger.py:83)
+2025-09-28 01:06:43,627 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 01:06:43,627 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 227} (logger.py:83)
+2025-09-28 01:06:44,148 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 01:06:44,148 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 233} (logger.py:83)
+2025-09-28 01:06:44,649 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 01:06:44,649 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 204} (logger.py:83)
+2025-09-28 01:06:45,163 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 01:06:45,163 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 213} (logger.py:83)
+2025-09-28 01:06:45,684 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 01:06:45,685 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 234} (logger.py:83)
+2025-09-28 01:06:46,219 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 01:06:46,219 - AdeonaBot - INFO - Successfully prepared 6 vectors from 6 successful embeddings (vectordb_service.py:115)
+2025-09-28 01:06:47,699 - AdeonaBot - INFO - Upserted batch 1/1 - 6 vectors (vectordb_service.py:126)
+2025-09-28 01:06:48,701 - AdeonaBot - INFO - Successfully upserted 6/6 vectors to Pinecone (vectordb_service.py:132)
+2025-09-28 01:06:52,073 - AdeonaBot - INFO - FORCED website content reindexing completed successfully - 0 vectors indexed (vectordb_service.py:312)
+2025-09-28 01:06:52,073 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 14, 'top_k': 3} (logger.py:83)
+2025-09-28 01:06:52,073 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 14} (logger.py:83)
+2025-09-28 01:06:53,258 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 01:06:53,657 - AdeonaBot - INFO - Found 0 similar results for query: 'privacy policy...' (vectordb_service.py:169)
+2025-09-28 01:06:53,657 - AdeonaBot - INFO - Test search for 'privacy policy' returned 0 results (vectordb_service.py:316)
+2025-09-28 01:06:53,657 - AdeonaBot - INFO - Calling function: initialize_googlesheets (logger.py:83)
+2025-09-28 01:06:53,658 - AdeonaBot - INFO - Google Sheets service initialized with cached data (googlesheet_service.py:48)
+2025-09-28 01:06:53,658 - AdeonaBot - INFO - All services initialized successfully (chatbot.py:541)
+2025-09-28 01:06:53,658 - AdeonaBot - INFO - Application startup completed successfully (main.py:34)
+2025-09-28 01:07:12,966 - AdeonaBot - INFO - Serving frontend from: frontend/index.html (main.py:87)
+2025-09-28 01:07:16,595 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 2} (logger.py:83)
+2025-09-28 01:07:16,596 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 2, 'session_id': 'session_1759001833068_5o0f6n1um'} (logger.py:83)
+2025-09-28 01:07:16,596 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 2} (logger.py:83)
+2025-09-28 01:07:16,596 - AdeonaBot - INFO - Detected intent: GREETING (chatbot.py:74)
+2025-09-28 01:07:16,596 - AdeonaBot - INFO - Calling function: _handle_greeting (logger.py:83)
+2025-09-28 01:07:16,597 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 191, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:07:27,494 - AdeonaBot - INFO - Audio saved to static/audio/response_20250928_010716.wav (gemini_service.py:91)
+2025-09-28 01:07:27,494 - AdeonaBot - INFO - Speech generated and saved to static/audio/response_20250928_010716.wav (gemini_service.py:132)
+2025-09-28 01:07:27,495 - AdeonaBot - INFO - Chat response generated for session: session_1759001833068_5o0f6n1um (routes.py:119)
+2025-09-28 01:07:31,667 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 46} (logger.py:83)
+2025-09-28 01:07:31,667 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 46, 'session_id': 'session_1759001833068_5o0f6n1um'} (logger.py:83)
+2025-09-28 01:07:31,667 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 46} (logger.py:83)
+2025-09-28 01:07:31,667 - AdeonaBot - INFO - Detected intent: COMPANY_INFO (chatbot.py:74)
+2025-09-28 01:07:31,667 - AdeonaBot - INFO - Calling function: _handle_company_info with params: {'query': 'what is the date of beginning Adeona company ?'} (logger.py:83)
+2025-09-28 01:07:31,667 - AdeonaBot - INFO - Searching vector database for: 'what is the date of beginning Adeona company ?' (chatbot.py:156)
+2025-09-28 01:07:31,667 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 46, 'top_k': 8} (logger.py:83)
+2025-09-28 01:07:31,667 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 46} (logger.py:83)
+2025-09-28 01:07:32,874 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 01:07:33,274 - AdeonaBot - INFO - Found 6 similar results for query: 'what is the date of beginning Adeona company ?...' (vectordb_service.py:169)
+2025-09-28 01:07:33,274 - AdeonaBot - INFO - Best match: services page, score: 0.706 (vectordb_service.py:174)
+2025-09-28 01:07:33,275 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 66, 'top_k': 5} (logger.py:83)
+2025-09-28 01:07:33,275 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 66} (logger.py:83)
+2025-09-28 01:07:33,816 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 01:07:34,124 - AdeonaBot - INFO - Found 5 similar results for query: 'Adeona Technologies what is the date of beginning ...' (vectordb_service.py:169)
+2025-09-28 01:07:34,124 - AdeonaBot - INFO - Best match: services page, score: 0.742 (vectordb_service.py:174)
+2025-09-28 01:07:34,125 - AdeonaBot - INFO - Found 5 relevant results (chatbot.py:171)
+2025-09-28 01:07:34,125 - AdeonaBot - INFO - Calling function: generate_response with params: {'prompt_length': 2176} (logger.py:83)
+2025-09-28 01:07:35,521 - AdeonaBot - INFO - Generated response with 53 characters (gemini_service.py:40)
+2025-09-28 01:07:35,522 - AdeonaBot - INFO - Generated focused company info response (chatbot.py:225)
+2025-09-28 01:07:35,522 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 53, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:07:36,650 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 01:07:36,655 - AdeonaBot - INFO - Chat response generated for session: session_1759001833068_5o0f6n1um (routes.py:119)
+2025-09-28 01:08:08,042 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 52} (logger.py:83)
+2025-09-28 01:08:08,042 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 52, 'session_id': 'session_1759001833068_5o0f6n1um'} (logger.py:83)
+2025-09-28 01:08:08,042 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 52} (logger.py:83)
+2025-09-28 01:08:08,042 - AdeonaBot - INFO - Detected intent: COMPANY_INFO (chatbot.py:74)
+2025-09-28 01:08:08,042 - AdeonaBot - INFO - Calling function: _handle_company_info with params: {'query': 'can you tell me about Adeona company privacy polic'} (logger.py:83)
+2025-09-28 01:08:08,042 - AdeonaBot - INFO - Calling function: _handle_privacy_policy_query with params: {'specific': False} (logger.py:83)
+2025-09-28 01:08:08,042 - AdeonaBot - INFO - Calling function: search_privacy_policy with params: {'query': 'can you tell me about Adeona company privacy policy?'} (logger.py:83)
+2025-09-28 01:08:08,042 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 52, 'top_k': 8} (logger.py:83)
+2025-09-28 01:08:08,042 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 52} (logger.py:83)
+2025-09-28 01:08:09,164 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 01:08:09,523 - AdeonaBot - INFO - Found 1 similar results for query: 'can you tell me about Adeona company privacy polic...' (vectordb_service.py:169)
+2025-09-28 01:08:09,523 - AdeonaBot - INFO - Best match: privacy page, score: 0.865 (vectordb_service.py:174)
+2025-09-28 01:08:09,524 - AdeonaBot - INFO - Found 1 results for page type 'privacy' (vectordb_service.py:187)
+2025-09-28 01:08:09,524 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 67, 'top_k': 5} (logger.py:83)
+2025-09-28 01:08:09,524 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 67} (logger.py:83)
+2025-09-28 01:08:10,035 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 01:08:10,442 - AdeonaBot - INFO - Found 5 similar results for query: 'can you tell me about Adeona company privacy polic...' (vectordb_service.py:169)
+2025-09-28 01:08:10,442 - AdeonaBot - INFO - Best match: services page, score: 0.708 (vectordb_service.py:174)
+2025-09-28 01:08:10,442 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 68, 'top_k': 5} (logger.py:83)
+2025-09-28 01:08:10,442 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 68} (logger.py:83)
+2025-09-28 01:08:10,929 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 01:08:11,269 - AdeonaBot - INFO - Found 5 similar results for query: 'can you tell me about Adeona company privacy polic...' (vectordb_service.py:169)
+2025-09-28 01:08:11,269 - AdeonaBot - INFO - Best match: services page, score: 0.695 (vectordb_service.py:174)
+2025-09-28 01:08:11,269 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 70, 'top_k': 5} (logger.py:83)
+2025-09-28 01:08:11,269 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 70} (logger.py:83)
+2025-09-28 01:08:11,777 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 01:08:12,179 - AdeonaBot - INFO - Found 5 similar results for query: 'can you tell me about Adeona company privacy polic...' (vectordb_service.py:169)
+2025-09-28 01:08:12,179 - AdeonaBot - INFO - Best match: services page, score: 0.700 (vectordb_service.py:174)
+2025-09-28 01:08:12,179 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 66, 'top_k': 5} (logger.py:83)
+2025-09-28 01:08:12,179 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 66} (logger.py:83)
+2025-09-28 01:08:12,704 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 01:08:13,101 - AdeonaBot - INFO - Found 5 similar results for query: 'can you tell me about Adeona company privacy polic...' (vectordb_service.py:169)
+2025-09-28 01:08:13,101 - AdeonaBot - INFO - Best match: services page, score: 0.688 (vectordb_service.py:174)
+2025-09-28 01:08:13,101 - AdeonaBot - INFO - Found 5 privacy policy results (vectordb_service.py:224)
+2025-09-28 01:08:13,101 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 52, 'top_k': 3} (logger.py:83)
+2025-09-28 01:08:13,101 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 52} (logger.py:83)
+2025-09-28 01:08:13,612 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 01:08:13,939 - AdeonaBot - INFO - Found 1 similar results for query: 'can you tell me about Adeona company privacy polic...' (vectordb_service.py:169)
+2025-09-28 01:08:13,939 - AdeonaBot - INFO - Best match: privacy page, score: 0.865 (vectordb_service.py:174)
+2025-09-28 01:08:13,939 - AdeonaBot - INFO - Found 1 results for page type 'privacy' (vectordb_service.py:187)
+2025-09-28 01:08:13,939 - AdeonaBot - INFO - Calling function: generate_response with params: {'prompt_length': 984} (logger.py:83)
+2025-09-28 01:08:17,525 - AdeonaBot - INFO - Generated response with 424 characters (gemini_service.py:40)
+2025-09-28 01:08:17,526 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 424, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:08:18,614 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 01:08:18,615 - AdeonaBot - INFO - Chat response generated for session: session_1759001833068_5o0f6n1um (routes.py:119)
+2025-09-28 01:10:57,907 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 47} (logger.py:83)
+2025-09-28 01:10:57,911 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 47, 'session_id': 'session_1759001833068_5o0f6n1um'} (logger.py:83)
+2025-09-28 01:10:57,912 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 47} (logger.py:83)
+2025-09-28 01:10:57,912 - AdeonaBot - INFO - Detected intent: COMPANY_INFO (chatbot.py:74)
+2025-09-28 01:10:57,912 - AdeonaBot - INFO - Calling function: _handle_company_info with params: {'query': 'Also Tell me what are the services have there ?'} (logger.py:83)
+2025-09-28 01:10:57,912 - AdeonaBot - INFO - Searching vector database for: 'Also Tell me what are the services have there ?' (chatbot.py:156)
+2025-09-28 01:10:57,912 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 47, 'top_k': 8} (logger.py:83)
+2025-09-28 01:10:57,912 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 47} (logger.py:83)
+2025-09-28 01:10:59,205 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 01:11:00,788 - AdeonaBot - INFO - Found 0 similar results for query: 'Also Tell me what are the services have there ?...' (vectordb_service.py:169)
+2025-09-28 01:11:00,788 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 67, 'top_k': 5} (logger.py:83)
+2025-09-28 01:11:00,788 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 67} (logger.py:83)
+2025-09-28 01:11:01,330 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 01:11:01,664 - AdeonaBot - INFO - Found 5 similar results for query: 'Adeona Technologies Also Tell me what are the serv...' (vectordb_service.py:169)
+2025-09-28 01:11:01,664 - AdeonaBot - INFO - Best match: about page, score: 0.826 (vectordb_service.py:174)
+2025-09-28 01:11:01,664 - AdeonaBot - INFO - Found 5 relevant results (chatbot.py:171)
+2025-09-28 01:11:01,664 - AdeonaBot - INFO - Calling function: generate_response with params: {'prompt_length': 2072} (logger.py:83)
+2025-09-28 01:11:04,423 - AdeonaBot - INFO - Generated response with 301 characters (gemini_service.py:40)
+2025-09-28 01:11:04,424 - AdeonaBot - INFO - Generated focused company info response (chatbot.py:225)
+2025-09-28 01:11:04,424 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 301, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:11:05,599 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 01:11:05,604 - AdeonaBot - INFO - Chat response generated for session: session_1759001833068_5o0f6n1um (routes.py:119)
+2025-09-28 01:12:55,035 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 39} (logger.py:83)
+2025-09-28 01:12:55,037 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 39, 'session_id': 'session_1759001833068_5o0f6n1um'} (logger.py:83)
+2025-09-28 01:12:55,037 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 39} (logger.py:83)
+2025-09-28 01:12:55,038 - AdeonaBot - INFO - Detected intent: COMPANY_INFO (chatbot.py:74)
+2025-09-28 01:12:55,038 - AdeonaBot - INFO - Calling function: _handle_company_info with params: {'query': 'I need all the services can you give me'} (logger.py:83)
+2025-09-28 01:12:55,038 - AdeonaBot - INFO - Searching vector database for: 'I need all the services can you give me' (chatbot.py:156)
+2025-09-28 01:12:55,038 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 39, 'top_k': 8} (logger.py:83)
+2025-09-28 01:12:55,038 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 39} (logger.py:83)
+2025-09-28 01:12:56,318 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 01:12:58,279 - AdeonaBot - INFO - Found 0 similar results for query: 'I need all the services can you give me...' (vectordb_service.py:169)
+2025-09-28 01:12:58,279 - AdeonaBot - INFO - Calling function: search_similar with params: {'query_length': 59, 'top_k': 5} (logger.py:83)
+2025-09-28 01:12:58,279 - AdeonaBot - INFO - Calling function: generate_embedding with params: {'text_length': 59} (logger.py:83)
+2025-09-28 01:12:58,783 - AdeonaBot - INFO - Generated embedding with dimension: 768 (gemini_service.py:59)
+2025-09-28 01:12:59,110 - AdeonaBot - INFO - Found 5 similar results for query: 'Adeona Technologies I need all the services can yo...' (vectordb_service.py:169)
+2025-09-28 01:12:59,110 - AdeonaBot - INFO - Best match: contact page, score: 0.794 (vectordb_service.py:174)
+2025-09-28 01:12:59,110 - AdeonaBot - INFO - Found 5 relevant results (chatbot.py:171)
+2025-09-28 01:12:59,110 - AdeonaBot - INFO - Calling function: generate_response with params: {'prompt_length': 2064} (logger.py:83)
+2025-09-28 01:13:01,708 - AdeonaBot - INFO - Generated response with 313 characters (gemini_service.py:40)
+2025-09-28 01:13:01,708 - AdeonaBot - INFO - Generated focused company info response (chatbot.py:225)
+2025-09-28 01:13:01,709 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 313, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:13:02,783 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 01:13:02,785 - AdeonaBot - INFO - Chat response generated for session: session_1759001833068_5o0f6n1um (routes.py:119)
+2025-09-28 01:14:27,048 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 34} (logger.py:83)
+2025-09-28 01:14:27,055 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 34, 'session_id': 'session_1759001833068_5o0f6n1um'} (logger.py:83)
+2025-09-28 01:14:27,055 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 34} (logger.py:83)
+2025-09-28 01:14:27,055 - AdeonaBot - INFO - SERVICE_BOOKING intent detected with keyword: book (gemini_service.py:189)
+2025-09-28 01:14:27,055 - AdeonaBot - INFO - Detected intent: SERVICE_BOOKING (chatbot.py:74)
+2025-09-28 01:14:27,056 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 74, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:14:28,363 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 01:14:28,369 - AdeonaBot - INFO - Chat response generated for session: session_1759001833068_5o0f6n1um (routes.py:119)
+2025-09-28 01:21:54,241 - AdeonaBot - INFO - Application shutdown completed (main.py:41)
+2025-09-28 01:21:55,715 - AdeonaBot - INFO - Starting Adeona Chatbot application... (main.py:26)
+2025-09-28 01:21:55,715 - AdeonaBot - INFO - Calling function: initialize_services (logger.py:83)
+2025-09-28 01:21:55,715 - AdeonaBot - INFO - Calling function: initialize_googlesheets (logger.py:83)
+2025-09-28 01:21:55,715 - AdeonaBot - INFO - Google Sheets service initialized with cached data (googlesheet_service.py:48)
+2025-09-28 01:21:55,715 - AdeonaBot - INFO - Services initialized successfully (Live SerpAPI mode - no vectorDB) (chatbot.py:574)
+2025-09-28 01:21:55,715 - AdeonaBot - INFO - Application startup completed successfully (main.py:34)
+2025-09-28 01:22:21,233 - AdeonaBot - INFO - Serving frontend from: frontend/index.html (main.py:87)
+2025-09-28 01:22:24,905 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 2} (logger.py:83)
+2025-09-28 01:22:24,905 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 2, 'session_id': 'session_1759002741318_vuuu68ugu'} (logger.py:83)
+2025-09-28 01:22:24,905 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 2} (logger.py:83)
+2025-09-28 01:22:24,905 - AdeonaBot - INFO - Detected intent: GREETING (chatbot.py:77)
+2025-09-28 01:22:24,905 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 197, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:22:26,214 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 01:22:26,218 - AdeonaBot - INFO - Chat response generated for session: session_1759002741318_vuuu68ugu (routes.py:119)
+2025-09-28 01:22:29,349 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 46} (logger.py:83)
+2025-09-28 01:22:29,349 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 46, 'session_id': 'session_1759002741318_vuuu68ugu'} (logger.py:83)
+2025-09-28 01:22:29,350 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 46} (logger.py:83)
+2025-09-28 01:22:29,350 - AdeonaBot - INFO - Detected intent: COMPANY_INFO (chatbot.py:77)
+2025-09-28 01:22:29,350 - AdeonaBot - INFO - Calling function: _handle_company_info_with_live_search with params: {'query': 'what is the date of beginning Adeona company ?'} (logger.py:83)
+2025-09-28 01:22:29,350 - AdeonaBot - INFO - Performing live search for: what is the date of beginning Adeona company ? (chatbot.py:240)
+2025-09-28 01:22:29,350 - AdeonaBot - INFO - Calling function: _search_with_serpapi with params: {'query': 'what is the date of beginning Adeona company ?', 'site_specific': True} (logger.py:83)
+2025-09-28 01:22:29,351 - AdeonaBot - INFO - Searching: site:adeonatech.net what is the date of beginning Adeona company ? (chatbot.py:167)
+2025-09-28 01:22:32,925 - AdeonaBot - INFO - Found 3 results for: site:adeonatech.net what is the date of beginning Adeona company ? (chatbot.py:200)
+2025-09-28 01:22:32,926 - AdeonaBot - INFO - Total search results found: 3 (chatbot.py:216)
+2025-09-28 01:22:32,926 - AdeonaBot - INFO - Calling function: generate_response with params: {'prompt_length': 1364} (logger.py:83)
+2025-09-28 01:22:35,631 - AdeonaBot - INFO - Generated response with 61 characters (gemini_service.py:40)
+2025-09-28 01:22:35,631 - AdeonaBot - INFO - Generated response from live search results (chatbot.py:308)
+2025-09-28 01:22:35,631 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 61, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:22:36,816 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 01:22:36,817 - AdeonaBot - INFO - Chat response generated for session: session_1759002741318_vuuu68ugu (routes.py:119)
+2025-09-28 01:23:11,929 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 65} (logger.py:83)
+2025-09-28 01:23:11,932 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 65, 'session_id': 'session_1759002741318_vuuu68ugu'} (logger.py:83)
+2025-09-28 01:23:11,933 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 65} (logger.py:83)
+2025-09-28 01:23:11,933 - AdeonaBot - INFO - Detected intent: COMPANY_INFO (chatbot.py:77)
+2025-09-28 01:23:11,934 - AdeonaBot - INFO - Calling function: _handle_company_info_with_live_search with params: {'query': 'can you give me about what are the have services A'} (logger.py:83)
+2025-09-28 01:23:11,934 - AdeonaBot - INFO - Performing live search for: can you give me about what are the have services Adeona company ? (chatbot.py:240)
+2025-09-28 01:23:11,934 - AdeonaBot - INFO - Calling function: _search_with_serpapi with params: {'query': 'can you give me about what are the have services A', 'site_specific': True} (logger.py:83)
+2025-09-28 01:23:11,938 - AdeonaBot - INFO - Searching: site:adeonatech.net can you give me about what are the have services Adeona company ? (chatbot.py:167)
+2025-09-28 01:23:15,764 - AdeonaBot - INFO - Found 5 results for: site:adeonatech.net can you give me about what are the have services Adeona company ? (chatbot.py:200)
+2025-09-28 01:23:15,764 - AdeonaBot - INFO - Total search results found: 5 (chatbot.py:216)
+2025-09-28 01:23:15,764 - AdeonaBot - INFO - Calling function: generate_response with params: {'prompt_length': 1276} (logger.py:83)
+2025-09-28 01:23:20,576 - AdeonaBot - INFO - Generated response with 546 characters (gemini_service.py:40)
+2025-09-28 01:23:20,576 - AdeonaBot - INFO - Generated response from live search results (chatbot.py:308)
+2025-09-28 01:23:20,576 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 546, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:23:21,709 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 01:23:21,710 - AdeonaBot - INFO - Chat response generated for session: session_1759002741318_vuuu68ugu (routes.py:119)
+2025-09-28 01:24:42,328 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 37} (logger.py:83)
+2025-09-28 01:24:42,329 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 37, 'session_id': 'session_1759002741318_vuuu68ugu'} (logger.py:83)
+2025-09-28 01:24:42,329 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 37} (logger.py:83)
+2025-09-28 01:24:42,330 - AdeonaBot - INFO - Detected intent: COMPANY_INFO (chatbot.py:77)
+2025-09-28 01:24:42,330 - AdeonaBot - INFO - Calling function: _handle_company_info_with_live_search with params: {'query': 'Who is the funder of Adeona company ?'} (logger.py:83)
+2025-09-28 01:24:42,330 - AdeonaBot - INFO - Performing live search for: Who is the funder of Adeona company ? (chatbot.py:240)
+2025-09-28 01:24:42,330 - AdeonaBot - INFO - Calling function: _search_with_serpapi with params: {'query': 'Who is the funder of Adeona company ?', 'site_specific': True} (logger.py:83)
+2025-09-28 01:24:42,331 - AdeonaBot - INFO - Searching: site:adeonatech.net Who is the funder of Adeona company ? (chatbot.py:167)
+2025-09-28 01:24:44,138 - AdeonaBot - INFO - Found 0 results for: site:adeonatech.net Who is the funder of Adeona company ? (chatbot.py:200)
+2025-09-28 01:24:45,139 - AdeonaBot - INFO - Searching: site:adeonatech.net "Who is the funder of Adeona company ?" (chatbot.py:167)
+2025-09-28 01:24:46,591 - AdeonaBot - INFO - Found 0 results for: site:adeonatech.net "Who is the funder of Adeona company ?" (chatbot.py:200)
+2025-09-28 01:24:47,592 - AdeonaBot - INFO - Searching: "Adeona Technologies" Who is the funder of Adeona company ? (chatbot.py:167)
+2025-09-28 01:24:49,666 - AdeonaBot - INFO - Found 5 results for: "Adeona Technologies" Who is the funder of Adeona company ? (chatbot.py:200)
+2025-09-28 01:24:50,667 - AdeonaBot - INFO - Total search results found: 5 (chatbot.py:216)
+2025-09-28 01:24:50,667 - AdeonaBot - INFO - Calling function: generate_response with params: {'prompt_length': 1479} (logger.py:83)
+2025-09-28 01:25:01,652 - AdeonaBot - INFO - Generated response with 192 characters (gemini_service.py:40)
+2025-09-28 01:25:01,652 - AdeonaBot - INFO - Generated response from live search results (chatbot.py:308)
+2025-09-28 01:25:01,653 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 192, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:25:02,837 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 01:25:02,838 - AdeonaBot - INFO - Chat response generated for session: session_1759002741318_vuuu68ugu (routes.py:119)
+2025-09-28 01:26:28,341 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 33} (logger.py:83)
+2025-09-28 01:26:28,343 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 33, 'session_id': 'session_1759002741318_vuuu68ugu'} (logger.py:83)
+2025-09-28 01:26:28,344 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 33} (logger.py:83)
+2025-09-28 01:26:28,344 - AdeonaBot - INFO - SERVICE_BOOKING intent detected with keyword: book (gemini_service.py:189)
+2025-09-28 01:26:28,344 - AdeonaBot - INFO - Detected intent: SERVICE_BOOKING (chatbot.py:77)
+2025-09-28 01:26:28,344 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 74, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:26:29,607 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 01:26:29,610 - AdeonaBot - INFO - Chat response generated for session: session_1759002741318_vuuu68ugu (routes.py:119)
+2025-09-28 01:27:06,706 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 56} (logger.py:83)
+2025-09-28 01:27:06,707 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 56, 'session_id': 'session_1759002741318_vuuu68ugu'} (logger.py:83)
+2025-09-28 01:27:06,707 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 103, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:27:07,950 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 01:27:07,953 - AdeonaBot - INFO - Chat response generated for session: session_1759002741318_vuuu68ugu (routes.py:119)
+2025-09-28 01:27:38,740 - AdeonaBot - INFO - Serving frontend from: frontend/index.html (main.py:87)
+2025-09-28 01:27:43,698 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 56} (logger.py:83)
+2025-09-28 01:27:43,698 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 56, 'session_id': 'session_1759003058763_y8wfnm6o6'} (logger.py:83)
+2025-09-28 01:27:43,699 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 56} (logger.py:83)
+2025-09-28 01:27:43,699 - AdeonaBot - INFO - SERVICE_BOOKING intent detected with keyword: i want to book (gemini_service.py:189)
+2025-09-28 01:27:43,699 - AdeonaBot - INFO - Detected intent: SERVICE_BOOKING (chatbot.py:77)
+2025-09-28 01:27:43,699 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 74, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:27:44,890 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 01:27:44,892 - AdeonaBot - INFO - Chat response generated for session: session_1759003058763_y8wfnm6o6 (routes.py:119)
+2025-09-28 01:27:51,118 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 15} (logger.py:83)
+2025-09-28 01:27:51,118 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 15, 'session_id': 'session_1759003058763_y8wfnm6o6'} (logger.py:83)
+2025-09-28 01:27:51,118 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 62, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:27:52,268 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 01:27:52,271 - AdeonaBot - INFO - Chat response generated for session: session_1759003058763_y8wfnm6o6 (routes.py:119)
+2025-09-28 01:28:01,072 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 21} (logger.py:83)
+2025-09-28 01:28:01,073 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 21, 'session_id': 'session_1759003058763_y8wfnm6o6'} (logger.py:83)
+2025-09-28 01:28:01,074 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 44, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:28:02,311 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 01:28:02,312 - AdeonaBot - INFO - Chat response generated for session: session_1759003058763_y8wfnm6o6 (routes.py:119)
+2025-09-28 01:28:11,175 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 10} (logger.py:83)
+2025-09-28 01:28:11,177 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 10, 'session_id': 'session_1759003058763_y8wfnm6o6'} (logger.py:83)
+2025-09-28 01:28:11,177 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 46, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:28:12,305 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 01:28:12,306 - AdeonaBot - INFO - Chat response generated for session: session_1759003058763_y8wfnm6o6 (routes.py:119)
+2025-09-28 01:28:24,985 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 27} (logger.py:83)
+2025-09-28 01:28:24,986 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 27, 'session_id': 'session_1759003058763_y8wfnm6o6'} (logger.py:83)
+2025-09-28 01:28:24,986 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 94, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:28:26,256 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 01:28:26,258 - AdeonaBot - INFO - Chat response generated for session: session_1759003058763_y8wfnm6o6 (routes.py:119)
+2025-09-28 01:28:49,369 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 51} (logger.py:83)
+2025-09-28 01:28:49,369 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 51, 'session_id': 'session_1759003058763_y8wfnm6o6'} (logger.py:83)
+2025-09-28 01:28:49,370 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 279, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:28:50,502 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 01:28:50,503 - AdeonaBot - INFO - Chat response generated for session: session_1759003058763_y8wfnm6o6 (routes.py:119)
+2025-09-28 01:29:05,813 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 7} (logger.py:83)
+2025-09-28 01:29:05,814 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 7, 'session_id': 'session_1759003058763_y8wfnm6o6'} (logger.py:83)
+2025-09-28 01:29:05,817 - AdeonaBot - INFO - Calling function: create_customer_record with params: {'user_id': '0C586E10'} (logger.py:83)
+2025-09-28 01:29:09,016 - AdeonaBot - INFO - Customer record created with ID: rec6t6DssSaUNSlE6 (airtable_service.py:61)
+2025-09-28 01:29:09,016 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 618, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:29:10,211 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 01:29:10,212 - AdeonaBot - INFO - Chat response generated for session: session_1759003058763_y8wfnm6o6 (routes.py:119)
+2025-09-28 01:29:49,199 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 31} (logger.py:83)
+2025-09-28 01:29:49,201 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 31, 'session_id': 'session_1759003058763_y8wfnm6o6'} (logger.py:83)
+2025-09-28 01:29:49,201 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 31} (logger.py:83)
+2025-09-28 01:29:49,202 - AdeonaBot - INFO - CANCELLATION intent detected with keyword: cancel (gemini_service.py:217)
+2025-09-28 01:29:49,202 - AdeonaBot - INFO - Detected intent: CANCELLATION (chatbot.py:77)
+2025-09-28 01:29:49,202 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 64, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:29:50,406 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 01:29:50,407 - AdeonaBot - INFO - Chat response generated for session: session_1759003058763_y8wfnm6o6 (routes.py:119)
+2025-09-28 01:30:03,385 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 8} (logger.py:83)
+2025-09-28 01:30:03,386 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 8, 'session_id': 'session_1759003058763_y8wfnm6o6'} (logger.py:83)
+2025-09-28 01:30:03,386 - AdeonaBot - INFO - Detected User ID for cancellation: 0C586E10 (chatbot.py:65)
+2025-09-28 01:30:03,386 - AdeonaBot - INFO - Calling function: process_cancellation with params: {'user_id': '0C586E10'} (logger.py:83)
+2025-09-28 01:30:03,386 - AdeonaBot - INFO - Calling function: check_cancellation_eligibility with params: {'user_id': '0C586E10'} (logger.py:83)
+2025-09-28 01:30:03,386 - AdeonaBot - INFO - Calling function: find_customer_by_user_id with params: {'user_id': '0C586E10'} (logger.py:83)
+2025-09-28 01:30:04,924 - AdeonaBot - INFO - Found customer: 0C586E10 (airtable_service.py:91)
+2025-09-28 01:30:04,924 - AdeonaBot - INFO - Calling function: delete_customer_record with params: {'user_id': '0C586E10'} (logger.py:83)
+2025-09-28 01:30:07,822 - AdeonaBot - INFO - Successfully deleted record for User ID: 0C586E10 (airtable_service.py:120)
+2025-09-28 01:30:07,822 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 163, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:30:09,146 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 01:30:09,147 - AdeonaBot - INFO - Chat response generated for session: session_1759003058763_y8wfnm6o6 (routes.py:119)
+2025-09-28 01:32:23,544 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 39} (logger.py:83)
+2025-09-28 01:32:23,545 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 39, 'session_id': 'session_1759003058763_y8wfnm6o6'} (logger.py:83)
+2025-09-28 01:32:23,546 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 39} (logger.py:83)
+2025-09-28 01:32:23,546 - AdeonaBot - INFO - Detected intent: COMPANY_INFO (chatbot.py:77)
+2025-09-28 01:32:23,546 - AdeonaBot - INFO - Calling function: _handle_company_info_with_live_search with params: {'query': 'I want to contact Adeona how to do it ?'} (logger.py:83)
+2025-09-28 01:32:23,546 - AdeonaBot - INFO - Performing live search for: I want to contact Adeona how to do it ? (chatbot.py:240)
+2025-09-28 01:32:23,546 - AdeonaBot - INFO - Calling function: _search_with_serpapi with params: {'query': 'I want to contact Adeona how to do it ?', 'site_specific': True} (logger.py:83)
+2025-09-28 01:32:23,552 - AdeonaBot - INFO - Searching: site:adeonatech.net I want to contact Adeona how to do it ? (chatbot.py:167)
+2025-09-28 01:32:26,824 - AdeonaBot - INFO - Found 5 results for: site:adeonatech.net I want to contact Adeona how to do it ? (chatbot.py:200)
+2025-09-28 01:32:26,826 - AdeonaBot - INFO - Total search results found: 5 (chatbot.py:216)
+2025-09-28 01:32:26,827 - AdeonaBot - INFO - Calling function: generate_response with params: {'prompt_length': 1258} (logger.py:83)
+2025-09-28 01:32:29,703 - AdeonaBot - INFO - Generated response with 320 characters (gemini_service.py:40)
+2025-09-28 01:32:29,703 - AdeonaBot - INFO - Generated response from live search results (chatbot.py:308)
+2025-09-28 01:32:29,703 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 320, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:32:30,871 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 01:32:30,875 - AdeonaBot - INFO - Chat response generated for session: session_1759003058763_y8wfnm6o6 (routes.py:119)
+2025-09-28 01:33:37,739 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 19} (logger.py:83)
+2025-09-28 01:33:37,740 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 19, 'session_id': 'session_1759003058763_y8wfnm6o6'} (logger.py:83)
+2025-09-28 01:33:37,740 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 19} (logger.py:83)
+2025-09-28 01:33:37,740 - AdeonaBot - INFO - Detected intent: COMPANY_INFO (chatbot.py:77)
+2025-09-28 01:33:37,740 - AdeonaBot - INFO - Calling function: _handle_company_info_with_live_search with params: {'query': 'What is your name ?'} (logger.py:83)
+2025-09-28 01:33:37,740 - AdeonaBot - INFO - Performing live search for: What is your name ? (chatbot.py:240)
+2025-09-28 01:33:37,740 - AdeonaBot - INFO - Calling function: _search_with_serpapi with params: {'query': 'What is your name ?', 'site_specific': True} (logger.py:83)
+2025-09-28 01:33:37,742 - AdeonaBot - INFO - Searching: site:adeonatech.net What is your name ? (chatbot.py:167)
+2025-09-28 01:33:44,803 - AdeonaBot - INFO - Found 3 results for: site:adeonatech.net What is your name ? (chatbot.py:200)
+2025-09-28 01:33:44,805 - AdeonaBot - INFO - Total search results found: 3 (chatbot.py:216)
+2025-09-28 01:33:44,805 - AdeonaBot - INFO - Calling function: generate_response with params: {'prompt_length': 1328} (logger.py:83)
+2025-09-28 01:33:48,185 - AdeonaBot - INFO - Generated response with 323 characters (gemini_service.py:40)
+2025-09-28 01:33:48,187 - AdeonaBot - INFO - Generated response from live search results (chatbot.py:308)
+2025-09-28 01:33:48,187 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 323, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:33:49,313 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 01:33:49,314 - AdeonaBot - INFO - Chat response generated for session: session_1759003058763_y8wfnm6o6 (routes.py:119)
+2025-09-28 01:36:22,202 - AdeonaBot - INFO - Calling function: chat_endpoint with params: {'message_length': 43} (logger.py:83)
+2025-09-28 01:36:22,205 - AdeonaBot - INFO - Calling function: process_message with params: {'message_length': 43, 'session_id': 'session_1759003058763_y8wfnm6o6'} (logger.py:83)
+2025-09-28 01:36:22,206 - AdeonaBot - INFO - Calling function: analyze_user_intent with params: {'message_length': 43} (logger.py:83)
+2025-09-28 01:36:22,206 - AdeonaBot - INFO - Detected intent: CONTACT_REQUEST (chatbot.py:77)
+2025-09-28 01:36:22,207 - AdeonaBot - INFO - Calling function: _handle_contact_request_with_search (logger.py:83)
+2025-09-28 01:36:22,207 - AdeonaBot - INFO - Calling function: _search_with_serpapi with params: {'query': 'contact information phone email address', 'site_specific': True} (logger.py:83)
+2025-09-28 01:36:22,215 - AdeonaBot - INFO - Searching: site:adeonatech.net contact information phone email address (chatbot.py:167)
+2025-09-28 01:36:24,743 - AdeonaBot - INFO - Found 4 results for: site:adeonatech.net contact information phone email address (chatbot.py:200)
+2025-09-28 01:36:24,746 - AdeonaBot - INFO - Total search results found: 4 (chatbot.py:216)
+2025-09-28 01:36:24,747 - AdeonaBot - INFO - Calling function: generate_response with params: {'prompt_length': 771} (logger.py:83)
+2025-09-28 01:36:30,693 - AdeonaBot - INFO - Generated response with 232 characters (gemini_service.py:40)
+2025-09-28 01:36:30,694 - AdeonaBot - INFO - Calling function: generate_speech with params: {'text_length': 232, 'voice': 'Kore'} (logger.py:83)
+2025-09-28 01:36:31,783 - AdeonaBot - ERROR - Error in generate_speech: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE (logger.py:88)
+Traceback (most recent call last):
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/app/services/gemini_service.py", line 121, in generate_speech
+    response.raise_for_status()
+  File "/Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=AIzaSyBJZwTDOyuMeuOv-HQGDGVKtXB2GEHMNAE
+2025-09-28 01:36:31,784 - AdeonaBot - INFO - Chat response generated for session: session_1759003058763_y8wfnm6o6 (routes.py:119)
+2025-09-28 01:36:52,136 - AdeonaBot - INFO - Application shutdown completed (main.py:41)

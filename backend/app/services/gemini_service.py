@@ -1,5 +1,7 @@
 # Gemini API integration
 
+# Gemini API integration
+
 import os
 import requests
 import wave
@@ -170,45 +172,62 @@ class GeminiService:
         try:
             log_function_call("analyze_user_intent", {"message_length": len(message)})
             
-            intent_prompt = f"""Analyze the user's message and categorize their intent:
-
-User Message: "{message}"
-
-Classify into one of these categories:
-1. COMPANY_INFO - Questions about company, services, general information
-2. CONTACT_REQUEST - Wants contact information, social media, phone/email
-3. SERVICE_BOOKING - Wants to book/order a service
-4. CANCELLATION - Wants to cancel a service
-5. GREETING - General greetings, hello messages
-6. OTHER - Doesn't fit other categories
-
-Respond with JSON format:
-{{"intent": "CATEGORY", "confidence": 0.8, "key_entities": ["entity1", "entity2"]}}"""
-
-            response = await self.generate_response(intent_prompt)
+            message_lower = message.lower().strip()
             
-            # Try to parse JSON response
-            try:
-                import json
-                intent_data = json.loads(response.strip())
-                logger.info(f"Analyzed intent: {intent_data}")
-                return intent_data
-            except:
-                # Fallback if JSON parsing fails
-                if any(word in message.lower() for word in ['service', 'book', 'order', 'buy']):
-                    return {"intent": "SERVICE_BOOKING", "confidence": 0.7}
-                elif any(word in message.lower() for word in ['cancel', 'remove', 'delete']):
-                    return {"intent": "CANCELLATION", "confidence": 0.7}
-                elif any(word in message.lower() for word in ['contact', 'phone', 'email', 'address']):
-                    return {"intent": "CONTACT_REQUEST", "confidence": 0.7}
-                elif any(word in message.lower() for word in ['hello', 'hi', 'hey']):
-                    return {"intent": "GREETING", "confidence": 0.8}
-                else:
-                    return {"intent": "COMPANY_INFO", "confidence": 0.6}
+            # Check for explicit service booking keywords - FIXED LOGIC
+            booking_keywords = [
+                'i want to book', 'book', 'i want to get', 'i need to book', 
+                'book a service', 'book service', 'get service', 'order service',
+                'purchase service', 'buy service', 'hire service', 'request service',
+                'want service', 'need service', 'get crm', 'book crm', 'order crm',
+                'want crm service', 'need crm service', 'purchase crm', 'buy crm'
+            ]
+            
+            # Check for booking intent first (highest priority)
+            for keyword in booking_keywords:
+                if keyword in message_lower:
+                    logger.info(f"SERVICE_BOOKING intent detected with keyword: {keyword}")
+                    return {"intent": "SERVICE_BOOKING", "confidence": 0.9, "reasoning": f"Contains booking keyword: {keyword}"}
+            
+            # Check for greetings first, but be more specific
+            greeting_keywords = ['hello', 'hi', 'hey']
+            greeting_phrases = ['good morning', 'good afternoon', 'good evening']
+            
+            # Only classify as greeting if it's a simple greeting without other content
+            message_words = message_lower.split()
+            is_simple_greeting = (
+                any(word in message_lower for word in greeting_keywords) or
+                any(phrase in message_lower for phrase in greeting_phrases)
+            ) and len(message_words) <= 3  # Simple greetings are usually short
+            
+            if is_simple_greeting and not any(word in message_lower for word in [
+                'about', 'services', 'company', 'projects', 'what', 'how', 'can', 'help'
+            ]):
+                return {"intent": "GREETING", "confidence": 0.8, "reasoning": "Simple greeting without additional questions"}
+            
+            # Check for cancellation (high priority after booking)
+            cancellation_keywords = [
+                'cancel', 'remove', 'delete', 'stop service', 'cancel service', 
+                'cancel order', 'cancel my order', 'want to cancel', 'need to cancel',
+                'cancel the order', 'cancel my service', 'stop my service',
+                'remove my order', 'delete my order', 'cancel booking'
+            ]
+            for keyword in cancellation_keywords:
+                if keyword in message_lower:
+                    logger.info(f"CANCELLATION intent detected with keyword: {keyword}")
+                    return {"intent": "CANCELLATION", "confidence": 0.9, "reasoning": f"Contains cancellation keyword: {keyword}"}
+            
+            # Check for contact requests (specific contact info requests)
+            contact_keywords = ['phone number', 'contact number', 'email address', 'contact info', 'how to contact', 'reach you', 'contact details']
+            if any(word in message_lower for word in contact_keywords):
+                return {"intent": "CONTACT_REQUEST", "confidence": 0.8, "reasoning": "Asking for contact information"}
+            
+            # Default to company info for service questions/general inquiries
+            return {"intent": "COMPANY_INFO", "confidence": 0.7, "reasoning": "General inquiry about company/services"}
                     
         except Exception as e:
             log_error(e, "analyze_user_intent")
-            return {"intent": "COMPANY_INFO", "confidence": 0.5}
+            return {"intent": "COMPANY_INFO", "confidence": 0.5, "reasoning": "Error in analysis, defaulting to company info"}
 
 # Create global instance
 gemini_service = GeminiService()

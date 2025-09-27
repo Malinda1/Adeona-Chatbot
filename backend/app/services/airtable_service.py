@@ -1,5 +1,7 @@
 # Airtable API integration
 
+# Airtable API integration
+
 # Simple Airtable API integration using requests
 
 import requests
@@ -193,14 +195,14 @@ class AirtableService:
             if not customer:
                 return {
                     "eligible": False,
-                    "reason": "User ID not found",
+                    "reason": "User ID not found. Please check your User ID and try again.",
                     "customer": None
                 }
             
             if customer.status != "active":
                 return {
                     "eligible": False,
-                    "reason": "Service request is not active",
+                    "reason": "Service request is not active or has already been cancelled.",
                     "customer": customer
                 }
             
@@ -237,11 +239,21 @@ class AirtableService:
             eligibility = await self.check_cancellation_eligibility(user_id)
             
             if not eligibility["eligible"]:
-                return {
-                    "success": False,
-                    "message": eligibility["reason"],
-                    "requires_contact": not eligibility["customer"]
-                }
+                # Check if it's because time exceeded
+                if eligibility["customer"] and eligibility["reason"].startswith("Cancellation window expired"):
+                    return {
+                        "success": False,
+                        "message": f"Your cancellation request cannot be processed because it exceeds the 24-hour cancellation window. {eligibility['reason']}",
+                        "requires_contact": True,
+                        "time_exceeded": True
+                    }
+                else:
+                    return {
+                        "success": False,
+                        "message": eligibility["reason"],
+                        "requires_contact": not eligibility["customer"],
+                        "time_exceeded": False
+                    }
             
             # Delete the record
             deleted = await self.delete_customer_record(user_id)
@@ -249,14 +261,16 @@ class AirtableService:
             if deleted:
                 return {
                     "success": True,
-                    "message": f"Your service request (User ID: {user_id}) has been successfully cancelled. We're sorry to see you go!",
-                    "requires_contact": False
+                    "message": f"Your service request (User ID: {user_id}) has been successfully cancelled. We're sorry to see you go! If you change your mind, feel free to book our services again.",
+                    "requires_contact": False,
+                    "time_exceeded": False
                 }
             else:
                 return {
                     "success": False,
-                    "message": "Failed to process cancellation. Please contact our support team.",
-                    "requires_contact": True
+                    "message": "Failed to process cancellation due to a system error.",
+                    "requires_contact": True,
+                    "time_exceeded": False
                 }
                 
         except Exception as e:
@@ -264,7 +278,8 @@ class AirtableService:
             return {
                 "success": False,
                 "message": "System error occurred during cancellation",
-                "requires_contact": True
+                "requires_contact": True,
+                "time_exceeded": False
             }
     
     async def validate_customer_data(self, customer_data: Dict[str, str]) -> tuple[bool, str]:
