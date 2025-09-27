@@ -1,6 +1,6 @@
 import pytest
 from datetime import datetime, timedelta
-from customer import Customer
+from backend.app.models.customer import Customer
 
 
 def test_customer_creation():
