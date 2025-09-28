@@ -127,3 +127,30 @@ class EmbeddingData(BaseModel):
     text: str
     embedding: List[float]
     metadata: Dict[str, Any]
+    
+class SessionData:
+    """Enhanced session data to track user conversations and cancellation state"""
+    
+    def __init__(self, session_id: str):
+        self.session_id = session_id
+        self.conversation_history: List[dict] = []
+        self.last_activity = datetime.now()
+        self.user_data: Optional[Any] = None
+        self.cancellation_pending: bool = False  # ADDED: Track cancellation state
+        
+    def add_message(self, role: str, content: str):
+        """Add message to conversation history"""
+        self.conversation_history.append({
+            "role": role,
+            "content": content,
+            "timestamp": datetime.now().isoformat()
+        })
+        self.last_activity = datetime.now()
+        
+    def clear_cancellation_state(self):
+        """Clear cancellation pending state"""
+        self.cancellation_pending = False
+        
+    def set_cancellation_pending(self):
+        """Set cancellation pending state"""
+        self.cancellation_pending = True

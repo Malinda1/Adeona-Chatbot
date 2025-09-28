@@ -1,6 +1,9 @@
 # Define API routes here
 
 
+# Define API routes here
+
+# Enhanced API routes with local data management
 
 from fastapi import APIRouter, HTTPException, BackgroundTasks
 from fastapi.responses import JSONResponse, FileResponse
@@ -14,7 +17,8 @@ from backend.app.models.chat_models import ChatMessage, ChatResponse
 from backend.app.services.airtable_service import airtable_service
 from backend.app.services.vectordb_service import vectordb_service
 from backend.app.services.googlesheet_service import googlesheet_service
-from backend.app.services.serpapi_service import serpapi_service  # Import new SerpAPI service
+from backend.app.services.serpapi_service import serpapi_service
+from backend.app.services.local_data_loader import local_data_loader
 from backend.app.utils.logger import logger, log_function_call, log_error
 
 # Create router instance
@@ -33,21 +37,23 @@ class HealthResponse(BaseModel):
 async def root():
     """Root endpoint"""
     return {
-        "message": "Adeona Technologies Chatbot API",
-        "version": "1.0.0",
+        "message": "Enhanced Adeona Technologies Chatbot API with Permanent Local Data Storage",
+        "version": "2.0.0",
         "status": "active",
+        "features": ["Local Data VectorDB", "SerpAPI Fallback", "Smart Routing"],
         "timestamp": datetime.now().isoformat()
     }
 
 @router.get("/health", response_model=HealthResponse, tags=["Health"])
 async def health_check():
-    """Health check endpoint"""
+    """Enhanced health check endpoint"""
     try:
         log_function_call("health_check")
         
         # Check service statuses
         services_status = {
             "vectordb": "unknown",
+            "local_data_loader": "unknown",
             "airtable": "unknown", 
             "googlesheets": "unknown",
             "gemini": "active",
@@ -56,11 +62,17 @@ async def health_check():
         
         # Test VectorDB
         try:
-            await vectordb_service.ensure_initialized()
-            stats = await vectordb_service.get_index_stats()
-            services_status["vectordb"] = "active" if stats.get("total_vector_count", 0) >= 0 else "error"
+            stats = await vectordb_service.get_comprehensive_stats()
+            services_status["vectordb"] = "active" if stats.get("total_vectors", 0) >= 0 else "error"
         except:
             services_status["vectordb"] = "error"
+        
+        # Test Local Data Loader
+        try:
+            data_info = await local_data_loader.check_data_freshness()
+            services_status["local_data_loader"] = "active" if data_info.get("files_found", 0) > 0 else "no_data"
+        except:
+            services_status["local_data_loader"] = "error"
         
         # Test Airtable
         try:
@@ -78,10 +90,8 @@ async def health_check():
         
         # Test SerpAPI
         try:
-            if serpapi_service.serpapi_key:
-                services_status["serpapi"] = "active"
-            else:
-                services_status["serpapi"] = "not_configured"
+            test_result = await serpapi_service.test_connection()
+            services_status["serpapi"] = "active" if test_result["success"] else "error"
         except:
             services_status["serpapi"] = "error"
         
@@ -103,7 +113,7 @@ async def health_check():
 
 @router.post("/chat", response_model=ChatResponse, tags=["Chat"])
 async def chat_endpoint(request: ChatRequest):
-    """Main chat endpoint"""
+    """Enhanced chat endpoint with permanent local data integration"""
     try:
         log_function_call("chat_endpoint", {"message_length": len(request.message)})
         
@@ -113,7 +123,7 @@ async def chat_endpoint(request: ChatRequest):
             session_id=request.session_id
         )
         
-        # Process message
+        # Process message with enhanced capabilities
         response = await adeona_chatbot.process_message(chat_message)
         
         logger.info(f"Chat response generated for session: {response.session_id}")
@@ -125,28 +135,65 @@ async def chat_endpoint(request: ChatRequest):
 
 @router.get("/audio/{filename}", tags=["Audio"])
 async def get_audio_file(filename: str):
-    """Serve audio files"""
+    """FIXED: Serve audio files with proper validation and security"""
     try:
-        file_path = f"static/audio/{filename}"
+        log_function_call("get_audio_file", {"filename": filename})
         
-        if os.path.exists(file_path):
-            return FileResponse(
-                path=file_path,
-                media_type="audio/wav",
-                filename=filename
-            )
-        else:
+        # FIXED: Validate filename to prevent directory traversal attacks
+        if not filename or ".." in filename or "/" in filename or "\\" in filename:
+            logger.warning(f"Invalid filename requested: {filename}")
+            raise HTTPException(status_code=400, detail="Invalid filename")
+        
+        # FIXED: Only allow .wav files
+        if not filename.endswith('.wav'):
+            logger.warning(f"Non-WAV file requested: {filename}")
+            raise HTTPException(status_code=400, detail="Only WAV files are supported")
+        
+        # FIXED: Construct full file path
+        file_path = os.path.join("static", "audio", filename)
+        
+        # FIXED: Normalize the path to prevent issues
+        file_path = os.path.normpath(file_path)
+        
+        # FIXED: Check if file exists
+        if not os.path.exists(file_path):
+            logger.warning(f"Audio file not found: {file_path}")
             raise HTTPException(status_code=404, detail="Audio file not found")
+        
+        # FIXED: Check if it's actually a file (not a directory)
+        if not os.path.isfile(file_path):
+            logger.warning(f"Requested path is not a file: {file_path}")
+            raise HTTPException(status_code=400, detail="Invalid file path")
+        
+        # FIXED: Get file size for logging
+        file_size = os.path.getsize(file_path)
+        logger.info(f"Serving audio file: {file_path} ({file_size} bytes)")
+        
+        # FIXED: Return file with proper headers
+        return FileResponse(
+            path=file_path,
+            media_type="audio/wav",
+            filename=filename,
+            headers={
+                "Cache-Control": "no-cache, no-store, must-revalidate",
+                "Pragma": "no-cache",
+                "Expires": "0"
+            }
+        )
             
+    except HTTPException:
+        # Re-raise HTTP exceptions (they already have proper status codes)
+        raise
     except Exception as e:
         log_error(e, "get_audio_file")
+        logger.error(f"Unexpected error serving audio file {filename}: {str(e)}")
         raise HTTPException(status_code=500, detail="Error serving audio file")
 
 @router.get("/stats", tags=["Statistics"])
-async def get_stats():
-    """Get chatbot and system statistics"""
+async def get_comprehensive_stats():
+    """Get comprehensive chatbot and system statistics"""
     try:
-        log_function_call("get_stats")
+        log_function_call("get_comprehensive_stats")
         
         # Get chatbot stats
         chatbot_stats = adeona_chatbot.get_session_stats()
@@ -154,101 +201,310 @@ async def get_stats():
         # Get customer stats
         customer_stats = await airtable_service.get_customer_stats()
         
-        # Get vector DB stats
-        vectordb_stats = await vectordb_service.get_index_stats()
+        # Get comprehensive vector DB stats
+        vectordb_stats = await vectordb_service.get_comprehensive_stats()
+        
+        # Get local data stats
+        local_data_stats = await local_data_loader.check_data_freshness()
+        
+        # Get SerpAPI stats
+        serpapi_test = await serpapi_service.test_connection()
+        
+        # FIXED: Add audio directory stats
+        audio_stats = {
+            "audio_files_count": 0,
+            "total_audio_size": 0,
+            "audio_directory_exists": False
+        }
+        
+        try:
+            audio_dir = "static/audio"
+            if os.path.exists(audio_dir) and os.path.isdir(audio_dir):
+                audio_stats["audio_directory_exists"] = True
+                audio_files = [f for f in os.listdir(audio_dir) if f.endswith('.wav')]
+                audio_stats["audio_files_count"] = len(audio_files)
+                audio_stats["total_audio_size"] = sum(
+                    os.path.getsize(os.path.join(audio_dir, f)) for f in audio_files
+                )
+        except Exception as e:
+            logger.warning(f"Could not get audio stats: {e}")
         
         return {
             "chatbot": chatbot_stats,
             "customers": customer_stats,
             "vectordb": vectordb_stats,
+            "local_data": local_data_stats,
+            "audio": audio_stats,  # FIXED: Include audio statistics
+            "serpapi": {
+                "available": serpapi_test["success"],
+                "status": serpapi_test.get("api_status", "unknown")
+            },
             "timestamp": datetime.now().isoformat()
         }
         
     except Exception as e:
-        log_error(e, "get_stats")
+        log_error(e, "get_comprehensive_stats")
         raise HTTPException(status_code=500, detail="Error retrieving statistics")
 
-@router.post("/admin/reindex", tags=["Admin"])
-async def reindex_website(background_tasks: BackgroundTasks):
-    """Reindex website content using SerpAPI (admin function) - FORCE COMPLETE REINDEX"""
+# FIXED: Add debug endpoint for audio testing
+@router.get("/debug/audio", tags=["Debug"])
+async def debug_audio_directory():
+    """Debug endpoint to check audio directory status"""
     try:
-        log_function_call("reindex_website")
+        log_function_call("debug_audio_directory")
         
-        # Add reindexing to background tasks
-        background_tasks.add_task(serpapi_reindex_content_task)
+        audio_dir = "static/audio"
+        debug_info = {
+            "audio_directory": audio_dir,
+            "directory_exists": os.path.exists(audio_dir),
+            "is_directory": os.path.isdir(audio_dir) if os.path.exists(audio_dir) else False,
+            "files": [],
+            "total_files": 0,
+            "total_size": 0
+        }
+        
+        if os.path.exists(audio_dir) and os.path.isdir(audio_dir):
+            try:
+                all_files = os.listdir(audio_dir)
+                wav_files = [f for f in all_files if f.endswith('.wav')]
+                
+                debug_info["files"] = []
+                total_size = 0
+                
+                for filename in wav_files[-10:]:  # Show last 10 files
+                    filepath = os.path.join(audio_dir, filename)
+                    try:
+                        size = os.path.getsize(filepath)
+                        mtime = os.path.getmtime(filepath)
+                        debug_info["files"].append({
+                            "name": filename,
+                            "size": size,
+                            "modified": datetime.fromtimestamp(mtime).isoformat()
+                        })
+                        total_size += size
+                    except Exception as e:
+                        debug_info["files"].append({
+                            "name": filename,
+                            "error": str(e)
+                        })
+                
+                debug_info["total_files"] = len(wav_files)
+                debug_info["total_size"] = sum(
+                    os.path.getsize(os.path.join(audio_dir, f)) 
+                    for f in wav_files
+                    if os.path.exists(os.path.join(audio_dir, f))
+                )
+                
+            except Exception as e:
+                debug_info["error"] = f"Error reading directory: {str(e)}"
+        
+        return debug_info
+        
+    except Exception as e:
+        log_error(e, "debug_audio_directory")
+        raise HTTPException(status_code=500, detail=f"Debug error: {str(e)}")
+
+# Local Data Management Routes
+@router.get("/admin/local-data/status", tags=["Admin - Local Data"])
+async def get_local_data_status():
+    """Get status of local scraped data files"""
+    try:
+        log_function_call("get_local_data_status")
+        
+        data_info = await local_data_loader.check_data_freshness()
+        vectordb_stats = await vectordb_service.get_comprehensive_stats()
         
         return {
-            "message": "FORCED website reindexing started in background using SerpAPI - all existing data will be replaced with comprehensive fresh content",
-            "timestamp": datetime.now().isoformat(),
-            "method": "SerpAPI enhanced extraction"
+            "local_files": data_info,
+            "vectordb_storage": {
+                "local_data_vectors": vectordb_stats.get("local_data_vectors", 0),
+                "total_vectors": vectordb_stats.get("total_vectors", 0),
+                "data_loaded": vectordb_stats.get("local_data_loaded", False)
+            },
+            "timestamp": datetime.now().isoformat()
         }
         
     except Exception as e:
-        log_error(e, "reindex_website")
-        raise HTTPException(status_code=500, detail="Error starting reindex process")
+        log_error(e, "get_local_data_status")
+        raise HTTPException(status_code=500, detail=f"Error checking local data status: {str(e)}")
 
-@router.post("/admin/force-reindex", tags=["Admin"])
-async def force_reindex_website():
-    """Force immediate complete reindexing using SerpAPI (synchronous)"""
+@router.post("/admin/local-data/reload", tags=["Admin - Local Data"])
+async def reload_local_data():
+    """Force reload of local scraped data into VectorDB"""
     try:
-        log_function_call("force_reindex_website")
+        log_function_call("reload_local_data")
         
-        logger.info("Starting immediate force reindex with SerpAPI...")
-        success = await vectordb_service.force_reindex_website_content()
+        logger.info("Starting local data reload...")
+        success = await vectordb_service.reload_local_data()
         
         if success:
-            stats = await vectordb_service.get_index_stats()
+            stats = await vectordb_service.get_comprehensive_stats()
             return {
-                "message": "Website content successfully reindexed with comprehensive fresh data using SerpAPI",
+                "message": "Local data successfully reloaded into VectorDB",
                 "success": True,
-                "vector_count": stats.get('total_vector_count', 0),
-                "timestamp": datetime.now().isoformat(),
-                "method": "SerpAPI enhanced extraction"
+                "local_vectors": stats.get("local_data_vectors", 0),
+                "total_vectors": stats.get("total_vectors", 0),
+                "timestamp": datetime.now().isoformat()
             }
         else:
             return {
-                "message": "Website reindexing failed - check logs for details",
+                "message": "Local data reload failed - check logs for details",
                 "success": False,
                 "timestamp": datetime.now().isoformat()
             }
         
     except Exception as e:
-        log_error(e, "force_reindex_website")
-        raise HTTPException(status_code=500, detail=f"Error during force reindex: {str(e)}")
+        log_error(e, "reload_local_data")
+        raise HTTPException(status_code=500, detail=f"Error during local data reload: {str(e)}")
 
-@router.post("/admin/test-serpapi", tags=["Admin"])
-async def test_serpapi_extraction():
-    """Test SerpAPI content extraction (admin function)"""
+@router.get("/admin/local-data/preview/{file_index}", tags=["Admin - Local Data"])
+async def preview_local_file(file_index: int):
+    """Preview content of a specific local data file"""
     try:
-        log_function_call("test_serpapi_extraction")
+        log_function_call("preview_local_file", {"file_index": file_index})
         
-        logger.info("Testing SerpAPI content extraction...")
+        files = local_data_loader.find_scraped_files()
         
-        # Test extraction from one page
-        test_url = "https://adeonatech.net/privacy-policy"
-        content = await serpapi_service.extract_page_content_via_serpapi(test_url)
+        if file_index < 0 or file_index >= len(files):
+            raise HTTPException(status_code=404, detail="File index out of range")
         
-        if content:
-            return {
-                "success": True,
-                "message": "SerpAPI extraction test successful",
-                "test_url": test_url,
-                "content_length": len(content.content),
-                "content_preview": content.content[:500] + "..." if len(content.content) > 500 else content.content,
-                "page_type": content.page_type,
-                "timestamp": datetime.now().isoformat()
-            }
-        else:
-            return {
-                "success": False,
-                "message": "SerpAPI extraction test failed - no content retrieved",
-                "test_url": test_url,
-                "timestamp": datetime.now().isoformat()
-            }
+        file_path = files[file_index]
+        preview_content = local_data_loader.get_file_preview(file_path, max_chars=1000)
+        
+        return {
+            "file_path": file_path,
+            "file_index": file_index,
+            "preview": preview_content,
+            "file_size": os.path.getsize(file_path) if os.path.exists(file_path) else 0,
+            "timestamp": datetime.now().isoformat()
+        }
         
     except Exception as e:
-        log_error(e, "test_serpapi_extraction")
-        raise HTTPException(status_code=500, detail=f"Error during SerpAPI test: {str(e)}")
+        log_error(e, "preview_local_file")
+        raise HTTPException(status_code=500, detail=f"Error previewing file: {str(e)}")
+
+# Enhanced Search Testing Routes
+@router.get("/admin/test-search", tags=["Admin - Testing"])
+async def test_enhanced_search(query: str = "privacy policy"):
+    """Test enhanced search functionality with local data + SerpAPI fallback"""
+    try:
+        log_function_call("test_enhanced_search", {"query": query})
+        
+        # Test local data search
+        local_results = await vectordb_service.search_adeona_knowledge(query, top_k=5, include_serpapi=False)
+        
+        # Test search with SerpAPI fallback
+        fallback_results, used_fallback = await vectordb_service.search_with_fallback(query, top_k=8)
+        
+        # Test SerpAPI directly
+        serpapi_results = await serpapi_service.search_adeona_specific(query, max_results=3)
+        
+        return {
+            "query": query,
+            "local_only_results": {
+                "count": len(local_results),
+                "results": [
+                    {
+                        "content_preview": result.content[:150] + "..." if len(result.content) > 150 else result.content,
+                        "score": result.score,
+                        "page_type": result.metadata.get("page_type", "unknown"),
+                        "source": result.metadata.get("data_source", "unknown")
+                    }
+                    for result in local_results
+                ]
+            },
+            "fallback_search": {
+                "count": len(fallback_results),
+                "used_serpapi_fallback": used_fallback,
+                "results": [
+                    {
+                        "content_preview": result.content[:150] + "..." if len(result.content) > 150 else result.content,
+                        "score": result.score,
+                        "page_type": result.metadata.get("page_type", "unknown"),
+                        "source": result.metadata.get("data_source", "unknown")
+                    }
+                    for result in fallback_results[:5]
+                ]
+            },
+            "serpapi_direct": {
+                "count": len(serpapi_results),
+                "results": [
+                    {
+                        "title": result.get("title", ""),
+                        "snippet": result.get("snippet", "")[:150] + "..." if len(result.get("snippet", "")) > 150 else result.get("snippet", ""),
+                        "link": result.get("link", ""),
+                        "relevance_score": result.get("relevance_score", 0)
+                    }
+                    for result in serpapi_results
+                ]
+            },
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except Exception as e:
+        log_error(e, "test_enhanced_search")
+        raise HTTPException(status_code=500, detail=f"Error during search test: {str(e)}")
+
+@router.get("/admin/test-privacy-search", tags=["Admin - Testing"])
+async def test_privacy_search():
+    """Test privacy policy search functionality"""
+    try:
+        log_function_call("test_privacy_search")
+        
+        test_queries = [
+            "privacy policy",
+            "data protection", 
+            "personal information",
+            "data security",
+            "privacy practices"
+        ]
+        
+        results = {}
+        
+        for query in test_queries:
+            # Test local VectorDB privacy search
+            local_privacy_results = await vectordb_service.search_privacy_policy(query)
+            
+            # Test SerpAPI privacy search
+            serpapi_privacy_results = await serpapi_service.search_privacy_policy(query)
+            
+            results[query] = {
+                "local_results": {
+                    "count": len(local_privacy_results),
+                    "best_score": local_privacy_results[0].score if local_privacy_results else 0,
+                    "preview": local_privacy_results[0].content[:100] + "..." if local_privacy_results else "No content"
+                },
+                "serpapi_results": {
+                    "count": len(serpapi_privacy_results),
+                    "best_score": serpapi_privacy_results[0].get("relevance_score", 0) if serpapi_privacy_results else 0,
+                    "preview": serpapi_privacy_results[0].get("snippet", "")[:100] + "..." if serpapi_privacy_results else "No content"
+                }
+            }
+        
+        return {
+            "test_results": results,
+            "timestamp": datetime.now().isoformat(),
+            "recommendation": "Local data should provide the primary results, SerpAPI as fallback"
+        }
+        
+    except Exception as e:
+        log_error(e, "test_privacy_search")
+        raise HTTPException(status_code=500, detail=f"Error during privacy search test: {str(e)}")
+
+# Legacy compatibility routes
+@router.post("/admin/reindex", tags=["Admin - Legacy"])
+async def legacy_reindex(background_tasks: BackgroundTasks):
+    """Legacy reindex endpoint - now uses local data reload"""
+    try:
+        background_tasks.add_task(local_data_reload_task)
+        return {
+            "message": "Local data reload started in background",
+            "timestamp": datetime.now().isoformat(),
+            "method": "Enhanced Local Data Storage"
+        }
+    except Exception as e:
+        log_error(e, "legacy_reindex")
+        raise HTTPException(status_code=500, detail="Error starting data reload")
 
 @router.post("/admin/cleanup", tags=["Admin"])
 async def cleanup_sessions():
@@ -266,49 +522,6 @@ async def cleanup_sessions():
     except Exception as e:
         log_error(e, "cleanup_sessions")
         raise HTTPException(status_code=500, detail="Error during session cleanup")
-
-@router.get("/admin/vector-search-test", tags=["Admin"])
-async def test_vector_search(query: str = "privacy policy"):
-    """Test vector search functionality (admin function)"""
-    try:
-        log_function_call("test_vector_search", {"query": query})
-        
-        # Test general search
-        general_results = await vectordb_service.search_similar(query, top_k=5)
-        
-        # Test privacy-specific search if query contains privacy terms
-        privacy_results = []
-        if "privacy" in query.lower():
-            privacy_results = await vectordb_service.search_privacy_policy(query)
-        
-        return {
-            "query": query,
-            "general_results": [
-                {
-                    "content_preview": result.content[:200] + "..." if len(result.content) > 200 else result.content,
-                    "score": result.score,
-                    "page_type": result.metadata.get("page_type", "unknown"),
-                    "url": result.metadata.get("url", "unknown")
-                }
-                for result in general_results
-            ],
-            "privacy_results": [
-                {
-                    "content_preview": result.content[:200] + "..." if len(result.content) > 200 else result.content,
-                    "score": result.score,
-                    "page_type": result.metadata.get("page_type", "unknown"),
-                    "url": result.metadata.get("url", "unknown")
-                }
-                for result in privacy_results
-            ],
-            "general_count": len(general_results),
-            "privacy_count": len(privacy_results),
-            "timestamp": datetime.now().isoformat()
-        }
-        
-    except Exception as e:
-        log_error(e, "test_vector_search")
-        raise HTTPException(status_code=500, detail=f"Error during vector search test: {str(e)}")
 
 @router.get("/contact", tags=["Contact"])
 async def get_contact_info():
@@ -341,9 +554,10 @@ async def get_services():
         
         return {
             "services": settings.COMPANY_SERVICES,
-            "contact_url": settings.CONTACT_URL,
-            "phone": settings.PHONE_NUMBER,
-            "email": settings.EMAIL,
+            "services_by_category": settings.SERVICE_CATEGORIES,
+            "website": settings.WEBSITE_URL,
+            "phone": settings.CONTACT_INFO["phone"],
+            "email": settings.CONTACT_INFO["email"],
             "timestamp": datetime.now().isoformat()
         }
         
@@ -352,128 +566,17 @@ async def get_services():
         raise HTTPException(status_code=500, detail="Error retrieving services information")
 
 # Background task functions
-async def reindex_content_task():
-    """Background task for reindexing website content (legacy)"""
+async def local_data_reload_task():
+    """Background task for reloading local data"""
     try:
-        logger.info("Starting background website content reindexing...")
+        logger.info("Starting background local data reload...")
         
-        # Use the enhanced SerpAPI reindexing
-        success = await vectordb_service.force_reindex_website_content()
+        success = await vectordb_service.reload_local_data()
         
         if success:
-            logger.info("Background website reindexing completed successfully")
+            logger.info("Background local data reload completed successfully")
         else:
-            logger.error("Background website reindexing failed")
+            logger.error("Background local data reload failed")
             
     except Exception as e:
-        log_error(e, "reindex_content_task")
-
-async def serpapi_reindex_content_task():
-    """Background task for FORCED reindexing of website content using SerpAPI"""
-    try:
-        logger.info("Starting FORCED background website content reindexing with SerpAPI...")
-        
-        # Force complete reindex using SerpAPI
-        success = await vectordb_service.force_reindex_website_content()
-        
-        if success:
-            stats = await vectordb_service.get_index_stats()
-            logger.info(f"FORCED SerpAPI background reindexing completed successfully - {stats.get('total_vector_count', 0)} vectors indexed")
-        else:
-            logger.error("FORCED SerpAPI background reindexing failed")
-            
-    except Exception as e:
-        log_error(e, "serpapi_reindex_content_task")
-        
-# Additional route for admin reindexing - Add this to your routes.py
-
-@router.post("/admin/serpapi-reindex", tags=["Admin"])
-async def force_serpapi_reindex():
-    """Force immediate complete reindexing using SerpAPI only (synchronous)"""
-    try:
-        log_function_call("force_serpapi_reindex")
-        
-        logger.info("Starting immediate SERPAPI-ONLY reindex...")
-        
-        # Get current stats before reindexing
-        old_stats = await vectordb_service.get_index_stats()
-        old_count = old_stats.get('total_vector_count', 0)
-        
-        # Force reindex using SerpAPI only
-        success = await vectordb_service.force_reindex_website_content()
-        
-        if success:
-            # Get new stats after reindexing
-            new_stats = await vectordb_service.get_index_stats()
-            new_count = new_stats.get('total_vector_count', 0)
-            
-            # Test the reindexed content with privacy policy query
-            test_privacy_results = await vectordb_service.search_privacy_policy("privacy policy data protection")
-            test_general_results = await vectordb_service.search_similar("Adeona Technologies services", top_k=5)
-            
-            return {
-                "message": "Website content successfully reindexed using SerpAPI ONLY",
-                "success": True,
-                "old_vector_count": old_count,
-                "new_vector_count": new_count,
-                "vectors_added": new_count - old_count,
-                "privacy_test_results": len(test_privacy_results),
-                "general_test_results": len(test_general_results),
-                "extraction_method": "SerpAPI only - no web scraping",
-                "timestamp": datetime.now().isoformat(),
-                "test_queries": {
-                    "privacy_policy_results": len(test_privacy_results),
-                    "services_results": len(test_general_results)
-                }
-            }
-        else:
-            return {
-                "message": "Website reindexing failed - check logs for details",
-                "success": False,
-                "extraction_method": "SerpAPI only",
-                "timestamp": datetime.now().isoformat()
-            }
-        
-    except Exception as e:
-        log_error(e, "force_serpapi_reindex")
-        raise HTTPException(status_code=500, detail=f"Error during SerpAPI reindex: {str(e)}")
-
-@router.get("/admin/test-privacy-search", tags=["Admin"])
-async def test_privacy_search():
-    """Test privacy policy search functionality"""
-    try:
-        log_function_call("test_privacy_search")
-        
-        test_queries = [
-            "privacy policy",
-            "data protection", 
-            "data security",
-            "personal information",
-            "privacy practices"
-        ]
-        
-        results = {}
-        
-        for query in test_queries:
-            search_results = await vectordb_service.search_privacy_policy(query)
-            general_results = await vectordb_service.search_similar(query, top_k=5)
-            
-            results[query] = {
-                "privacy_specific_results": len(search_results),
-                "general_results": len(general_results),
-                "best_privacy_score": search_results[0].score if search_results else 0,
-                "best_general_score": general_results[0].score if general_results else 0,
-                "privacy_preview": search_results[0].content[:100] + "..." if search_results else "No content",
-                "general_preview": general_results[0].content[:100] + "..." if general_results else "No content"
-            }
-        
-        return {
-            "test_results": results,
-            "timestamp": datetime.now().isoformat(),
-            "extraction_method": "SerpAPI",
-            "recommendation": "If privacy results are limited, run /admin/serpapi-reindex to refresh content"
-        }
-        
-    except Exception as e:
-        log_error(e, "test_privacy_search")
-        raise HTTPException(status_code=500, detail=f"Error during privacy search test: {str(e)}")
+        log_error(e, "local_data_reload_task")

@@ -1,0 +1,19 @@
+2025-09-28 13:52:07,647 - WARNING - Could not load robots.txt: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)>
+2025-09-28 13:52:07,648 - INFO - Starting comprehensive scrape of https://adeonatech.net/
+2025-09-28 13:52:07,839 - INFO - Successfully scraped: https://adeonatech.net/ (0 words)
+2025-09-28 13:52:09,622 - INFO - Successfully scraped: https://adeonatech.net/project (0 words)
+2025-09-28 13:52:11,391 - INFO - Successfully scraped: https://adeonatech.net/home (0 words)
+2025-09-28 13:52:13,241 - INFO - Successfully scraped: https://adeonatech.net/contact (0 words)
+2025-09-28 13:52:15,087 - INFO - Successfully scraped: https://adeonatech.net/about (0 words)
+2025-09-28 13:52:16,095 - ERROR - Error scraping tel:+94117433333: No connection adapters were found for 'tel:+94117433333'
+2025-09-28 13:52:17,956 - INFO - Successfully scraped: https://adeonatech.net/privacy-policy (0 words)
+2025-09-28 13:52:19,799 - INFO - Successfully scraped: https://adeonatech.net/service (0 words)
+2025-09-28 13:52:20,804 - ERROR - Error scraping mailto:info@adeonatech.net: No connection adapters were found for 'mailto:info@adeonatech.net'
+2025-09-28 13:52:21,813 - INFO - ============================================================
+2025-09-28 13:52:21,813 - INFO - SCRAPING COMPLETED!
+2025-09-28 13:52:21,813 - INFO - Total pages scraped: 7
+2025-09-28 13:52:21,813 - INFO - Failed URLs: 2
+2025-09-28 13:52:21,813 - INFO - Total words extracted: 0
+2025-09-28 13:52:21,814 - INFO - Time taken: 14.16 seconds
+2025-09-28 13:52:21,814 - INFO - Output directory: scraped_data_20250928_135207
+2025-09-28 13:52:21,814 - INFO - ============================================================

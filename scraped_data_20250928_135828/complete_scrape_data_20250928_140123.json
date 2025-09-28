@@ -1,0 +1,969 @@
+{
+  "scrape_metadata": {
+    "base_url": "https://adeonatech.net/",
+    "scrape_date": "2025-09-28T14:01:23.421130",
+    "total_pages_scraped": 29,
+    "total_words_extracted": 5423,
+    "failed_urls_count": 0,
+    "scraping_method": "Selenium + Requests"
+  },
+  "scraped_pages": [
+    {
+      "url": "https://adeonatech.net/",
+      "title": "Adeona Technologies",
+      "content": "Best IT Solutions Welcome to Adeona Technologies Read More Contact Us HOW WE WORK Responsible We at Adeona Technologies take complete responsibility for the quality of its services, for the effectiveness and impact of decisions made while developing the product and guarantee that our customers receive maintenance of products we engineer. Read More Contact Us HOW WE WORK Secure At Adeona, we maintain a policy to ensure all products and solutions developed are fully compliant with safety requirements and GDPR policies for absolute confidentiality. Read More Contact Us HOW WE WORK Professional Whatever we undertake, our core principle is to ensure a timely delivery. In order to achieve this, we adhere to best practices and efficiently distribute time, allocate resources and make beneficial decisions to contribute to a cutting-edge end product. Read More Contact Us HOW WE WORK Flexible We attend to client inquiries immediately to provide them with a hassle-free process and clear communication and accept any enhancements or feature requests made during the beta launch. Read More Contact Us Previous Next Welcome to Adeona Technologies Tailored Software Solutions for Your Unique Business Needs Founded in 2017, Adeona Technologies stands at the vanguard of digital transformation, offering bespoke software solutions that drive business innovation. Our expertise spans project management, development, analysis, and design, ensuring our products are not only advanced but accessible to all. We pride ourselves on a client-first approach, fostering partnerships that resonate with customer needs and industry demands. Continuously engaged in the pursuit of excellence, our full-stack engineers are committed to propelling our clients toward enduring success, making their growth our ultimate goal. At Adeona, we believe in the power of customization. Your business is unique, and your software should be too. We specialize in custom software development, meticulously crafting solutions that align perfectly with your specific requirements. Our commitment to excellence ensures that we not only develop your software but also deliver it from start to finish, guaranteeing a seamless integration into your business processes. With our client-centric approach, we focus on understanding your needs, challenges, and goals. Our team of expert developers and project managers work closely with you every step of the way, ensuring that the final product not only meets but exceeds your expectations. Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Our Services Services Built Specifically For Your Business Tailored Software Development At Adeona Technologies, we specialize in custom software development tailored to your unique business needs. Read More Adeona Foresight CRM Discover Adeona Foresight, a pioneering CRM solution tailored for the modern business landscape. Crafted to empower your business with seamless customer interaction and comprehensive data management, this CRM stands apart in its ability to adapt to your evolving business needs. Read More Digital Bill Transform your billing process with Adeona Technologies' Digital Bill, a cutting-edge solution that transcends traditional billing systems. Designed to replace physical bills with digital ones, Digital Bill introduces an eco-friendly approach that not only simplifies billing but also creates new marketing opportunities. Read More Digital Business Card Enter the era of digital networking with CardLink, Adeona Technologies' innovative solution to business cards. This unique platform reimagines how professionals connect and share their contact information. Read More Value Added Service Development (VAS) Elevate your telecommunications services with Adeona's Value Added Services (VAS). Our VAS solutions are crafted to enhance user experience and engagement, keeping pace with digital trends to boost revenue and enrich customer journeys. Our team of dedicated Telco experts adeptly navigates the evolving digital landscape. Read More Cross-Platform Mobile and Web Application Development In the competitive landscape of today's digital market, the caliber of your mobile and web applications can define your business's success. At Adeona Technologies, we specialize in cross-platform application development services, harnessing the power of frameworks like React Native and Flutter to deliver applications that resonate with your audience on any device and platform. Read More In-App and In-Web Advertising Solutions Elevate your digital advertising strategy with Adeona IAP, an all-encompassing solution for app owners and advertisers. This platform revolutionizes how digital ads are created, managed, and delivered, ensuring a tailored and impactful user experience. Read More API Design and Implementation In the interconnected world of modern business, APIs have become a fundamental aspect of digital strategy, acting as the building blocks that facilitate the seamless flow of information and services. Adeona Technologies stands at the forefront of this arena, offering comprehensive API Design and Implementation services that are integral to driving business innovation and operational efficiency. Read More Inventory Management Solutions Adeona Technologies offers a sophisticated Inventory Management Solution that equips businesses with the tools to maintain a competitive edge in operations and cost control. Our system is designed for a variety of industries, enabling close monitoring of inventory in warehouses and across the supply chain, providing real-time information for quick and informed decision-making. Read More Bulk SMS and Rich Messaging Elevate your communication strategy with Adeona Technologies' Smart Messenger, a comprehensive platform offering white-labeled bulk SMS and rich messaging services. This versatile solution empowers your business to forge stronger relationships with customers through mass texting capabilities and enhanced messaging features, ensuring that your communications make an impact. Read More Fleet Management Solutions Adeona Technologies presents a comprehensive Fleet Management Solution, tailored for diverse industries that manage a plethora of vehicles. Whether overseeing a taxi fleet, hotel courtesy cars, or a private rental service, our solution encapsulates an array of features to streamline operations and enhance the efficiency of your fleet. Read More Website Builder Tool Unveil the power of simplicity in web design with Connector, Adeona Technologies' innovative website builder tool. Designed for ease of use, Connector empowers anyone to create stunning, professional websites in minutes, regardless of their technical knowledge. Read More Restaurant Management System Elevate your dining establishment's efficiency with Adeona Technologies' Restaurant Management System. Our cloud-based platform is crafted to enhance every aspect of restaurant management, ensuring seamless operations. Key features include. Read More 3CX Business Communication Embark on a transformative communication journey with Adeona Technologies' specialized 3CX System. Custom-tailored for your business needs, our 3CX offering is the pinnacle of communication innovation, designed to seamlessly integrate into your existing business processes. Read More Scratch Card Solution Experience a revolution in product verification with Adeona Technologies' Scratch Card Solution. This innovative approach to ensuring product authenticity combines the simplicity of traditional scratch cards with advanced digital verification, making it a unique and reliable choice for businesses and customers alike. Read More Lead Manager Discover the future of credit card application processing with Adeona Technologies' Lead Manager. This cutting-edge solution is engineered to revolutionize the journey from application to approval, bridging the gap between aspiring applicants and forward-thinking banks. Read More Our Project Our Recently Completed Projects eSMS Dialog Axiata PLC In-App Advertising Platform ADA Cambodia eRL 2.0 Integration NITF Digital Bill Dialog Axiata PLC Marketplace Spare Part Verification System Bulk OTA Setting Update Platform Smart Axiata PLC Our Clients Our Esteemed Partners Get In Touch Contact for Any Query We're here to help you navigate the path to exceptional software solutions. At Adeona Technologies, your vision and needs are at the heart of our services. Whether you have a question about our products, need assistance with a custom solution, or want to discuss your unique business challenges, our dedicated team is eager to connect with you. Reach out to us through the contact form below, email, or give us a call. Your inquiry is important to us, and we promise a prompt and personalized response. Let's collaborate to transform your ideas into reality. Address 14 Sir Baron Jayathilaka Mawatha, Colombo 01, Sri Lanka Call Us (+94) 117 433 333 Email Us info@adeonatech.net Send Message",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "Welcome to Adeona Technologies",
+        "Responsible",
+        "Secure",
+        "Professional",
+        "Flexible",
+        "Tailored Software Solutions for Your Unique Business Needs",
+        "Services Built Specifically For Your Business",
+        "Our Recently Completed Projects",
+        "Our Esteemed Partners",
+        "Contact for Any Query",
+        "AdeonaTech",
+        "Tailored Software Development",
+        "Adeona Foresight CRM",
+        "Digital Bill",
+        "Digital Business Card",
+        "Value Added Service Development (VAS)",
+        "Cross-Platform Mobile and Web Application Development",
+        "In-App and In-Web Advertising Solutions",
+        "API Design and Implementation",
+        "Inventory Management Solutions",
+        "Bulk SMS and Rich Messaging",
+        "Fleet Management Solutions",
+        "Website Builder Tool",
+        "Restaurant Management System",
+        "3CX Business Communication",
+        "Scratch Card Solution",
+        "Lead Manager",
+        "eSMS",
+        "In-App Advertising Platform",
+        "eRL 2.0 Integration",
+        "Digital Bill",
+        "Spare Part Verification System",
+        "Bulk OTA Setting Update Platform",
+        "Address",
+        "Call Us",
+        "Email Us",
+        "Welcome to Adeona Technologies",
+        "Our Services",
+        "Our Project",
+        "Our Clients",
+        "Get In Touch",
+        "Best IT Solutions",
+        "HOW WE WORK",
+        "HOW WE WORK",
+        "HOW WE WORK",
+        "HOW WE WORK"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/service/digital-bill",
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/service/inventory-management",
+        "https://adeonatech.net/service/api-design",
+        "https://adeonatech.net/project/project-integration",
+        "https://adeonatech.net/service/scratch-card",
+        "https://adeonatech.net/service/3cx-business",
+        "https://adeonatech.net",
+        "https://adeonatech.net/service/digital-business-card",
+        "https://adeonatech.net/service/cross-platform-development",
+        "https://adeonatech.net/about",
+        "https://adeonatech.net/project/project-bulk-ota",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service/foresight-crm",
+        "https://adeonatech.net/service/vas",
+        "https://adeonatech.net/project/project-digital-bill",
+        "https://adeonatech.net/service/website-builder",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net/service/bulk-sms",
+        "https://adeonatech.net/service/inapp-advertising",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/service/fleet-management",
+        "https://adeonatech.net/project/project-esms",
+        "https://adeonatech.net/service/restaurant-management",
+        "https://adeonatech.net/project/project-in-app",
+        "https://adeonatech.net/project/project-spare-part",
+        "https://adeonatech.net/service/lead-manager",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/service/tailored-sd"
+      ],
+      "images": [
+        "https://cdn.adeonatech.net/companywebnew/adeona/Home/about-1.jpg",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Home/about-2.jpg",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Our_Client/Dialog.png",
+        "https://dsuabgmmtxmj1.cloudfront.net/companywebnew/adeona/Home/Adeona_Technologies_Responsible.png",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Projects/NITF.png",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Projects/Project-Esms.jpg",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Our_Client/Superior_Practices.png",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Our_Client/Upstream.png",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Projects/Project-Erl.png",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Our_Client/Digicat.png",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Projects/Project-DigitalBill.webp",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Home/Adeona_Technologies_Flexible.png",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Projects/Project-In-App.webp",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Our_Client/Smart.png",
+        "https://dsuabgmmtxmj1.cloudfront.net/companywebnew/adeona/Home/Adeona_Technologies_Professional.png",
+        "https://dsuabgmmtxmj1.cloudfront.net/companywebnew/adeona/common/Adeona_Technologies.png",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Our_Client/ada.png",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Our_Client/MBIZ_Software.png",
+        "https://dsuabgmmtxmj1.cloudfront.net/companywebnew/adeona/Home/Adeona_Technologies_Security.png",
+        "https://adeonatech.net/imgs/santa-cart.gif",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Projects/Project-SparePart.webp",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Projects/Project-BulkOTA.jpg"
+      ],
+      "word_count": 1287,
+      "scrape_timestamp": "2025-09-28T13:58:35.339913",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/service/digital-bill",
+      "title": "Adeona Technologies",
+      "content": "Adeona Tech Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Short Link About us Contact us Our Services Our Projects Help Link Privacy Policy Contact Contact Us 14 Sir Baron Jayathilaka Mawatha,Colombo 01, Sri Lanka (+94) 117 433 333 info@adeonatech.net Adeona Technologies , all rights reserved.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "AdeonaTech"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 55,
+      "scrape_timestamp": "2025-09-28T13:58:41.916039",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/contact",
+      "title": "Adeona Technologies",
+      "content": "Contact Us Get In Touch Contact for Any Query We're here to help you navigate the path to exceptional software solutions. At Adeona Technologies, your vision and needs are at the heart of our services. Whether you have a question about our products, need assistance with a custom solution, or want to discuss your unique business challenges, our dedicated team is eager to connect with you. Reach out to us through the contact form below, email, or give us a call. Your inquiry is important to us, and we promise a prompt and personalized response. Let's collaborate to transform your ideas into reality. Address 14 Sir Baron Jayathilaka Mawatha, Colombo 01, Sri Lanka Call Us (+94) 117 433 3333 Email Us info@adeonatech.net Send Message",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "Contact Us",
+        "Contact for Any Query",
+        "AdeonaTech",
+        "Address",
+        "Call Us",
+        "Email Us",
+        "Get In Touch"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 124,
+      "scrape_timestamp": "2025-09-28T13:58:47.737600",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/service/inventory-management",
+      "title": "Adeona Technologies",
+      "content": "Adeona Tech Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Short Link About us Contact us Our Services Our Projects Help Link Privacy Policy Contact Contact Us 14 Sir Baron Jayathilaka Mawatha,Colombo 01, Sri Lanka (+94) 117 433 333 info@adeonatech.net Adeona Technologies , all rights reserved.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "AdeonaTech"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 55,
+      "scrape_timestamp": "2025-09-28T13:58:53.531490",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/service/api-design",
+      "title": "Adeona Technologies",
+      "content": "Adeona Tech Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Short Link About us Contact us Our Services Our Projects Help Link Privacy Policy Contact Contact Us 14 Sir Baron Jayathilaka Mawatha,Colombo 01, Sri Lanka (+94) 117 433 333 info@adeonatech.net Adeona Technologies , all rights reserved.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "AdeonaTech"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 55,
+      "scrape_timestamp": "2025-09-28T13:58:59.337057",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/project/project-integration",
+      "title": "Adeona Technologies",
+      "content": "Adeona Tech Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Short Link About us Contact us Our Services Our Projects Help Link Privacy Policy Contact Contact Us 14 Sir Baron Jayathilaka Mawatha,Colombo 01, Sri Lanka (+94) 117 433 333 info@adeonatech.net Adeona Technologies , all rights reserved.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "AdeonaTech"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 55,
+      "scrape_timestamp": "2025-09-28T13:59:05.910022",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/service/scratch-card",
+      "title": "Adeona Technologies",
+      "content": "Adeona Tech Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Short Link About us Contact us Our Services Our Projects Help Link Privacy Policy Contact Contact Us 14 Sir Baron Jayathilaka Mawatha,Colombo 01, Sri Lanka (+94) 117 433 333 info@adeonatech.net Adeona Technologies , all rights reserved.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "AdeonaTech"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 55,
+      "scrape_timestamp": "2025-09-28T13:59:11.726217",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/service/3cx-business",
+      "title": "Adeona Technologies",
+      "content": "Adeona Tech Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Short Link About us Contact us Our Services Our Projects Help Link Privacy Policy Contact Contact Us 14 Sir Baron Jayathilaka Mawatha,Colombo 01, Sri Lanka (+94) 117 433 333 info@adeonatech.net Adeona Technologies , all rights reserved.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "AdeonaTech"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 55,
+      "scrape_timestamp": "2025-09-28T13:59:17.678721",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/service/digital-business-card",
+      "title": "Adeona Technologies",
+      "content": "Adeona Tech Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Short Link About us Contact us Our Services Our Projects Help Link Privacy Policy Contact Contact Us 14 Sir Baron Jayathilaka Mawatha,Colombo 01, Sri Lanka (+94) 117 433 333 info@adeonatech.net Adeona Technologies , all rights reserved.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "AdeonaTech"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 55,
+      "scrape_timestamp": "2025-09-28T13:59:23.482858",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/service/cross-platform-development",
+      "title": "Adeona Technologies",
+      "content": "Adeona Tech Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Short Link About us Contact us Our Services Our Projects Help Link Privacy Policy Contact Contact Us 14 Sir Baron Jayathilaka Mawatha,Colombo 01, Sri Lanka (+94) 117 433 333 info@adeonatech.net Adeona Technologies , all rights reserved.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "AdeonaTech"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 55,
+      "scrape_timestamp": "2025-09-28T13:59:29.361690",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/about",
+      "title": "Adeona Technologies",
+      "content": "About Us About Us Empowering Your Digital Journey: Innovative Solutions, Exceptional Service, and Unmatched Expertise at Adeona Technologies Adeona Technologies is a digital transformation consultancy and software development service company which was inaugurated in the year 2017. Since then, Adeona has been developing an array of services ranging from mobile apps to custom web-oriented solutions and even business software. Having been in the forefront of engineering products and solutions for various industries, our DNA is made of professionals in the areas of project management, software development, business analysis, UI/UX, Databases and Machine learning. With years of experience in the industry and delivering world-class products, we believe that a common goal and a customer-centric approach leads us to an innovative and remarkable outcome. Our team is highly focused, detail oriented, process-centric and always works to achieve what our customers want with maximum agility. Our team spends ample time on research to carefully evaluate the best options for our clients prior to execution and therefore, our customers have always walked with a great product and a pleasant smile! Deliver a high quality, innovative and user-friendly solution while focusing on the end users. As such, we make sure that anyone from any background is able to use a product swiftly and conveniently. Our style of working in collaboration with clients is absolutely different from what’s out there. We let our customers do the talking, understand their needs and establish a strong and meaningful rapport with them which has always been great in the long run. Our goal is the same as what our clients want - keeping them connected to their clients through mobile apps, websites or just about any software solution out there. Adeona from the start has been responsible for overseeing and running all project related practices, assisting our customers post-launch to efficiently execute their directions while upholding the highest professional standards. Our team of qualified full stack engineers are always updated on current industry trends and is always excited to combine their concepts, strategies and technical knowledge - this is what has helped us strengthen the trust our clients have in us. We ensure our customers continue to grow and thrive in today’s dynamic environment by offering our continuous support. Your success is our driving force. Success! Your message has been sent successfully. Error! A problem has been occurred while submitting your data.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "About Us",
+        "Empowering Your Digital Journey:",
+        "AdeonaTech",
+        "Innovative Solutions, Exceptional Service, and Unmatched Expertise at Adeona Technologies",
+        "About Us",
+        "Adeona Technologies is a digital transformation consultancy and software development service\n                    company which was inaugurated in the year 2017."
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif",
+        "https://cdn.adeonatech.net/companywebnew/adeona/About/AdeonaLogo.png"
+      ],
+      "word_count": 393,
+      "scrape_timestamp": "2025-09-28T13:59:35.208375",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/project/project-bulk-ota",
+      "title": "Adeona Technologies",
+      "content": "Adeona Tech Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Short Link About us Contact us Our Services Our Projects Help Link Privacy Policy Contact Contact Us 14 Sir Baron Jayathilaka Mawatha,Colombo 01, Sri Lanka (+94) 117 433 333 info@adeonatech.net Adeona Technologies , all rights reserved.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "AdeonaTech"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 55,
+      "scrape_timestamp": "2025-09-28T13:59:41.030219",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/home",
+      "title": "Adeona Technologies",
+      "content": "Best IT Solutions Welcome to Adeona Technologies Read More Contact Us HOW WE WORK Responsible We at Adeona Technologies take complete responsibility for the quality of its services, for the effectiveness and impact of decisions made while developing the product and guarantee that our customers receive maintenance of products we engineer. Read More Contact Us HOW WE WORK Secure At Adeona, we maintain a policy to ensure all products and solutions developed are fully compliant with safety requirements and GDPR policies for absolute confidentiality. Read More Contact Us HOW WE WORK Professional Whatever we undertake, our core principle is to ensure a timely delivery. In order to achieve this, we adhere to best practices and efficiently distribute time, allocate resources and make beneficial decisions to contribute to a cutting-edge end product. Read More Contact Us HOW WE WORK Flexible We attend to client inquiries immediately to provide them with a hassle-free process and clear communication and accept any enhancements or feature requests made during the beta launch. Read More Contact Us Previous Next Welcome to Adeona Technologies Tailored Software Solutions for Your Unique Business Needs Founded in 2017, Adeona Technologies stands at the vanguard of digital transformation, offering bespoke software solutions that drive business innovation. Our expertise spans project management, development, analysis, and design, ensuring our products are not only advanced but accessible to all. We pride ourselves on a client-first approach, fostering partnerships that resonate with customer needs and industry demands. Continuously engaged in the pursuit of excellence, our full-stack engineers are committed to propelling our clients toward enduring success, making their growth our ultimate goal. At Adeona, we believe in the power of customization. Your business is unique, and your software should be too. We specialize in custom software development, meticulously crafting solutions that align perfectly with your specific requirements. Our commitment to excellence ensures that we not only develop your software but also deliver it from start to finish, guaranteeing a seamless integration into your business processes. With our client-centric approach, we focus on understanding your needs, challenges, and goals. Our team of expert developers and project managers work closely with you every step of the way, ensuring that the final product not only meets but exceeds your expectations. Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Our Services Services Built Specifically For Your Business Tailored Software Development At Adeona Technologies, we specialize in custom software development tailored to your unique business needs. Read More Adeona Foresight CRM Discover Adeona Foresight, a pioneering CRM solution tailored for the modern business landscape. Crafted to empower your business with seamless customer interaction and comprehensive data management, this CRM stands apart in its ability to adapt to your evolving business needs. Read More Digital Bill Transform your billing process with Adeona Technologies' Digital Bill, a cutting-edge solution that transcends traditional billing systems. Designed to replace physical bills with digital ones, Digital Bill introduces an eco-friendly approach that not only simplifies billing but also creates new marketing opportunities. Read More Digital Business Card Enter the era of digital networking with CardLink, Adeona Technologies' innovative solution to business cards. This unique platform reimagines how professionals connect and share their contact information. Read More Value Added Service Development (VAS) Elevate your telecommunications services with Adeona's Value Added Services (VAS). Our VAS solutions are crafted to enhance user experience and engagement, keeping pace with digital trends to boost revenue and enrich customer journeys. Our team of dedicated Telco experts adeptly navigates the evolving digital landscape. Read More Cross-Platform Mobile and Web Application Development In the competitive landscape of today's digital market, the caliber of your mobile and web applications can define your business's success. At Adeona Technologies, we specialize in cross-platform application development services, harnessing the power of frameworks like React Native and Flutter to deliver applications that resonate with your audience on any device and platform. Read More In-App and In-Web Advertising Solutions Elevate your digital advertising strategy with Adeona IAP, an all-encompassing solution for app owners and advertisers. This platform revolutionizes how digital ads are created, managed, and delivered, ensuring a tailored and impactful user experience. Read More API Design and Implementation In the interconnected world of modern business, APIs have become a fundamental aspect of digital strategy, acting as the building blocks that facilitate the seamless flow of information and services. Adeona Technologies stands at the forefront of this arena, offering comprehensive API Design and Implementation services that are integral to driving business innovation and operational efficiency. Read More Inventory Management Solutions Adeona Technologies offers a sophisticated Inventory Management Solution that equips businesses with the tools to maintain a competitive edge in operations and cost control. Our system is designed for a variety of industries, enabling close monitoring of inventory in warehouses and across the supply chain, providing real-time information for quick and informed decision-making. Read More Bulk SMS and Rich Messaging Elevate your communication strategy with Adeona Technologies' Smart Messenger, a comprehensive platform offering white-labeled bulk SMS and rich messaging services. This versatile solution empowers your business to forge stronger relationships with customers through mass texting capabilities and enhanced messaging features, ensuring that your communications make an impact. Read More Fleet Management Solutions Adeona Technologies presents a comprehensive Fleet Management Solution, tailored for diverse industries that manage a plethora of vehicles. Whether overseeing a taxi fleet, hotel courtesy cars, or a private rental service, our solution encapsulates an array of features to streamline operations and enhance the efficiency of your fleet. Read More Website Builder Tool Unveil the power of simplicity in web design with Connector, Adeona Technologies' innovative website builder tool. Designed for ease of use, Connector empowers anyone to create stunning, professional websites in minutes, regardless of their technical knowledge. Read More Restaurant Management System Elevate your dining establishment's efficiency with Adeona Technologies' Restaurant Management System. Our cloud-based platform is crafted to enhance every aspect of restaurant management, ensuring seamless operations. Key features include. Read More 3CX Business Communication Embark on a transformative communication journey with Adeona Technologies' specialized 3CX System. Custom-tailored for your business needs, our 3CX offering is the pinnacle of communication innovation, designed to seamlessly integrate into your existing business processes. Read More Scratch Card Solution Experience a revolution in product verification with Adeona Technologies' Scratch Card Solution. This innovative approach to ensuring product authenticity combines the simplicity of traditional scratch cards with advanced digital verification, making it a unique and reliable choice for businesses and customers alike. Read More Lead Manager Discover the future of credit card application processing with Adeona Technologies' Lead Manager. This cutting-edge solution is engineered to revolutionize the journey from application to approval, bridging the gap between aspiring applicants and forward-thinking banks. Read More Our Project Our Recently Completed Projects eSMS Dialog Axiata PLC In-App Advertising Platform ADA Cambodia eRL 2.0 Integration NITF Digital Bill Dialog Axiata PLC Marketplace Spare Part Verification System Bulk OTA Setting Update Platform Smart Axiata PLC Our Clients Our Esteemed Partners Get In Touch Contact for Any Query We're here to help you navigate the path to exceptional software solutions. At Adeona Technologies, your vision and needs are at the heart of our services. Whether you have a question about our products, need assistance with a custom solution, or want to discuss your unique business challenges, our dedicated team is eager to connect with you. Reach out to us through the contact form below, email, or give us a call. Your inquiry is important to us, and we promise a prompt and personalized response. Let's collaborate to transform your ideas into reality. Address 14 Sir Baron Jayathilaka Mawatha, Colombo 01, Sri Lanka Call Us (+94) 117 433 333 Email Us info@adeonatech.net Send Message",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "Welcome to Adeona Technologies",
+        "Responsible",
+        "Secure",
+        "Professional",
+        "Flexible",
+        "Tailored Software Solutions for Your Unique Business Needs",
+        "Services Built Specifically For Your Business",
+        "Our Recently Completed Projects",
+        "Our Esteemed Partners",
+        "Contact for Any Query",
+        "AdeonaTech",
+        "Tailored Software Development",
+        "Adeona Foresight CRM",
+        "Digital Bill",
+        "Digital Business Card",
+        "Value Added Service Development (VAS)",
+        "Cross-Platform Mobile and Web Application Development",
+        "In-App and In-Web Advertising Solutions",
+        "API Design and Implementation",
+        "Inventory Management Solutions",
+        "Bulk SMS and Rich Messaging",
+        "Fleet Management Solutions",
+        "Website Builder Tool",
+        "Restaurant Management System",
+        "3CX Business Communication",
+        "Scratch Card Solution",
+        "Lead Manager",
+        "eSMS",
+        "In-App Advertising Platform",
+        "eRL 2.0 Integration",
+        "Digital Bill",
+        "Spare Part Verification System",
+        "Bulk OTA Setting Update Platform",
+        "Address",
+        "Call Us",
+        "Email Us",
+        "Welcome to Adeona Technologies",
+        "Our Services",
+        "Our Project",
+        "Our Clients",
+        "Get In Touch",
+        "Best IT Solutions",
+        "HOW WE WORK",
+        "HOW WE WORK",
+        "HOW WE WORK",
+        "HOW WE WORK"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/service/digital-bill",
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/service/inventory-management",
+        "https://adeonatech.net/service/api-design",
+        "https://adeonatech.net/project/project-integration",
+        "https://adeonatech.net/service/scratch-card",
+        "https://adeonatech.net/service/3cx-business",
+        "https://adeonatech.net",
+        "https://adeonatech.net/service/digital-business-card",
+        "https://adeonatech.net/service/cross-platform-development",
+        "https://adeonatech.net/about",
+        "https://adeonatech.net/project/project-bulk-ota",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service/foresight-crm",
+        "https://adeonatech.net/service/vas",
+        "https://adeonatech.net/project/project-digital-bill",
+        "https://adeonatech.net/service/website-builder",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net/service/bulk-sms",
+        "https://adeonatech.net/service/inapp-advertising",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/service/fleet-management",
+        "https://adeonatech.net/project/project-esms",
+        "https://adeonatech.net/service/restaurant-management",
+        "https://adeonatech.net/project/project-in-app",
+        "https://adeonatech.net/project/project-spare-part",
+        "https://adeonatech.net/service/lead-manager",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/service/tailored-sd"
+      ],
+      "images": [
+        "https://cdn.adeonatech.net/companywebnew/adeona/Home/about-1.jpg",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Home/about-2.jpg",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Our_Client/Dialog.png",
+        "https://dsuabgmmtxmj1.cloudfront.net/companywebnew/adeona/Home/Adeona_Technologies_Responsible.png",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Projects/NITF.png",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Projects/Project-Esms.jpg",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Our_Client/Superior_Practices.png",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Our_Client/Upstream.png",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Projects/Project-Erl.png",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Our_Client/Digicat.png",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Projects/Project-DigitalBill.webp",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Home/Adeona_Technologies_Flexible.png",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Projects/Project-In-App.webp",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Our_Client/Smart.png",
+        "https://dsuabgmmtxmj1.cloudfront.net/companywebnew/adeona/Home/Adeona_Technologies_Professional.png",
+        "https://dsuabgmmtxmj1.cloudfront.net/companywebnew/adeona/common/Adeona_Technologies.png",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Our_Client/ada.png",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Our_Client/MBIZ_Software.png",
+        "https://dsuabgmmtxmj1.cloudfront.net/companywebnew/adeona/Home/Adeona_Technologies_Security.png",
+        "https://adeonatech.net/imgs/santa-cart.gif",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Projects/Project-SparePart.webp",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Projects/Project-BulkOTA.jpg"
+      ],
+      "word_count": 1287,
+      "scrape_timestamp": "2025-09-28T13:59:46.880201",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/service/foresight-crm",
+      "title": "Adeona Technologies",
+      "content": "Adeona Tech Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Short Link About us Contact us Our Services Our Projects Help Link Privacy Policy Contact Contact Us 14 Sir Baron Jayathilaka Mawatha,Colombo 01, Sri Lanka (+94) 117 433 333 info@adeonatech.net Adeona Technologies , all rights reserved.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "AdeonaTech"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 55,
+      "scrape_timestamp": "2025-09-28T13:59:52.829099",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/service/vas",
+      "title": "Adeona Technologies",
+      "content": "Adeona Tech Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Short Link About us Contact us Our Services Our Projects Help Link Privacy Policy Contact Contact Us 14 Sir Baron Jayathilaka Mawatha,Colombo 01, Sri Lanka (+94) 117 433 333 info@adeonatech.net Adeona Technologies , all rights reserved.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "AdeonaTech"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 55,
+      "scrape_timestamp": "2025-09-28T13:59:58.721515",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/project/project-digital-bill",
+      "title": "Adeona Technologies",
+      "content": "Adeona Tech Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Short Link About us Contact us Our Services Our Projects Help Link Privacy Policy Contact Contact Us 14 Sir Baron Jayathilaka Mawatha,Colombo 01, Sri Lanka (+94) 117 433 333 info@adeonatech.net Adeona Technologies , all rights reserved.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "AdeonaTech"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 55,
+      "scrape_timestamp": "2025-09-28T14:00:04.634490",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/service/website-builder",
+      "title": "Adeona Technologies",
+      "content": "Adeona Tech Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Short Link About us Contact us Our Services Our Projects Help Link Privacy Policy Contact Contact Us 14 Sir Baron Jayathilaka Mawatha,Colombo 01, Sri Lanka (+94) 117 433 333 info@adeonatech.net Adeona Technologies , all rights reserved.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "AdeonaTech"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 55,
+      "scrape_timestamp": "2025-09-28T14:00:10.413532",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/service",
+      "title": "Adeona Technologies",
+      "content": "Services Our Services Services Built Specifically For Your Business Tailored Software Development At Adeona Technologies, we specialize in custom software development tailored to your unique business needs. Read More Adeona Foresight CRM Discover Adeona Foresight, a pioneering CRM solution tailored for the modern business landscape. Crafted to empower your business with seamless customer interaction and comprehensive data management, this CRM stands apart in its ability to adapt to your evolving business needs. Read More Digital Bill Transform your billing process with Adeona Technologies' Digital Bill, a cutting-edge solution that transcends traditional billing systems. Designed to replace physical bills with digital ones, Digital Bill introduces an eco-friendly approach that not only simplifies billing but also creates new marketing opportunities. Read More Digital Business Card Enter the era of digital networking with CardLink, Adeona Technologies' innovative solution to business cards. This unique platform reimagines how professionals connect and share their contact information. Read More Value Added Service Development (VAS) Elevate your telecommunications services with Adeona's Value Added Service Development (VAS). Our VAS solutions are crafted to enhance user experience and engagement, keeping pace with digital trends to boost revenue and enrich customer journeys. Our team of dedicated Telco experts adeptly navigates the evolving digital landscape. Read More Cross-Platform Mobile and Web Application Development In the competitive landscape of today's digital market, the caliber of your mobile and web applications can define your business's success. At Adeona Technologies, we specialize in cross-platform application development services, harnessing the power of frameworks like React Native and Flutter to deliver applications that resonate with your audience on any device and platform. Read More In-App and In-Web Advertising Solutions Elevate your digital advertising strategy with Adeona IAP, an all-encompassing solution for app owners and advertisers. This platform revolutionizes how digital ads are created, managed, and delivered, ensuring a tailored and impactful user experience. Read More API Design and Implementation In the interconnected world of modern business, APIs have become a fundamental aspect of digital strategy, acting as the building blocks that facilitate the seamless flow of information and services. Adeona Technologies stands at the forefront of this arena, offering comprehensive API Design and Implementation services that are integral to driving business innovation and operational efficiency. Read More Inventory Management Solutions Adeona Technologies offers a sophisticated Inventory Management Solution that equips businesses with the tools to maintain a competitive edge in operations and cost control. Our system is designed for a variety of industries, enabling close monitoring of inventory in warehouses and across the supply chain, providing real-time information for quick and informed decision-making Read More Bulk SMS and Rich Messaging Elevate your communication strategy with Adeona Technologies' Smart Messenger, a comprehensive platform offering white-labeled bulk SMS and rich messaging services. This versatile solution empowers your business to forge stronger relationships with customers through mass texting capabilities and enhanced messaging features, ensuring that your communications make an impact. Read More Fleet Management Solutions Adeona Technologies presents a comprehensive Fleet Management Solution, tailored for diverse industries that manage a plethora of vehicles. Whether overseeing a taxi fleet, hotel courtesy cars, or a private rental service, our solution encapsulates an array of features to streamline operations and enhance the efficiency of your fleet. Read More Website Builder Tool Unveil the power of simplicity in web design with Connector, Adeona Technologies' innovative website builder tool. Designed for ease of use, Connector empowers anyone to create stunning, professional websites in minutes, regardless of their technical knowledge. Read More Restaurant Management System Elevate your dining establishment's efficiency with Adeona Technologies' Restaurant Management System. Our cloud-based platform is crafted to enhance every aspect of restaurant management, ensuring seamless operations. Key features include. Read More 3CX Business Communication Embark on a transformative communication journey with Adeona Technologies' specialized 3CX System. Custom-tailored for your business needs, our 3CX offering is the pinnacle of communication innovation, designed to seamlessly integrate into your existing business processes. Read More Scratch Card Solution Experience a revolution in product verification with Adeona Technologies' Scratch Card Solution. This innovative approach to ensuring product authenticity combines the simplicity of traditional scratch cards with advanced digital verification, making it a unique and reliable choice for businesses and customers alike. Read More Lead Manager Discover the future of credit card application processing with Adeona Technologies' Lead Manager. This cutting-edge solution is engineered to revolutionize the journey from application to approval, bridging the gap between aspiring applicants and forward-thinking banks. Read More",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "Services",
+        "Services Built Specifically For Your Business",
+        "AdeonaTech",
+        "Tailored Software Development",
+        "Adeona Foresight CRM",
+        "Digital Bill",
+        "Digital Business Card",
+        "Value Added Service Development (VAS)",
+        "Cross-Platform Mobile and Web Application Development",
+        "In-App and In-Web Advertising Solutions",
+        "API Design and Implementation",
+        "Inventory Management Solutions",
+        "Bulk SMS and Rich Messaging",
+        "Fleet Management Solutions",
+        "Website Builder Tool",
+        "Restaurant Management System",
+        "3CX Business Communication",
+        "Scratch Card Solution",
+        "Lead Manager",
+        "Our Services"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/service/digital-bill",
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/service/inventory-management",
+        "https://adeonatech.net/service/api-design",
+        "https://adeonatech.net/service/scratch-card",
+        "https://adeonatech.net/service/3cx-business",
+        "https://adeonatech.net",
+        "https://adeonatech.net/service/digital-business-card",
+        "https://adeonatech.net/service/cross-platform-development",
+        "https://adeonatech.net/about",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service/foresight-crm",
+        "https://adeonatech.net/service/vas",
+        "https://adeonatech.net/service/website-builder",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net/service/bulk-sms",
+        "https://adeonatech.net/service/inapp-advertising",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/service/fleet-management",
+        "https://adeonatech.net/service/restaurant-management",
+        "https://adeonatech.net/service/lead-manager",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/service/tailored-sd"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 736,
+      "scrape_timestamp": "2025-09-28T14:00:16.269750",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/service/bulk-sms",
+      "title": "Adeona Technologies",
+      "content": "Adeona Tech Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Short Link About us Contact us Our Services Our Projects Help Link Privacy Policy Contact Contact Us 14 Sir Baron Jayathilaka Mawatha,Colombo 01, Sri Lanka (+94) 117 433 333 info@adeonatech.net Adeona Technologies , all rights reserved.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "AdeonaTech"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 55,
+      "scrape_timestamp": "2025-09-28T14:00:22.232935",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/service/inapp-advertising",
+      "title": "Adeona Technologies",
+      "content": "Adeona Tech Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Short Link About us Contact us Our Services Our Projects Help Link Privacy Policy Contact Contact Us 14 Sir Baron Jayathilaka Mawatha,Colombo 01, Sri Lanka (+94) 117 433 333 info@adeonatech.net Adeona Technologies , all rights reserved.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "AdeonaTech"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 55,
+      "scrape_timestamp": "2025-09-28T14:00:28.153131",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/privacy-policy",
+      "title": "Adeona Technologies",
+      "content": "Adeona Technologies Privacy Policy Adeona Technologies Privacy Policy Adeona Technologies (Private) Limited (“we,” “our,” or “us”) is committed to protecting the privacy of individuals who interact with our website and services. This Privacy Policy outlines how we collect, use, and safeguard information obtained through our company website https://adeonatech.net and any customized software solutions we develop for our clients. Information We Collect We may collect the following types of personal information, depending on the specific services requested by our clients: Full name Email address Location data (if applicable) Other information submitted via forms We collect this information only when voluntarily provided by users through forms on our website or applications. Purpose of Data Collection We collect personal information solely to deliver the intended services of the applications we develop. These services are customized for each client and may vary depending on the project requirements. How We Use and Share Information The information collected is used only to: Provide and maintain our software solutions Communicate with users regarding services and support Ensure proper functionality of client applications We do not share, sell, or disclose your personal information to third parties. Data Access and Deletion Users have the right to: Request access to their personal data Request correction or deletion of their data To make such requests, users may contact us at: info@adeonatech.net Data Security We implement appropriate technical and organizational measures to protect personal information against unauthorized access, loss, or misuse. Use of Web and Mobile Applications As part of our services, we may develop web and mobile applications for clients. Each application may have its own privacy statement, depending on how data is collected and used. This Privacy Policy applies generally to our practices as a service provider. Changes to This Policy We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date. Contact Us If you have any questions about this Privacy Policy or our data practices, please contact: Adeona Technologies (Private) Limited Email: info@adeonatech.net Website: https://adeonatech.net This policy is effective as of 01st October, 2024.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "Privacy Policy",
+        "Privacy Policy",
+        "AdeonaTech",
+        "Adeona Technologies",
+        "Adeona Technologies",
+        "Information We Collect",
+        "Purpose of Data Collection",
+        "How We Use and Share Information",
+        "Data Access and Deletion",
+        "Data Security",
+        "Use of Web and Mobile Applications",
+        "Changes to This Policy",
+        "Contact Us",
+        "This policy is effective as of 01st October, 2024."
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://cdn.adeonatech.net/companywebnew/adeona/Home/Adeona_Technologies_Security.png",
+        "https://adeonatech.net/imgs/santa-cart.gif",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Privacy_Policy/PrivacyPolicy-2.jpeg",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Privacy_Policy/PrivacyPolicy-1.png"
+      ],
+      "word_count": 348,
+      "scrape_timestamp": "2025-09-28T14:00:34.098541",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/service/fleet-management",
+      "title": "Adeona Technologies",
+      "content": "Adeona Tech Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Short Link About us Contact us Our Services Our Projects Help Link Privacy Policy Contact Contact Us 14 Sir Baron Jayathilaka Mawatha,Colombo 01, Sri Lanka (+94) 117 433 333 info@adeonatech.net Adeona Technologies , all rights reserved.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "AdeonaTech"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 55,
+      "scrape_timestamp": "2025-09-28T14:00:40.091091",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/project/project-esms",
+      "title": "Adeona Technologies",
+      "content": "Adeona Tech Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Short Link About us Contact us Our Services Our Projects Help Link Privacy Policy Contact Contact Us 14 Sir Baron Jayathilaka Mawatha,Colombo 01, Sri Lanka (+94) 117 433 333 info@adeonatech.net Adeona Technologies , all rights reserved.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "AdeonaTech"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 55,
+      "scrape_timestamp": "2025-09-28T14:00:45.984329",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/service/restaurant-management",
+      "title": "Adeona Technologies",
+      "content": "Adeona Tech Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Short Link About us Contact us Our Services Our Projects Help Link Privacy Policy Contact Contact Us 14 Sir Baron Jayathilaka Mawatha,Colombo 01, Sri Lanka (+94) 117 433 333 info@adeonatech.net Adeona Technologies , all rights reserved.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "AdeonaTech"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 55,
+      "scrape_timestamp": "2025-09-28T14:00:51.998183",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/project/project-in-app",
+      "title": "Adeona Technologies",
+      "content": "Adeona Tech Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Short Link About us Contact us Our Services Our Projects Help Link Privacy Policy Contact Contact Us 14 Sir Baron Jayathilaka Mawatha,Colombo 01, Sri Lanka (+94) 117 433 333 info@adeonatech.net Adeona Technologies , all rights reserved.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "AdeonaTech"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 55,
+      "scrape_timestamp": "2025-09-28T14:00:57.816729",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/project/project-spare-part",
+      "title": "Adeona Technologies",
+      "content": "Adeona Tech Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Short Link About us Contact us Our Services Our Projects Help Link Privacy Policy Contact Contact Us 14 Sir Baron Jayathilaka Mawatha,Colombo 01, Sri Lanka (+94) 117 433 333 info@adeonatech.net Adeona Technologies , all rights reserved.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "AdeonaTech"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 55,
+      "scrape_timestamp": "2025-09-28T14:01:03.617597",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/service/lead-manager",
+      "title": "Adeona Technologies",
+      "content": "Adeona Tech Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Short Link About us Contact us Our Services Our Projects Help Link Privacy Policy Contact Contact Us 14 Sir Baron Jayathilaka Mawatha,Colombo 01, Sri Lanka (+94) 117 433 333 info@adeonatech.net Adeona Technologies , all rights reserved.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "AdeonaTech"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 55,
+      "scrape_timestamp": "2025-09-28T14:01:09.507471",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/project",
+      "title": "Adeona Technologies",
+      "content": "Projects Our Project Our Recently Completed Projects eSMS Dialog Axiata PLC In-App Advertising Platform ADA Cambodia eRL 2.0 Integration NITF Digital Bill Dialog Axiata PLC Marketplace Spare Part Verification System Bulk OTA Setting Update Platform Smart Axiata PLC",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "Projects",
+        "Our Recently Completed Projects",
+        "AdeonaTech",
+        "eSMS",
+        "In-App Advertising Platform",
+        "eRL 2.0 Integration",
+        "Digital Bill",
+        "Spare Part Verification System",
+        "Bulk OTA Setting Update Platform",
+        "Our Project"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/project/project-bulk-ota",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/project/project-integration",
+        "https://adeonatech.net/project/project-digital-bill",
+        "https://adeonatech.net/project/project-esms",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net/project/project-in-app",
+        "https://adeonatech.net/project/project-spare-part",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://cdn.adeonatech.net/companywebnew/adeona/Projects/Project-DigitalBill.webp",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Projects/Project-BulkOTA.jpg",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Projects/Project-In-App.webp",
+        "https://adeonatech.net/imgs/santa-cart.gif",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Projects/Project-SparePart.webp",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Projects/Project-Erl.png",
+        "https://cdn.adeonatech.net/companywebnew/adeona/Projects/Project-Esms.jpg"
+      ],
+      "word_count": 38,
+      "scrape_timestamp": "2025-09-28T14:01:15.342169",
+      "status_code": 200
+    },
+    {
+      "url": "https://adeonatech.net/service/tailored-sd",
+      "title": "Adeona Technologies",
+      "content": "Adeona Tech Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Short Link About us Contact us Our Services Our Projects Help Link Privacy Policy Contact Contact Us 14 Sir Baron Jayathilaka Mawatha,Colombo 01, Sri Lanka (+94) 117 433 333 info@adeonatech.net Adeona Technologies , all rights reserved.",
+      "meta_description": "A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products",
+      "headers": [
+        "AdeonaTech"
+      ],
+      "internal_links": [
+        "https://adeonatech.net/contact",
+        "https://adeonatech.net/privacy-policy",
+        "https://adeonatech.net/home",
+        "https://adeonatech.net/service",
+        "https://adeonatech.net",
+        "https://adeonatech.net/project",
+        "https://adeonatech.net/about"
+      ],
+      "images": [
+        "https://adeonatech.net/imgs/santa-cart.gif"
+      ],
+      "word_count": 55,
+      "scrape_timestamp": "2025-09-28T14:01:21.283897",
+      "status_code": 200
+    }
+  ],
+  "failed_urls": {}
+}

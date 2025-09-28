@@ -1,0 +1,42 @@
+URL: https://adeonatech.net/privacy-policy
+Title: Adeona Technologies
+Scraped: 2025-09-28T14:00:34.098541
+Word Count: 348
+Status Code: 200
+================================================================================
+
+Meta Description: A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products
+
+Headers Found:
+- Privacy Policy
+- Privacy Policy
+- AdeonaTech
+- Adeona Technologies
+- Adeona Technologies
+- Information We Collect
+- Purpose of Data Collection
+- How We Use and Share Information
+- Data Access and Deletion
+- Data Security
+- Use of Web and Mobile Applications
+- Changes to This Policy
+- Contact Us
+- This policy is effective as of 01st October, 2024.
+
+MAIN CONTENT:
+----------------------------------------
+Adeona Technologies Privacy Policy Adeona Technologies Privacy Policy Adeona Technologies (Private) Limited (“we,” “our,” or “us”) is committed to protecting the privacy of individuals who interact with our website and services. This Privacy Policy outlines how we collect, use, and safeguard information obtained through our company website https://adeonatech.net and any customized software solutions we develop for our clients. Information We Collect We may collect the following types of personal information, depending on the specific services requested by our clients: Full name Email address Location data (if applicable) Other information submitted via forms We collect this information only when voluntarily provided by users through forms on our website or applications. Purpose of Data Collection We collect personal information solely to deliver the intended services of the applications we develop. These services are customized for each client and may vary depending on the project requirements. How We Use and Share Information The information collected is used only to: Provide and maintain our software solutions Communicate with users regarding services and support Ensure proper functionality of client applications We do not share, sell, or disclose your personal information to third parties. Data Access and Deletion Users have the right to: Request access to their personal data Request correction or deletion of their data To make such requests, users may contact us at: info@adeonatech.net Data Security We implement appropriate technical and organizational measures to protect personal information against unauthorized access, loss, or misuse. Use of Web and Mobile Applications As part of our services, we may develop web and mobile applications for clients. Each application may have its own privacy statement, depending on how data is collected and used. This Privacy Policy applies generally to our practices as a service provider. Changes to This Policy We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date. Contact Us If you have any questions about this Privacy Policy or our data practices, please contact: Adeona Technologies (Private) Limited Email: info@adeonatech.net Website: https://adeonatech.net This policy is effective as of 01st October, 2024.
+
+DEBUG INFO:
+--------------------
+Raw HTML (first 1000 chars):
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Adeona Technologies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Adeona, adeonatech,adeona technologies, it industry, SMS, Software, Development, In-App, e-Commerce, Chatbot, API, AR/VR, Fleet Managemet, Digi Bill, Custom software development services, Business software customization, Tailored software solutions for businesses, Client-focused software development">
+    <meta name="theme-color" content="rgba(55, 101, 129)">
+    <meta property="og:title" content="Adeona Technologies">
+    <meta property="og:description" content="A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products">
+    <meta property="og:image" content="https://dsuabgmmtxmj1.cloudfront.net/companyweb/Purple Futuristic Technology Facebook&nbsp;Cover.png"  ="">
+    <link rel="icon" type="imag...

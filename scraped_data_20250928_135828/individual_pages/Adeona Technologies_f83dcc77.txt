@@ -1,0 +1,38 @@
+URL: https://adeonatech.net/project
+Title: Adeona Technologies
+Scraped: 2025-09-28T14:01:15.342169
+Word Count: 38
+Status Code: 200
+================================================================================
+
+Meta Description: A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products
+
+Headers Found:
+- Projects
+- Our Recently Completed Projects
+- AdeonaTech
+- eSMS
+- In-App Advertising Platform
+- eRL 2.0 Integration
+- Digital Bill
+- Spare Part Verification System
+- Bulk OTA Setting Update Platform
+- Our Project
+
+MAIN CONTENT:
+----------------------------------------
+Projects Our Project Our Recently Completed Projects eSMS Dialog Axiata PLC In-App Advertising Platform ADA Cambodia eRL 2.0 Integration NITF Digital Bill Dialog Axiata PLC Marketplace Spare Part Verification System Bulk OTA Setting Update Platform Smart Axiata PLC
+
+DEBUG INFO:
+--------------------
+Raw HTML (first 1000 chars):
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Adeona Technologies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Adeona, adeonatech,adeona technologies, it industry, SMS, Software, Development, In-App, e-Commerce, Chatbot, API, AR/VR, Fleet Managemet, Digi Bill, Custom software development services, Business software customization, Tailored software solutions for businesses, Client-focused software development">
+    <meta name="theme-color" content="rgba(55, 101, 129)">
+    <meta property="og:title" content="Adeona Technologies">
+    <meta property="og:description" content="A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products">
+    <meta property="og:image" content="https://dsuabgmmtxmj1.cloudfront.net/companyweb/Purple Futuristic Technology Facebook&nbsp;Cover.png"  ="">
+    <link rel="icon" type="imag...

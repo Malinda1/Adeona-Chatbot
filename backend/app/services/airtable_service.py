@@ -1,6 +1,6 @@
 # Airtable API integration
 
-# Airtable API integration
+# Airtable API integration - ENHANCED CANCELLATION
 
 # Simple Airtable API integration using requests
 
@@ -186,7 +186,7 @@ class AirtableService:
             return []
     
     async def check_cancellation_eligibility(self, user_id: str) -> Dict[str, Any]:
-        """Check if a customer is eligible for cancellation"""
+        """ENHANCED: Check if a customer is eligible for cancellation within 24-hour window"""
         try:
             log_function_call("check_cancellation_eligibility", {"user_id": user_id})
             
@@ -195,91 +195,135 @@ class AirtableService:
             if not customer:
                 return {
                     "eligible": False,
-                    "reason": "User ID not found. Please check your User ID and try again.",
-                    "customer": None
+                    "reason": f"User ID '{user_id}' not found. Please check your User ID and try again.",
+                    "customer": None,
+                    "time_exceeded": False
                 }
             
             if customer.status != "active":
                 return {
                     "eligible": False,
                     "reason": "Service request is not active or has already been cancelled.",
-                    "customer": customer
+                    "customer": customer,
+                    "time_exceeded": False
                 }
             
-            can_cancel = customer.can_cancel(settings.CANCELLATION_HOURS)
+            # Check if within 24-hour cancellation window
+            # Fixed: Use the correct attribute name and Customer's built-in method
+            try:
+                # Use the Customer class's built-in method with the correct parameter name
+                can_cancel = customer.can_cancel(cancellation_hours=24)
+                
+            except (ValueError, AttributeError) as e:
+                logger.error(f"Error checking cancellation eligibility for customer {user_id}: {e}")
+                return {
+                    "eligible": False,
+                    "reason": "Error processing booking date. Please contact support.",
+                    "customer": customer,
+                    "time_exceeded": False
+                }
             
             if can_cancel:
                 return {
                     "eligible": True,
-                    "reason": "Within cancellation window",
-                    "customer": customer
+                    "reason": "Within 24-hour cancellation window",
+                    "customer": customer,
+                    "time_exceeded": False
                 }
             else:
-                deadline = customer.get_cancellation_deadline(settings.CANCELLATION_HOURS)
+                # Calculate when the 24-hour window expired using Customer's method
+                deadline = customer.get_cancellation_deadline(cancellation_hours=24)
+                
                 return {
                     "eligible": False,
-                    "reason": f"Cancellation window expired. Deadline was {deadline.strftime('%Y-%m-%d %H:%M:%S')}",
-                    "customer": customer
+                    "reason": f"The 24-hour cancellation window has expired. Deadline was {deadline.strftime('%Y-%m-%d at %H:%M')}.",
+                    "customer": customer,
+                    "time_exceeded": True,
+                    "deadline": deadline.strftime('%Y-%m-%d at %H:%M')
                 }
                 
         except Exception as e:
             log_error(e, "check_cancellation_eligibility")
             return {
                 "eligible": False,
-                "reason": "System error occurred",
-                "customer": None
+                "reason": "System error occurred while checking eligibility",
+                "customer": None,
+                "time_exceeded": False
             }
     
     async def process_cancellation(self, user_id: str) -> Dict[str, Any]:
-        """Process service cancellation"""
+        """ENHANCED: Process service cancellation with comprehensive error handling"""
         try:
             log_function_call("process_cancellation", {"user_id": user_id})
             
-            # Check eligibility
+            # First, check eligibility
             eligibility = await self.check_cancellation_eligibility(user_id)
             
             if not eligibility["eligible"]:
-                # Check if it's because time exceeded
-                if eligibility["customer"] and eligibility["reason"].startswith("Cancellation window expired"):
+                # Handle different failure reasons
+                if eligibility.get("time_exceeded", False):
+                    # 24-hour window exceeded
                     return {
                         "success": False,
-                        "message": f"Your cancellation request cannot be processed because it exceeds the 24-hour cancellation window. {eligibility['reason']}",
+                        "message": f"Cannot cancel service request '{user_id}' - the 24-hour cancellation window has expired. {eligibility['reason']}",
                         "requires_contact": True,
-                        "time_exceeded": True
+                        "time_exceeded": True,
+                        "user_found": True
                     }
+                
+                elif eligibility["customer"] is None:
+                    # User ID not found
+                    return {
+                        "success": False,
+                        "message": f"User ID '{user_id}' not found in our records. Please verify your User ID.",
+                        "requires_contact": True,
+                        "time_exceeded": False,
+                        "user_found": False
+                    }
+                
                 else:
+                    # Service already cancelled or inactive
                     return {
                         "success": False,
                         "message": eligibility["reason"],
-                        "requires_contact": not eligibility["customer"],
-                        "time_exceeded": False
+                        "requires_contact": False,
+                        "time_exceeded": False,
+                        "user_found": True
                     }
             
-            # Delete the record
+            # User is eligible - proceed with cancellation
+            logger.info(f"Processing eligible cancellation for User ID: {user_id}")
+            
             deleted = await self.delete_customer_record(user_id)
             
             if deleted:
+                logger.info(f"Successfully cancelled and deleted record for User ID: {user_id}")
                 return {
                     "success": True,
-                    "message": f"Your service request (User ID: {user_id}) has been successfully cancelled. We're sorry to see you go! If you change your mind, feel free to book our services again.",
+                    "message": f"Service request '{user_id}' has been successfully cancelled and removed from our records.",
                     "requires_contact": False,
-                    "time_exceeded": False
+                    "time_exceeded": False,
+                    "user_found": True
                 }
             else:
+                # Deletion failed
+                logger.error(f"Failed to delete record for User ID: {user_id}")
                 return {
                     "success": False,
-                    "message": "Failed to process cancellation due to a system error.",
+                    "message": f"Failed to complete cancellation for '{user_id}' due to a system error.",
                     "requires_contact": True,
-                    "time_exceeded": False
+                    "time_exceeded": False,
+                    "user_found": True
                 }
                 
         except Exception as e:
             log_error(e, "process_cancellation")
             return {
                 "success": False,
-                "message": "System error occurred during cancellation",
+                "message": f"System error occurred while processing cancellation for '{user_id}'",
                 "requires_contact": True,
-                "time_exceeded": False
+                "time_exceeded": False,
+                "user_found": False
             }
     
     async def validate_customer_data(self, customer_data: Dict[str, str]) -> tuple[bool, str]:

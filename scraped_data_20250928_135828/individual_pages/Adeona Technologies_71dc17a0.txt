@@ -1,0 +1,29 @@
+URL: https://adeonatech.net/project/project-in-app
+Title: Adeona Technologies
+Scraped: 2025-09-28T14:00:57.816729
+Word Count: 55
+Status Code: 200
+================================================================================
+
+Meta Description: A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products
+
+Headers Found:
+- AdeonaTech
+
+MAIN CONTENT:
+----------------------------------------
+Adeona Tech Discover the Adeona difference – where your vision is our blueprint, and your success is our mission. Short Link About us Contact us Our Services Our Projects Help Link Privacy Policy Contact Contact Us 14 Sir Baron Jayathilaka Mawatha,Colombo 01, Sri Lanka (+94) 117 433 333 info@adeonatech.net Adeona Technologies , all rights reserved.
+
+DEBUG INFO:
+--------------------
+Raw HTML (first 1000 chars):
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Adeona Technologies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Adeona, adeonatech,adeona technologies, it industry, SMS, Software, Development, In-App, e-Commerce, Chatbot, API, AR/VR, Fleet Managemet, Digi Bill, Custom software development services, Business software customization, Tailored software solutions for businesses, Client-focused software development">
+    <meta name="theme-color" content="rgba(55, 101, 129)">
+    <meta property="og:title" content="Adeona Technologies">
+    <meta property="og:description" content="A digital transformation consultancy and a custom software development company which provides clients leading edge technology services and robust products">
+    <meta property="og:image" content="https://dsuabgmmtxmj1.cloudfront.net/companyweb/Purple Futuristic Technology Facebook&nbsp;Cover.png"  ="">
+    <link rel="icon" type="imag...
