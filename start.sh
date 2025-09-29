@@ -1,10 +1,14 @@
-
 #!/usr/bin/env bash
 set -e
-# Install dependencies
 
-exec pip install -r /Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/requirements.txt
+# Activate the virtual environment
+source /Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/bin/activate
+
+# Install dependencies (optional if already installed)
+pip install -r /Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/requirements.txt
+
+# Set the port
+export PORT=8000
 
 # Start FastAPI with uvicorn
-exec export PORT=8000
-exec uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
+uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT --reload
