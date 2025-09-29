@@ -7,5 +7,5 @@ set -e
 pip install -r requirements.txt
 
 # Start FastAPI with uvicorn
-exec uvicorn backend.app.main:app --host 0.0.0.0 --port ${PORT:-8080} --workers 1
-EOF
+export PORT=8000
+uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
