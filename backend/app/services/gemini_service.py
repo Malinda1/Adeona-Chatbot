@@ -317,13 +317,22 @@ class EnhancedGeminiService:
             await asyncio.sleep(wait_time)
     
     async def generate_speech(self, text: str, voice_name: str = None, output_file: str = "output.wav") -> Optional[str]:
-        """Generate speech from text using Gemini TTS with enhanced rate limiting and retry logic"""
+        """Generate speech from text using Gemini TTS with text chunking for long responses"""
         try:
             log_function_call("generate_speech", {
                 "text_length": len(text), 
                 "voice": voice_name or settings.TTS_VOICE_NAME,
                 "output_file": output_file
             })
+            
+            # Clean and prepare text
+            clean_text = self._clean_text_for_tts(text)
+            
+            # If text is too long, truncate intelligently
+            max_tts_length = 800  # Increased from 500
+            if len(clean_text) > max_tts_length:
+                clean_text = self._truncate_text_intelligently(clean_text, max_tts_length)
+                logger.info(f"Text truncated to {len(clean_text)} characters for TTS")
             
             # Rate limiting
             await self._wait_for_rate_limit()
@@ -336,7 +345,7 @@ class EnhancedGeminiService:
                     url = f"https://generativelanguage.googleapis.com/v1beta/models/{self.tts_model}:generateContent?key={settings.GEMINI_API_KEY}"
                     headers = {"Content-Type": "application/json"}
                     payload = {
-                        "contents": [{"parts": [{"text": text}]}],
+                        "contents": [{"parts": [{"text": clean_text}]}],
                         "generationConfig": {
                             "responseModalities": ["AUDIO"],
                             "speechConfig": {
@@ -357,7 +366,7 @@ class EnhancedGeminiService:
                     # Handle rate limiting
                     if response.status_code == 429:
                         retry_count += 1
-                        wait_time = 2 ** retry_count  # Exponential backoff
+                        wait_time = 2 ** retry_count
                         logger.warning(f"TTS rate limit hit (attempt {retry_count}), waiting {wait_time} seconds...")
                         
                         if retry_count < max_retries:
@@ -367,12 +376,10 @@ class EnhancedGeminiService:
                             logger.error("TTS rate limit exceeded after all retries")
                             return None
                     
-                    # Handle quota exceeded
                     elif response.status_code == 403:
                         logger.error("TTS quota exceeded")
                         return None
                     
-                    # Handle other errors
                     elif not response.ok:
                         logger.error(f"TTS API error: {response.status_code} - {response.text}")
                         return None
@@ -408,7 +415,7 @@ class EnhancedGeminiService:
                     # Verify file was created
                     if os.path.exists(full_file_path):
                         file_size = os.path.getsize(full_file_path)
-                        logger.info(f"Speech generated and saved to {full_file_path} (Size: {file_size} bytes)")
+                        logger.info(f"Speech generated: {full_file_path} ({file_size} bytes) for {len(clean_text)} chars")
                         return output_file
                     else:
                         logger.error(f"Audio file was not created at {full_file_path}")
@@ -441,6 +448,57 @@ class EnhancedGeminiService:
             log_error(e, "generate_speech")
             logger.error(f"TTS Error details: {str(e)}")
             return None
+    
+    def _clean_text_for_tts(self, text: str) -> str:
+        """Clean text for TTS - remove formatting, special characters"""
+        import re
+        
+        # Remove markdown formatting
+        clean = re.sub(r'\*\*\*', '', text)  # Remove triple asterisks
+        clean = re.sub(r'\*\*', '', clean)   # Remove double asterisks
+        clean = re.sub(r'\* ', '', clean)    # Remove bullet asterisks
+        clean = re.sub(r'`', '', clean)      # Remove backticks
+        clean = re.sub(r'#+ ', '', clean)    # Remove markdown headers
+        
+        # Remove URLs (they don't speak well)
+        clean = re.sub(r'https?://[^\s]+', '', clean)
+        
+        # Remove special unicode characters
+        clean = re.sub(r'[✓✗✅❌📞📧🌐•]', '', clean)
+        
+        # Remove extra whitespace
+        clean = re.sub(r'\s+', ' ', clean)
+        
+        # Remove newlines (replace with periods for better speech flow)
+        clean = re.sub(r'\n+', '. ', clean)
+        
+        return clean.strip()
+    
+    def _truncate_text_intelligently(self, text: str, max_length: int) -> str:
+        """Intelligently truncate text at sentence boundaries"""
+        if len(text) <= max_length:
+            return text
+        
+        # Try to truncate at sentence end
+        truncated = text[:max_length]
+        
+        # Find the last sentence end
+        last_period = truncated.rfind('.')
+        last_question = truncated.rfind('?')
+        last_exclamation = truncated.rfind('!')
+        
+        # Use the last sentence boundary found
+        last_sentence = max(last_period, last_question, last_exclamation)
+        
+        if last_sentence > max_length * 0.7:  # If we found a sentence end in the last 30%
+            return truncated[:last_sentence + 1].strip()
+        
+        # Otherwise, truncate at word boundary
+        last_space = truncated.rfind(' ')
+        if last_space > 0:
+            return truncated[:last_space].strip() + "..."
+        
+        return truncated.strip() + "..."
     
     async def chat_with_context(self, user_message: str, system_prompt: str, context: Optional[str] = None) -> str:
         """ENHANCED: Generate chat response with system prompt and context, optimized for Adeona"""
