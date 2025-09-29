@@ -3,7 +3,7 @@
 set -e
 # Install dependencies
 
-pip install -r /Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/requirements.txt
+exec pip install -r /Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/requirements.txt
 
 # Start FastAPI with uvicorn
 exec export PORT=8000
