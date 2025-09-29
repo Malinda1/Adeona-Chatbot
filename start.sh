@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-# Activate the virtual environment
-source /Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/bot_env/bin/activate
 
 # Install dependencies (optional if already installed)
 pip install -r /Users/pasindumalinda/AI_projects/Agent_02/adeona-chatbot/backend/requirements.txt
