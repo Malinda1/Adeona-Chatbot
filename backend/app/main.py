@@ -1,7 +1,4 @@
-# Entry point for FastAPI app - UPDATED WITH CANCELLATION FIX
-
-# Enhanced main application with local data integration and FIXED CANCELLATION
-
+# Entry point for FastAPI app 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -24,7 +21,7 @@ os.makedirs("logs", exist_ok=True)
 # Enhanced lifespan event handler
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """Enhanced application lifespan events with permanent local data loading and cancellation support"""
+    
     try:
         logger.info("Starting Enhanced Adeona Chatbot with Permanent Local Data Storage and Fixed Cancellation...")
         
@@ -76,7 +73,7 @@ async def lifespan(app: FastAPI):
     finally:
         logger.info("Application shutdown completed")
 
-# Create enhanced FastAPI application
+# Create FastAPI application
 app = FastAPI(
     title="Enhanced Adeona Technologies Chatbot API",
     description="Advanced AI chatbot with permanent local data storage, intelligent search, real-time fallback capabilities, and FIXED service cancellation within 24-hour window",
@@ -86,7 +83,7 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-# Enhanced CORS middleware
+#  CORS middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # Configure based on your deployment needs
@@ -95,7 +92,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include enhanced routes
+# Include routes
 app.include_router(router, prefix="/api/v1")
 
 # Mount static files for frontend
@@ -106,10 +103,10 @@ frontend_static_path = "frontend/static"
 if os.path.exists(frontend_static_path):
     app.mount("/frontend/static", StaticFiles(directory=frontend_static_path), name="frontend_static")
 
-# Enhanced frontend serving
+#  frontend serving
 @app.get("/")
 async def serve_frontend():
-    """Serve the main frontend page with enhanced capabilities info including cancellation fix"""
+
     # Try multiple possible paths for the frontend
     possible_paths = [
         "frontend/index.html",
@@ -127,7 +124,7 @@ async def serve_frontend():
                 headers={"Cache-Control": "no-cache"}
             )
     
-    # Enhanced API-only response with system status including cancellation
+    # API-only response with system status including cancellation
     try:
         # Get quick system status
         vectordb_stats = await vectordb_service.get_comprehensive_stats()
@@ -196,10 +193,10 @@ async def favicon():
     
     raise HTTPException(status_code=404, detail="Favicon not found")
 
-# Enhanced global exception handler
+# global exception handler
 @app.exception_handler(Exception)
 async def global_exception_handler(request, exc):
-    """Enhanced global exception handler with better logging"""
+    """ global exception handler with better logging"""
     log_error(exc, f"Global exception for {request.url}")
     
     # Provide more helpful error messages based on the exception type
@@ -216,10 +213,10 @@ async def global_exception_handler(request, exc):
     
     return HTTPException(status_code=500, detail=detail)
 
-# Enhanced health check endpoint at root level
+# health check endpoint at root level
 @app.get("/health")
 async def root_health():
-    """Enhanced root level health check with system status including cancellation"""
+    """root level health check with system status including cancellation"""
     try:
         # Quick health indicators
         vectordb_stats = await vectordb_service.get_comprehensive_stats()

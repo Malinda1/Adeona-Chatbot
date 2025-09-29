@@ -1,6 +1,5 @@
 # Google Sheets integration
 
-# Google Sheets service for contact information
 
 import os
 import json

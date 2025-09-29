@@ -1,6 +1,6 @@
 # VectorDB operations
 
-# Enhanced VectorDB service with improved search and fallback logic
+
 
 from pinecone import Pinecone, ServerlessSpec
 from typing import List, Dict, Optional, Any
@@ -16,7 +16,7 @@ from backend.app.utils.logger import logger, log_error, log_function_call
 from backend.app.models.chat_models import VectorSearchResult
 
 class EnhancedVectorDBService:
-    """Enhanced service for managing Pinecone vector database with improved search logic"""
+    """managing Pinecone vector database with improved search logic"""
     
     def __init__(self):
         self.pc = Pinecone(api_key=settings.PINECONE_API_KEY)
@@ -30,7 +30,7 @@ class EnhancedVectorDBService:
         self.LOCAL_DATA_NAMESPACE = "adeona_local_scraped"
         self.SERPAPI_NAMESPACE = "adeona_serpapi"
         
-        # FIXED: More lenient search thresholds
+        #  More lenient search thresholds
         self.MIN_SEARCH_SCORE = 0.6  # Lowered from 0.8
         self.GOOD_RESULT_THRESHOLD = 0.75  # Lowered from 0.8
         self.EXCELLENT_RESULT_THRESHOLD = 0.85
@@ -185,18 +185,18 @@ class EnhancedVectorDBService:
             raise e
     
     async def search_adeona_knowledge(self, query: str, top_k: int = 15, include_serpapi: bool = False) -> List[VectorSearchResult]:
-        """IMPROVED: Search Adeona knowledge base with better scoring and expanded search"""
+        """Search Adeona knowledge base with better scoring and expanded search"""
         try:
             await self.ensure_initialized()
             log_function_call("search_adeona_knowledge", {"query": query[:50], "top_k": top_k})
             
-            # IMPROVED: Expand query for better matching
+            # Expand query for better matching
             expanded_query = self._expand_query_for_adeona(query)
             
             # Generate query embedding
             query_embedding = await gemini_service.generate_embedding(expanded_query)
             
-            # IMPROVED: Search with more results initially to have better selection
+            # Search with more results initially to have better selection
             local_results = await self._search_namespace(
                 query_embedding, 
                 self.LOCAL_DATA_NAMESPACE, 
@@ -206,7 +206,7 @@ class EnhancedVectorDBService:
             
             logger.info(f"Local search returned {len(local_results)} results with expanded query")
             
-            # IMPROVED: Check for different quality levels
+            # Check for different quality levels
             excellent_results = [r for r in local_results if r.score >= self.EXCELLENT_RESULT_THRESHOLD]
             good_results = [r for r in local_results if r.score >= self.GOOD_RESULT_THRESHOLD]
             decent_results = [r for r in local_results if r.score >= self.MIN_SEARCH_SCORE]
@@ -250,7 +250,7 @@ class EnhancedVectorDBService:
             return []
     
     def _expand_query_for_adeona(self, query: str) -> str:
-        """IMPROVED: Expand query to improve search matching"""
+        """Expand query to improve search matching"""
         query_lower = query.lower().strip()
         
         # Handle context awareness - "this company" means "Adeona Technologies"
@@ -275,7 +275,7 @@ class EnhancedVectorDBService:
         return query
     
     async def _search_namespace(self, query_embedding: List[float], namespace: str, top_k: int = 15, min_score: float = 0.6) -> List[VectorSearchResult]:
-        """IMPROVED: Search specific namespace with more lenient scoring"""
+        """Search specific namespace with more lenient scoring"""
         try:
             search_results = self.index.query(
                 vector=query_embedding,
@@ -286,7 +286,7 @@ class EnhancedVectorDBService:
             
             results = []
             for match in search_results['matches']:
-                # IMPROVED: Use more lenient threshold and include more results
+                # Use more lenient threshold and include more results
                 if match['score'] >= min_score:
                     result = VectorSearchResult(
                         content=match['metadata'].get('text', ''),
@@ -303,7 +303,7 @@ class EnhancedVectorDBService:
             return []
     
     async def search_with_fallback(self, query: str, top_k: int = 12) -> tuple[List[VectorSearchResult], bool]:
-        """IMPROVED: Enhanced search with more intelligent fallback logic"""
+        """Enhanced search with more intelligent fallback logic"""
         try:
             log_function_call("search_with_fallback", {"query": query[:50]})
             
@@ -312,7 +312,7 @@ class EnhancedVectorDBService:
             
             logger.info(f"Local search found {len(local_results)} results")
             
-            # IMPROVED: More intelligent fallback decision
+            # More intelligent fallback decision
             needs_fallback = self._should_use_serpapi_fallback(local_results, query)
             
             if not needs_fallback:
@@ -333,7 +333,7 @@ class EnhancedVectorDBService:
             return [], False
     
     def _should_use_serpapi_fallback(self, local_results: List[VectorSearchResult], query: str) -> bool:
-        """IMPROVED: More intelligent decision on when to use SerpAPI fallback"""
+        """More intelligent decision on when to use SerpAPI fallback"""
         
         # If no local results at all
         if not local_results:
@@ -366,7 +366,7 @@ class EnhancedVectorDBService:
         return False
     
     def _combine_search_results(self, local_results: List[VectorSearchResult], serpapi_results: List[VectorSearchResult]) -> List[VectorSearchResult]:
-        """IMPROVED: Better combination of local and SerpAPI results"""
+        """Better combination of local and SerpAPI results"""
         
         # Prioritize local results by boosting their scores slightly
         boosted_local = []
@@ -407,7 +407,7 @@ class EnhancedVectorDBService:
         return unique_results
     
     async def _search_serpapi_fallback(self, query: str) -> List[VectorSearchResult]:
-        """IMPROVED: Search SerpAPI as fallback with better result processing"""
+        """Search SerpAPI as fallback with better result processing"""
         try:
             # Use SerpAPI to search for additional information
             serpapi_results = await serpapi_service.search_adeona_specific(query, max_results=5)
@@ -415,7 +415,7 @@ class EnhancedVectorDBService:
             # Convert SerpAPI results to VectorSearchResult format
             fallback_results = []
             for i, result in enumerate(serpapi_results):
-                # IMPROVED: Better scoring for SerpAPI results
+                #Better scoring for SerpAPI results
                 base_score = 0.75 - (i * 0.05)  # Start higher, decrease by position
                 relevance_score = result.get('relevance_score', 0)
                 
@@ -444,7 +444,7 @@ class EnhancedVectorDBService:
     
     # Continue with other existing methods...
     async def search_privacy_policy(self, query: str) -> List[VectorSearchResult]:
-        """Enhanced privacy policy search using local data"""
+        """privacy policy search using local data"""
         try:
             log_function_call("search_privacy_policy", {"query": query})
             

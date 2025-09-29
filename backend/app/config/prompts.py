@@ -1,12 +1,10 @@
 # System & user prompts - ENHANCED CANCELLATION SUPPORT
 
-# Enhanced system prompts with improved search and response accuracy
+
 
 from datetime import datetime
 
 class EnhancedAdeonaPrompts:
-    """Enhanced system prompts specifically designed for accurate Adeona Technologies responses"""
-    
     @staticmethod
     def get_system_prompt() -> str:
         """Main system prompt with strict Adeona focus and search instructions"""
@@ -201,7 +199,7 @@ Always maintain empathy and professionalism in cancellation responses."""
 
     @staticmethod
     def get_fallback_response_prompt() -> str:
-        """Enhanced prompt for fallback responses when search results are insufficient"""
+        """prompt for fallback responses when search results are insufficient"""
         return """You are providing a fallback response when search results don't contain sufficient information about the user's Adeona Technologies inquiry.
 
 FALLBACK RESPONSE STRATEGY:
@@ -274,7 +272,7 @@ COMPREHENSIVE COVERAGE:
 
     @staticmethod
     def get_intent_analysis_prompt() -> str:
-        """Enhanced intent analysis prompt with better classification and cancellation priority"""
+        """intent analysis prompt with better classification and cancellation priority"""
         return """Analyze user intent for Adeona Technologies chatbot with improved accuracy and CANCELLATION PRIORITY.
 
 INTENT CLASSIFICATION (Priority Order):
@@ -336,7 +334,7 @@ Always provide specific reasoning for intent classification, including the key p
 
     @staticmethod
     def get_error_handling_prompt() -> str:
-        """Enhanced error handling prompt"""
+        """ error handling prompt"""
         return """Handle errors and limitations professionally while maintaining Adeona Technologies focus.
 
 ERROR SCENARIOS & RESPONSES:

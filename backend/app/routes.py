@@ -1,9 +1,6 @@
 # Define API routes here
 
 
-# Define API routes here
-
-# Enhanced API routes with local data management
 
 from fastapi import APIRouter, HTTPException, BackgroundTasks
 from fastapi.responses import JSONResponse, FileResponse
@@ -46,7 +43,7 @@ async def root():
 
 @router.get("/health", response_model=HealthResponse, tags=["Health"])
 async def health_check():
-    """Enhanced health check endpoint"""
+    """health check endpoint"""
     try:
         log_function_call("health_check")
         
@@ -113,7 +110,7 @@ async def health_check():
 
 @router.post("/chat", response_model=ChatResponse, tags=["Chat"])
 async def chat_endpoint(request: ChatRequest):
-    """Enhanced chat endpoint with permanent local data integration"""
+    """hat endpoint with permanent local data integration"""
     try:
         log_function_call("chat_endpoint", {"message_length": len(request.message)})
         
@@ -135,41 +132,41 @@ async def chat_endpoint(request: ChatRequest):
 
 @router.get("/audio/{filename}", tags=["Audio"])
 async def get_audio_file(filename: str):
-    """FIXED: Serve audio files with proper validation and security"""
+    """ Serve audio files with proper validation and security"""
     try:
         log_function_call("get_audio_file", {"filename": filename})
         
-        # FIXED: Validate filename to prevent directory traversal attacks
+        # Validate filename to prevent directory traversal attacks
         if not filename or ".." in filename or "/" in filename or "\\" in filename:
             logger.warning(f"Invalid filename requested: {filename}")
             raise HTTPException(status_code=400, detail="Invalid filename")
         
-        # FIXED: Only allow .wav files
+        # Only allow .wav files
         if not filename.endswith('.wav'):
             logger.warning(f"Non-WAV file requested: {filename}")
             raise HTTPException(status_code=400, detail="Only WAV files are supported")
         
-        # FIXED: Construct full file path
+        # Construct full file path
         file_path = os.path.join("static", "audio", filename)
         
-        # FIXED: Normalize the path to prevent issues
+        # Normalize the path to prevent issues
         file_path = os.path.normpath(file_path)
         
-        # FIXED: Check if file exists
+        # Check if file exists
         if not os.path.exists(file_path):
             logger.warning(f"Audio file not found: {file_path}")
             raise HTTPException(status_code=404, detail="Audio file not found")
         
-        # FIXED: Check if it's actually a file (not a directory)
+        # Check if it's actually a file (not a directory)
         if not os.path.isfile(file_path):
             logger.warning(f"Requested path is not a file: {file_path}")
             raise HTTPException(status_code=400, detail="Invalid file path")
         
-        # FIXED: Get file size for logging
+        # Get file size for logging
         file_size = os.path.getsize(file_path)
         logger.info(f"Serving audio file: {file_path} ({file_size} bytes)")
         
-        # FIXED: Return file with proper headers
+        # Return file with proper headers
         return FileResponse(
             path=file_path,
             media_type="audio/wav",
@@ -210,7 +207,7 @@ async def get_comprehensive_stats():
         # Get SerpAPI stats
         serpapi_test = await serpapi_service.test_connection()
         
-        # FIXED: Add audio directory stats
+        #  Add audio directory stats
         audio_stats = {
             "audio_files_count": 0,
             "total_audio_size": 0,
@@ -234,7 +231,7 @@ async def get_comprehensive_stats():
             "customers": customer_stats,
             "vectordb": vectordb_stats,
             "local_data": local_data_stats,
-            "audio": audio_stats,  # FIXED: Include audio statistics
+            "audio": audio_stats,  # Include audio statistics
             "serpapi": {
                 "available": serpapi_test["success"],
                 "status": serpapi_test.get("api_status", "unknown")
@@ -246,7 +243,7 @@ async def get_comprehensive_stats():
         log_error(e, "get_comprehensive_stats")
         raise HTTPException(status_code=500, detail="Error retrieving statistics")
 
-# FIXED: Add debug endpoint for audio testing
+#  Add debug endpoint for audio testing
 @router.get("/debug/audio", tags=["Debug"])
 async def debug_audio_directory():
     """Debug endpoint to check audio directory status"""
@@ -383,7 +380,7 @@ async def preview_local_file(file_index: int):
         log_error(e, "preview_local_file")
         raise HTTPException(status_code=500, detail=f"Error previewing file: {str(e)}")
 
-# Enhanced Search Testing Routes
+# Search Testing Routes
 @router.get("/admin/test-search", tags=["Admin - Testing"])
 async def test_enhanced_search(query: str = "privacy policy"):
     """Test enhanced search functionality with local data + SerpAPI fallback"""

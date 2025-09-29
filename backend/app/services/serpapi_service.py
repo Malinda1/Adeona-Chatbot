@@ -1,6 +1,3 @@
-# Fixed SerpAPI service with SSL certificate handling
-
-# Enhanced SerpAPI service with improved search accuracy and SSL handling
 
 import aiohttp
 import ssl
@@ -13,8 +10,7 @@ from backend.app.config.settings import settings
 from backend.app.utils.logger import logger, log_error, log_function_call
 
 class EnhancedSerpAPIService:
-    """Enhanced service for real-time Adeona Technologies information via Google Search"""
-    
+
     def __init__(self):
         self.serpapi_key = settings.SERPAPI_API_KEY
         self.serpapi_url = "https://serpapi.com/search"
@@ -24,7 +20,7 @@ class EnhancedSerpAPIService:
         self._last_request_time = 0
         self._min_request_interval = 1.2  # Slightly increased interval
         
-        # Enhanced search configuration
+        #  search configuration
         self.search_config = {
             'timeout': 20,
             'max_retries': 2,
@@ -44,7 +40,7 @@ class EnhancedSerpAPIService:
         self._last_request_time = time.time()
     
     async def search_adeona_specific(self, query: str, max_results: int = 8) -> List[Dict[str, Any]]:
-        """IMPROVED: Search for Adeona Technologies specific information with better accuracy"""
+        """Search for Adeona Technologies specific information with better accuracy"""
         try:
             log_function_call("search_adeona_specific", {"query": query[:50], "max_results": max_results})
             
@@ -55,7 +51,7 @@ class EnhancedSerpAPIService:
             # Rate limiting
             await self._rate_limited_request()
             
-            # IMPROVED: Create multiple search strategies for better coverage
+            # Create multiple search strategies for better coverage
             search_strategies = self._create_search_strategies(query)
             
             all_results = []
@@ -86,7 +82,7 @@ class EnhancedSerpAPIService:
             return []
     
     def _create_search_strategies(self, query: str) -> List[Dict[str, str]]:
-        """IMPROVED: Create multiple search strategies for comprehensive coverage"""
+        """Create multiple search strategies for comprehensive coverage"""
         
         strategies = []
         
@@ -181,7 +177,7 @@ class EnhancedSerpAPIService:
             title = result.get('title', '')
             snippet = result.get('snippet', '')
             
-            # IMPROVED: Better validation for Adeona content
+            # Better validation for Adeona content
             if not self._is_valid_adeona_result(link, title, snippet):
                 continue
             
@@ -202,7 +198,7 @@ class EnhancedSerpAPIService:
         return processed_results
     
     def _is_valid_adeona_result(self, link: str, title: str, snippet: str) -> bool:
-        """IMPROVED: Better validation for Adeona-specific results"""
+        """Better validation for Adeona-specific results"""
         
         # Must be from Adeona domain
         if not self.adeona_domain.lower() in link.lower():
@@ -230,7 +226,7 @@ class EnhancedSerpAPIService:
         return True
     
     def _calculate_enhanced_relevance_score(self, title: str, snippet: str, strategy_type: str) -> float:
-        """IMPROVED: Calculate relevance score with strategy weighting"""
+        """Calculate relevance score with strategy weighting"""
         score = 0.0
         content = f"{title} {snippet}".lower()
         
@@ -286,7 +282,7 @@ class EnhancedSerpAPIService:
         return round(normalized_score, 2)
     
     def _process_and_deduplicate_results(self, all_results: List[Dict], max_results: int) -> List[Dict[str, Any]]:
-        """IMPROVED: Process and deduplicate results with better ranking"""
+        """Process and deduplicate results with better ranking"""
         
         if not all_results:
             return []

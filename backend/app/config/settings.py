@@ -1,6 +1,6 @@
 # App settings & environment configs
 
-# Enhanced app settings with comprehensive Adeona Technologies data
+
 
 import os
 from dotenv import load_dotenv
@@ -10,7 +10,7 @@ from typing import List, Dict
 load_dotenv()
 
 class EnhancedAdeonaSettings:
-    """Enhanced application configuration with comprehensive Adeona Technologies information"""
+    
     
     # Gemini Configuration
     GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY")

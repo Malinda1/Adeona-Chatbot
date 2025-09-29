@@ -1,6 +1,6 @@
 # Main chatbot logic
 
-# Enhanced Adeona chatbot with improved search and response logic - FIXED CANCELLATION
+
 
 import asyncio
 import uuid
@@ -21,7 +21,7 @@ from backend.app.models.customer import Customer
 from backend.app.utils.logger import logger, log_error, log_function_call
 
 class EnhancedAdeonaChatbot:
-    """Enhanced chatbot with improved search logic and intelligent fallback"""
+    
     
     def __init__(self):
         self.sessions: Dict[str, SessionData] = {}
@@ -52,7 +52,7 @@ class EnhancedAdeonaChatbot:
             "Bulk OTA Setting Update Platform"
         ]
         
-        # Enhanced knowledge base with social media links
+        # knowledge base with social media links
         self.basic_knowledge = {
             "identity": "I'm AdeonaBot, the official AI assistant for Adeona Technologies.",
             "company": "Adeona Technologies",
@@ -77,7 +77,7 @@ class EnhancedAdeonaChatbot:
         return self.sessions[session_id]
     
     async def process_message(self, message: ChatMessage) -> ChatResponse:
-        """Main message processing with enhanced search logic and FIXED cancellation flow"""
+       
         try:
             log_function_call("process_message", {
                 "message_length": len(message.message),
@@ -126,7 +126,7 @@ class EnhancedAdeonaChatbot:
             )
     
     async def _route_message_enhanced(self, message: str, session: SessionData) -> str:
-        """ENHANCED: Improved message routing with FIXED cancellation priority"""
+       
         try:
             message_lower = message.lower().strip()
             
@@ -141,7 +141,7 @@ class EnhancedAdeonaChatbot:
             if self._is_simple_greeting(message_lower):
                 return self._handle_greeting()
             
-            # 4. FIXED: Handle cancellation requests FIRST (highest priority)
+            # Handle cancellation requests FIRST (highest priority)
             if self._is_cancellation_request(message_lower):
                 return await self._handle_cancellation_request(processed_message, session)
             
@@ -157,11 +157,11 @@ class EnhancedAdeonaChatbot:
             if self._is_service_booking_request(message_lower):
                 return await self._initiate_service_booking(session)
             
-            # 8. ENHANCED: Handle service-related questions with comprehensive search
+            # 8. Handle service-related questions with comprehensive search
             if self._is_service_inquiry(message_lower):
                 return await self._handle_service_inquiry(processed_message)
             
-            # 9. ENHANCED: Handle company questions with intelligent search and fallback
+            # 9. Handle company questions with intelligent search and fallback
             return await self._handle_company_question_enhanced(processed_message)
             
         except Exception as e:
@@ -169,7 +169,7 @@ class EnhancedAdeonaChatbot:
             return f"I apologize, but I'm having trouble processing your request. Please contact us at {self.basic_knowledge['phone']} for assistance."
     
     def _process_context_aware_query(self, message: str) -> str:
-        """ENHANCED: Process context-aware queries (this company = Adeona Technologies)"""
+        
         processed_message = message
         
         # Replace context references with explicit company name
@@ -191,7 +191,7 @@ class EnhancedAdeonaChatbot:
         return processed_message
     
     def _is_cancellation_request(self, message: str) -> bool:
-        """ENHANCED: Improved cancellation detection with higher accuracy"""
+        """cancellation detection with higher accuracy"""
         cancellation_patterns = [
             # Direct cancellation phrases
             r'\b(cancel|stop|remove|delete)\b.*\b(service|order|booking|subscription|request)\b',
@@ -341,7 +341,7 @@ How can we assist you today?"""
         return any(indicator in message for indicator in service_indicators)
     
     async def _handle_service_inquiry(self, message: str) -> str:
-        """ENHANCED: Handle service inquiries with comprehensive search and fallback"""
+        """Handle service inquiries with comprehensive search and fallback"""
         try:
             log_function_call("_handle_service_inquiry", {"query": message[:50]})
             
@@ -454,7 +454,7 @@ Response format:
 Would you like more information about any specific service or would you like to book a consultation?"""
     
     async def _handle_company_question_enhanced(self, message: str) -> str:
-        """ENHANCED: Handle company questions with intelligent search and better fallback"""
+        """Handle company questions with intelligent search and better fallback"""
         try:
             log_function_call("handle_company_question_enhanced", {"query": message[:50]})
             
@@ -536,7 +536,7 @@ Provide a comprehensive, accurate response:"""
         return "\n\n".join(context_parts)
     
     def _provide_enhanced_fallback_response(self, message: str) -> str:
-        """ENHANCED: Provide better fallback response when search fails"""
+        """Provide better fallback response when search fails"""
         message_lower = message.lower()
         
         # Categorize the question and provide relevant information
@@ -679,10 +679,10 @@ I can help you with:
 What would you like to know about Adeona Technologies?"""
     
     def _is_service_booking_request(self, message: str) -> bool:
-        """FIXED: Check for service booking intent (exclude social media and cancellation requests)"""
+        """Check for service booking intent (exclude social media and cancellation requests)"""
         message_lower = message.lower()
         
-        # FIXED: First check if it's a cancellation request - if yes, don't treat as booking
+        # First check if it's a cancellation request - if yes, don't treat as booking
         if self._is_cancellation_request(message_lower):
             return False
         
@@ -697,7 +697,7 @@ What would you like to know about Adeona Technologies?"""
         return any(indicator in message_lower for indicator in booking_indicators)
     
     async def _handle_cancellation_request(self, message: str, session: SessionData) -> str:
-        """FIXED: Handle cancellation requests with User ID verification and session tracking"""
+        """Handle cancellation requests with User ID verification and session tracking"""
         try:
             log_function_call("_handle_cancellation_request", {"message": message[:50]})
             
@@ -731,7 +731,7 @@ Once you provide your User ID, I'll check if your service can be cancelled (serv
             return f"I apologize for the error. Please contact our support team at **{self.basic_knowledge['phone']}** for cancellation assistance."
     
     async def _handle_cancellation_userid_input(self, message: str, session: SessionData) -> str:
-        """FIXED: Handle User ID input when user is in cancellation flow"""
+        """Handle User ID input when user is in cancellation flow"""
         try:
             log_function_call("_handle_cancellation_userid_input", {"message": message[:20]})
             
@@ -751,7 +751,7 @@ Once you provide your User ID, I'll check if your service can be cancelled (serv
                 return await self._process_cancellation_with_userid(user_id)
             else:
                 # Invalid User ID format
-                return """❌ **Invalid User ID Format**
+                return """ **Invalid User ID Format**
 
 Please provide a valid **8-character User ID** (letters and numbers only).
 
@@ -816,7 +816,7 @@ Or contact our support team at **{self.basic_knowledge['phone']}** for assistanc
             
             if cancellation_result["success"]:
                 # Successful cancellation
-                return f"""✅ **Service Cancellation Confirmed**
+                return f""" **Service Cancellation Confirmed**
 
 Your service request with User ID: **{user_id}** has been successfully cancelled.
 
@@ -833,7 +833,7 @@ Thank you for considering Adeona Technologies."""
                 # Cancellation failed
                 if cancellation_result.get("time_exceeded", False):
                     # 24-hour window exceeded
-                    return f"""❌ **Cancellation Not Possible**
+                    return f""" **Cancellation Not Possible**
 
 Your service request (User ID: **{user_id}**) cannot be cancelled because it exceeds the **24-hour cancellation window**.
 
@@ -849,7 +849,7 @@ Our team will be happy to assist you with your concerns.
                 
                 elif "not found" in cancellation_result["message"].lower():
                     # User ID not found
-                    return f"""❌ **User ID Not Found**
+                    return f""" **User ID Not Found**
 
 I couldn't find a service request with User ID: **{user_id}**
 
@@ -865,7 +865,7 @@ Our support team can help verify your booking details."""
                 
                 else:
                     # Other error
-                    return f"""❌ **Cancellation Error**
+                    return f""" **Cancellation Error**
 
 {cancellation_result['message']}
 

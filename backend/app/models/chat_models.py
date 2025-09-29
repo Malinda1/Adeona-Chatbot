@@ -1,6 +1,5 @@
 # Chat session models
 
-# Chat session models
 
 from pydantic import BaseModel, EmailStr, validator
 from typing import Optional, List, Dict, Any
@@ -129,7 +128,7 @@ class EmbeddingData(BaseModel):
     metadata: Dict[str, Any]
     
 class SessionData:
-    """Enhanced session data to track user conversations and cancellation state"""
+    """session data to track user conversations and cancellation state"""
     
     def __init__(self, session_id: str):
         self.session_id = session_id

@@ -1,8 +1,5 @@
 # Airtable API integration
 
-# Airtable API integration - ENHANCED CANCELLATION
-
-# Simple Airtable API integration using requests
 
 import requests
 import json
@@ -186,7 +183,7 @@ class AirtableService:
             return []
     
     async def check_cancellation_eligibility(self, user_id: str) -> Dict[str, Any]:
-        """ENHANCED: Check if a customer is eligible for cancellation within 24-hour window"""
+        """Check if a customer is eligible for cancellation within 24-hour window"""
         try:
             log_function_call("check_cancellation_eligibility", {"user_id": user_id})
             
@@ -209,7 +206,7 @@ class AirtableService:
                 }
             
             # Check if within 24-hour cancellation window
-            # Fixed: Use the correct attribute name and Customer's built-in method
+            # Use the correct attribute name and Customer's built-in method
             try:
                 # Use the Customer class's built-in method with the correct parameter name
                 can_cancel = customer.can_cancel(cancellation_hours=24)
@@ -252,7 +249,7 @@ class AirtableService:
             }
     
     async def process_cancellation(self, user_id: str) -> Dict[str, Any]:
-        """ENHANCED: Process service cancellation with comprehensive error handling"""
+        """Process service cancellation with comprehensive error handling"""
         try:
             log_function_call("process_cancellation", {"user_id": user_id})
             

@@ -1,6 +1,5 @@
 # Gemini API integration
 
-# Enhanced Gemini API integration with improved intent analysis and rate limiting - FIXED CANCELLATION
 
 import os
 import requests
@@ -17,7 +16,7 @@ from backend.app.config.settings import settings
 from backend.app.utils.logger import logger, log_error, log_function_call
 
 class EnhancedGeminiService:
-    """Enhanced service for interacting with Google Gemini AI models with improved Adeona-specific responses"""
+    """interacting with Google Gemini AI models with improved Adeona-specific responses"""
     
     def __init__(self):
         self.client = genai.Client(api_key=settings.GEMINI_API_KEY)
@@ -28,7 +27,7 @@ class EnhancedGeminiService:
         self.last_tts_request = 0
         self.tts_request_interval = 2  # Minimum seconds between TTS requests
         self.tts_retry_count = 0
-        self.max_tts_retries = 3
+        self.max_tts_retries = 2
     
     async def generate_response(self, prompt: str, context: Optional[str] = None) -> str:
         """Generate text response using Gemini model with enhanced Adeona focus"""
@@ -51,7 +50,7 @@ class EnhancedGeminiService:
             return "I apologize, but I'm experiencing technical difficulties. Please contact our support team at (+94) 117 433 3333."
     
     def _enhance_prompt_for_adeona(self, prompt: str, context: Optional[str] = None) -> str:
-        """Enhanced prompt enhancement with better search result integration"""
+        """prompt enhancement with better search result integration"""
         
         adeona_guidelines = """
         CRITICAL: You are AdeonaBot representing Adeona Technologies ONLY.
@@ -90,13 +89,13 @@ class EnhancedGeminiService:
         return enhanced_prompt
     
     async def analyze_user_intent(self, message: str) -> dict:
-        """ENHANCED: More accurate user intent analysis with FIXED cancellation detection"""
+        """More accurate user intent analysis with FIXED cancellation detection"""
         try:
             log_function_call("analyze_user_intent", {"message_length": len(message)})
             
             message_lower = message.lower().strip()
             
-            # PRIORITY 1: ENHANCED cancellation detection (highest priority)
+            # PRIORITY 1: cancellation detection (highest priority)
             cancellation_patterns = [
                 # Direct cancellation phrases
                 r'\b(cancel|stop|remove|delete)\b.*\b(service|order|booking|subscription|request)\b',
@@ -501,7 +500,7 @@ class EnhancedGeminiService:
         return truncated.strip() + "..."
     
     async def chat_with_context(self, user_message: str, system_prompt: str, context: Optional[str] = None) -> str:
-        """ENHANCED: Generate chat response with system prompt and context, optimized for Adeona"""
+        """Generate chat response with system prompt and context, optimized for Adeona"""
         try:
             log_function_call("chat_with_context", {
                 "user_message_length": len(user_message),
@@ -550,7 +549,7 @@ class EnhancedGeminiService:
             return "I apologize, but I'm experiencing technical difficulties. Please contact our support team at (+94) 117 433 3333 for immediate assistance."
     
     async def generate_service_response(self, query: str, search_results: List, complete_services: List[str]) -> str:
-        """ENHANCED: Generate comprehensive service-focused response"""
+        """Generate comprehensive service-focused response"""
         try:
             log_function_call("generate_service_response", {"query": query[:50]})
             
