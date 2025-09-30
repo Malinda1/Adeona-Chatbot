@@ -328,7 +328,7 @@ class EnhancedGeminiService:
             clean_text = self._clean_text_for_tts(text)
             
             # If text is too long, truncate intelligently
-            max_tts_length = 800  # Increased from 500
+            max_tts_length = 20000  # Increased from 500
             if len(clean_text) > max_tts_length:
                 clean_text = self._truncate_text_intelligently(clean_text, max_tts_length)
                 logger.info(f"Text truncated to {len(clean_text)} characters for TTS")
